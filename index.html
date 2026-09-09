@@ -3,9 +3,262 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 프리텐다드 Pretendard Variable -->
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
     <title>Document</title>
+
+    <!-- font -->
+    <style>
+
+        /* 마루부리 */
+        @font-face {
+            font-family: 'MaruBuri';
+            src: url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.woff2);
+            font-weight: 600;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'MaruBuri';
+            src: url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-Bold.woff2);
+            font-weight: 900;
+            font-display: swap;
+        }
+
+        /* 조선 궁서 */
+        @font-face {
+            font-family: 'JoseonPalace';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ChosunGs.woff') format('woff');
+            font-weight: normal;
+            font-display: swap;
+        }
+    </style>
+
+    <style>
+        a{text-decoration: none;}
+        *{margin: 0; padding: 0; box-sizing: border-box; } 
+        body{
+            width: 100%; container-type: inline-size; background-color: #fcfbf9;
+            position: relative; overflow-x: hidden; font-size: 30px; font-family: 'Pretendard Variable';
+            background-image: url(./img/main/sec_bg.webp); background-position: center; background-repeat: repeat; background-size: cover; 
+        }
+        
+        select {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            border-radius: 0;
+            border: none;
+            outline: none;
+            font: inherit;
+            background: none;
+            padding: 0;
+            margin: 0;
+            background-color: #fff;
+        }
+        
+        
+        input:-webkit-autofill {
+            -webkit-box-shadow: 0 0 0px 1000px white inset;
+            box-shadow: 0 0 0px 1000px white inset;
+            -webkit-text-fill-color: #000;
+        }
+
+        section{width: 100%; max-width: 800px; margin: auto; position: relative; overflow: hidden; z-index: 1; container-type: inline-size;}
+        header img{width: 100%; object-fit: contain;}
+        section img{width: 100%; object-fit: contain;}
+        section>img{
+            width: 100%; object-fit: contain; position: absolute; z-index: -1;
+        }
+        .outBox{position: absolute; width: 100%; height: 100%; top: 0; left: 0;}
+
+
+        @media (max-width: 800px) {
+            body { width: 100%; font-size: 30px;}
+        }
+        @media (min-width: 661px) and (max-width: 730px) {
+            body { width: 100%; font-size: 28px;}
+        }
+        @media (min-width: 591px) and (max-width: 660px) {
+            body { width: 100%; font-size: 24px;}
+        }
+        @media (min-width: 536px) and (max-width: 590px) {
+            body { width: 100%; font-size: 21px;}
+            
+        }
+        @media (min-width: 466px) and (max-width: 535px) {
+            body { width: 100%; font-size: 20px;}
+        }
+        
+        @media (min-width: 405px) and (max-width: 465px) {
+            body { width: 100%; font-size: 18px;}
+        }
+        @media (min-width: 350px) and (max-width: 404px) {
+            body { width: 100%; font-size: 16px;}
+        }
+        @media (max-width: 349px) {
+            body { width: 100%; font-size: 13px;}
+        }
+
+
+
+        header{
+            width: 100%; position: fixed; top: 0; left: 50%; transform: translateX(-50%); z-index: 1000; border-bottom: 1px solid #0d253b00; transition: 0.3s; padding: 1lh 0;
+        }
+        header.scroll{
+            border-bottom: 1px solid #0d253b; background-color: rgba(255, 255, 255, 0.699); backdrop-filter: blur(2.5px); -webkit-backdrop-filter: blur(22px); padding: 0.5lh 0;
+        }
+        header>div{
+            width: 95%; max-width: 1200px; margin: auto;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+
+        .logo{
+            width: 30%; max-width: 200px;
+        }
+        .menu_btn{
+            width: 1lh; height: 1lh; display: flex; flex-direction: column; justify-content: space-between; align-items: center; transform: scale(0.8);
+        }
+        .menu_btn>div{width: 100%; display: flex; justify-content: space-between; align-items: center; height: 0.2em; background-color: #000;}
+
+
+        /* sec1 */
+        .main_sec1{padding-top: 5.5lh;}
+        .main_sec1_top{font-family: 'MaruBuri'; text-align: center; margin-bottom: 8%;}
+        .main_sec1_top>div{
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+        }
+        .main_sec1_top>div img{width: 5cqw; display: block;}
+        .main_sec1_top>div p{
+            font-weight: 900; color: #aa7529; margin: 4% auto; font-size: 3.5cqw; margin-bottom: 6%;
+        }
+        .main_sec1_top h2{
+            font-size: 7.5cqw; margin-bottom: 0.2lh;
+        }
+        .main_sec1_top>p{font-size: 4.3cqw;}
+
+        .main_sec1_mid{
+            width: 90%; margin: auto;font-family: 'MaruBuri'; text-align: center;
+            background-color: #fffdf8; border: 1px solid #c8aa64; border-radius: 1lh; padding: 0.5lh; padding-bottom: 2lh;
+            box-shadow: 0 0 5px #4436243a; margin-bottom: 5%;
+        }
+        .main_decoStr{width: 95%; margin: auto;}
+        .main_sec1_mid p{margin-top: 1.5lh; font-size: 3.5cqw;}
+        .main_sec1_mid p b{font-weight: 900; display: inline-block; position: relative; width: fit-content; margin: auto; z-index: 1;}
+        .main_sec1_mid p span{
+            width: 100%; display: block; position: absolute; height: 0.6lh; background-color: #c8aa642f; left: 0; bottom: 0; z-index: -1;
+        }
+        .main_sec1_bot{
+            width: 90%; margin: auto; display: flex; justify-content: space-between; align-items: center;
+        }
+        .main_sec1_bCard {
+            display: flex; align-items: center; margin-bottom: 5%; gap: 0.5lh;
+        }
+        .main_sec1_bCard>div:nth-child(1){
+            width: 0.3lh; height: 4lh; border-radius: 0.2em;
+        }
+        .main_sec1_bCard>div:nth-child(2) h3{font-size: 8cqw; color: #c0944d;}
+        .main_sec1_bCard>div:nth-child(2) span{font-family: 'JoseonPalace';}
+        .main_sec1_bCard>div:nth-child(2) p{font-size: 5.5cqw; font-weight: 600;}
+
+        .main_sec1_bR{
+            width: 53%; background: #F7F0E4; background: linear-gradient(-30deg, rgba(247, 240, 228, 1) 0%, rgba(255, 255, 255, 1) 100%);
+            border: 1px solid #c0944d; border-radius: 0.5em 0 0.5em 0; padding: 1.5lh 0; padding-top: 0; box-shadow: 5px 5px 1px #3a26091e; text-align: center;
+        }
+        .main_sec1_bR_str div:nth-child(1){width: 2px; height: 1.5lh; background-color: #c0944d; margin: auto;}
+        .main_sec1_bR_str div:nth-child(2){width: 0.3lh; height: 0.3lh; background-color: #c0944d; border-radius: 50%; margin: auto; transform: translateY(-50%);}
+        .main_sec1_bR p{
+            font-size: 6.5cqw; font-weight: 600; margin-top: .5lh;
+        }
+
+        .main_sec1_bR h3{font-size: 7.3cqw; transform: translateY(-20%); font-weight: 800; color: #c0944d;}
+        .main_sec1_bR h3 span{font-size: 8.8cqw;}
+
+
+    </style>
+
 </head>
 <body>
-    얍
+    <header>
+        <div>
+            <div class="logo">
+                <img src="./img/main/logo.webp" alt="">
+            </div>
+            <div class="menu_btn">
+                <div><div></div><div></div></div>
+                <div><div></div><div></div></div>
+                <div><div></div><div></div></div>
+            </div>
+        </div>
+    </header>
+    <section class="main_sec1">
+        <div class="main_sec1_top">
+            <div>
+                <img src="./img/main/star2.webp" alt="">
+                <p>상위 1% 정통 역술가 21인이 함께한</p>
+            </div>
+            <h2>명월재(命月齋) 심층사주</h2>
+            <p>“당신의 운명을 미리 알고 설계하세요”</p>
+        </div>
+        <div class="main_sec1_mid">
+            <div class="main_decoStr"><img src="./img/main/deco_str.webp" alt=""></div>
+            <p>
+                <b>단순 운세와는 다릅니다.</b><br>
+                사주 원국·오행·십성·대운·세운을 종합한<br>
+                심층적인 명월재만의 사주해설을 제공합니다<br>
+            </p>
+            <p>
+                <b>[21인의 정통 역술가 참여]<span></span></b><br>
+                하나의 사주를 더 깊이 읽기 위해<br>
+                명월재만의 해석 체계를 완성했습니다.
+            </p>
+            <p>
+                듣기 좋은 이야기보다,<br>
+                당신에게 필요한 이야기를<br>
+                전해드릴것을 약속합니다
+            </p>
+        </div>
+        <div class="main_sec1_bot">
+            <div class="main_sec1_bL">
+                <div class="main_sec1_bCard">
+                    <div style="background-color: white; border: 1px solid #c0944d;"></div>
+                    <div>
+                        <h3>21<span>人</span></h3>
+                        <p>역술가 참여</p>
+                    </div>
+                </div>
+                <div class="main_sec1_bCard">
+                    <div style="background-color: #f2d4a7; border: 1px solid #f2d4a7;"></div>
+                    <div>
+                        <h3>10<span>大</span></h3>
+                        <p>운명 영역 분석</p>
+                    </div>
+                </div>
+                <div class="main_sec1_bCard">
+                    <div style="background-color: #c0944d; border: 1px solid #c0944d;"></div>
+                    <div>
+                        <h3>50+</h3>
+                        <p>세부 항목 해설</p>
+                    </div>
+                </div>
+            </div>
+            <div class="main_sec1_bR">
+                <div class="main_sec1_bR_str">
+                    <div></div>
+                    <div></div>
+                </div>
+                <p>심층 풀이 건</p>
+                <h3>14,399<span>+</span></h3>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const header = document.querySelector('header');
+
+window.addEventListener('scroll', () => {
+  header.classList.toggle('scroll', window.scrollY > 30);
+});
+    </script>
+
 </body>
 </html>
