@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- 프리텐다드 Pretendard Variable -->
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
     <title>Document</title>
 
     <!-- font -->
@@ -105,7 +106,7 @@
             width: 100%; position: fixed; top: 0; left: 50%; transform: translateX(-50%); z-index: 1000; border-bottom: 1px solid #0d253b00; transition: 0.3s; padding: 1lh 0;
         }
         header.scroll{
-            border-bottom: 1px solid #0d253b; background-color: rgba(255, 255, 255, 0.699); backdrop-filter: blur(2.5px); -webkit-backdrop-filter: blur(22px); padding: 0.5lh 0;
+            border-bottom: 1px solid #0d253ba6; background-color: rgba(255, 255, 255, 0.699); backdrop-filter: blur(2.5px); -webkit-backdrop-filter: blur(22px); padding: 0.5lh 0;
         }
         header>div{
             width: 95%; max-width: 1200px; margin: auto;
@@ -284,10 +285,24 @@
             display: flex; gap: 0.5lh; padding: 0.5lh;
         }
         .main_sec3_Card h3{font-family: 'MaruBuri'; font-weight: 900; font-size: 5.5cqw;}
-        .main_sec3_Card p{font-weight: 600; font-size: 4cqw; margin-top: 2%;}
+        .main_sec3_Card p{font-weight: 600; font-size: 4cqw; margin-top: 2%; line-height: 1.5;}
         .main_sec3_Card>div:nth-child(1){
             width: 0.3lh; height: 3lh; border-radius: 5em;
         }
+
+        /* sec4 */
+
+        .main_sec4_str{
+            margin: 7% auto; width: 1px; height: 4.5lh; margin-top: 0;
+            background-color: #c0944d;
+        }
+        .main_sec4_top h2{font-size: 9cqw; font-family: 'MaruBuri'; text-align: center;}
+        .main_review_writingBtn{
+            margin: 4% auto; width: fit-content; background-color: #f7f1e4; border: 1px solid #dec183; color: #786d56; font-weight: 500; font-size: 5cqw; padding: 0.2lh 1lh; border-radius: 5em;
+        }
+
+        .loopslide3{width: 100%; position: relative;}
+.splide__slide img{width: 100%; object-fit: contain;}
 
     </style>
 
@@ -572,9 +587,54 @@
         </div>
     </section>
 
-    <section class="main_sec4"></section>
+    <section class="main_sec4">
+        <div class="main_sec4_str"></div>
+        <div class="main_sec4_top">
+            <h2>
+                명월재<br>
+                심층사주 실제후기 
+            </h2>
+            <div class="main_review_writingBtn">리뷰쓰기</div>
+        </div>
+
+        
+<div class="loopslide3">
+  <div class="splide splide1" aria-label="Splide AutoScroll Example">
+      <div class="splide__track">
+        <ul class="splide__list">
+          <li class="splide__slide"> <img src="./img/slide1.webp" alt=""> </li>
+          <li class="splide__slide"> <img src="./img/slide2.webp" alt=""> </li>
+          <li class="splide__slide"> <img src="./img/slide3.webp" alt=""> </li>
+          <li class="splide__slide"> <img src="./img/slide4.webp" alt=""> </li>
+        </ul>
+      </div>
+  </div>
+</div>
+                
+    </section>
+
+
+    
+
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-auto-scroll@0.5.3/dist/js/splide-extension-auto-scroll.min.js"></script>
 
     <script>
+
+
+new Splide('.splide1', {
+    type   : 'loop',
+    drag   : 'none',
+    focus  : 'center',
+    perPage: 3,
+    autoHeight: true,
+    autoScroll: { speed: 0.5 },
+    arrows: false,       // ⬅➡ 버튼 
+    pagination: false,   //점 네비
+    gap: '0.5em',
+}).mount( window.splide.Extensions );
+
         const header = document.querySelector('header');
 
         window.addEventListener('scroll', () => {
