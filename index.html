@@ -174,6 +174,121 @@
         .main_sec1_bR h3 span{font-size: 8.8cqw;}
 
 
+        /* sec2 */
+        .main_sec2{position: relative; padding-bottom: 5%; z-index: 2;}
+        .main_sec2 form{
+            width: 90%; margin: auto; margin-top: 8%; box-shadow: 8px 6px 5px #4436243f; position: relative; overflow: hidden;
+            background-color: white; border-radius: 0.5lh; border: 1px solid #c8aa64; padding: 1lh 3%; font-size: 5cqw; z-index: 1;
+        }
+
+        .main_formInputBox{margin-bottom: 5%; margin-top: 1%;}
+        .main_formInputBox p{font-weight: 700; margin-bottom: 1px;}
+        .main_formInputBox input,select,textarea{
+            width: 100%; line-height: 100%; padding: 0.4em 0.2em; background-color: #fffdf8; font-family: 'Pretendard Variable';
+            font-size: 5cqw; border-radius: 0.3em; border: 1px solid #afa090; color: #442f0a; font-weight: 500;
+        }
+        .main_formInputBox input:focus{border: 1px solid #333; outline: none;}
+        .main_formInputBox input::placeholder{color: #442f0abb;}
+        .main_formInputBox select:focus{border: 1px solid #333; outline: none;}
+
+        .main_formInputBox textarea{font-size: 4.5cqw; max-width: 100%; min-width: 100%; height: 6lh; max-height: 6lh; min-height: 6lh;}
+        .main_formInputBox textarea:focus{border: 1px solid #333; outline: none; }
+        .main_formInputBox textarea::placeholder{color: #442f0abb;}
+
+        .radioInput{
+            display: flex; justify-content: space-between; align-items: center; position: relative;
+        } 
+
+        .radioInput input[type="radio"] {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        .radioInput label {
+            display: block;
+            width: 49%; background-color: #fffdf8;
+            line-height: 100%; padding: 0.4em 0.2em; font-family: 'Wanted Sans';
+            font-size: 4.5cqw; border-radius: 0.3em; border: 1px solid #afa090;
+            cursor: pointer; text-align: center; color: #442f0a;
+            transition: all 0.2s ease;
+        }
+
+        .radioInput input[type="radio"]:checked + label {
+            background-color: #aa7529;
+            color: #fffdf8;
+            border-color: #aa7529;
+        }
+        .check_input{display: flex; justify-content: right; align-items: center; font-size: 4.5cqw; font-weight: 600; margin-top: 1%;}
+        .check_input input{width: 1lh;}
+
+        .main_form_str{
+            border-top: 1px solid #aa7529; padding-top: 0.5lh;
+        }
+
+        .main_form_str b{
+            display: block ; margin-top: 5%; font-size: 4.5cqw; opacity: 0.8; font-weight: 600;
+        }
+
+        .main_form_str .radioInput_3 label{width: 32%;}
+        .main_formAgree{
+            margin-top: 0; transform: translateY(-50%);
+            display: flex; justify-content: left; align-items: center; font-size: 3cqw; font-weight: 600; margin-top: 1%;
+        }
+        .main_formAgree .check_input{display: flex; justify-content: left; align-items: center; font-size: 3cqw; }
+
+        .main_formSubmitBox{
+            margin-top: 7%;
+        }
+        .main_formSubmitBox div{width: 65%; margin: auto; position: relative;}
+        .main_formSubmitBox div p{
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%,-70%); width: 100%; text-align: center; font-size: 4.5cqw; font-weight: 800; color: #333244;
+        }
+
+        .submit_button{
+            display: block; margin: auto; width: 100%; margin-top: 3%; font-size: 5cqw; font-weight: 600; color: white; padding: 0.7lh 0; border-radius: 0.5lh; border: none;
+            background: #0D253B; background: linear-gradient(-30deg, rgba(13, 37, 59, 1) 0%, rgba(0, 48, 145, 1) 100%);
+        }
+
+        .form_deco{
+            position: absolute; bottom: 0; left: 0; z-index: -1; transform: translateY(10%);
+        }
+
+
+        /* sec3 */
+
+        .main_sec3{
+            padding-top: 3.5lh; transform: translateY(-2lh);
+        }
+
+        .main_sec3_deco{
+            position: absolute; top: 0; right: 0; z-index: -1; width: 6%; transform: translateX(-150%);
+        }
+
+        .main_sec3_top{
+            width: 90%; margin: auto; margin-bottom: 8%;
+        }
+        .main_sec3_top h2{
+            font-size: 8cqw; font-family: 'MaruBuri'; margin-bottom: 5%;
+        }
+        .main_sec3_top h2 b{font-size: 9cqw;}
+        .main_sec3_top p{ font-size: 3.6cqw; font-weight: 700; line-height: 1.7;}
+        .main_sec3_Card{
+            width: 90%; margin: auto ; margin-bottom: 3%; background-color: white; box-shadow: 0 0 5px #4436243a; border-radius: 0.3em;
+            display: flex; gap: 0.5lh; padding: 0.5lh;
+        }
+        .main_sec3_Card h3{font-family: 'MaruBuri'; font-weight: 900; font-size: 5.5cqw;}
+        .main_sec3_Card p{font-weight: 600; font-size: 4cqw; margin-top: 2%;}
+        .main_sec3_Card>div:nth-child(1){
+            width: 0.3lh; height: 3lh; border-radius: 5em;
+        }
+
     </style>
 
 </head>
@@ -190,6 +305,7 @@
             </div>
         </div>
     </header>
+
     <section class="main_sec1">
         <div class="main_sec1_top">
             <div>
@@ -252,12 +368,235 @@
         </div>
     </section>
 
+    <section class="main_sec2">
+        <form action="post">
+
+            <div class="form_deco">
+                <img src="./img/main/deco_obj1.webp" alt="">
+            </div>
+
+            <div class="main_formInputBox">
+                <p>성함</p>
+                <input type="text" name="name" placeholder="성함을 입력해주세요" required >
+            </div>
+
+            <div class="main_formInputBox">
+                <p>성별</p>
+                <div class="radioInput">
+                    <input type="radio" name="gender" id="op1_1" value="남성" required>
+                    <label for="op1_1">남성</label>
+
+                    <input type="radio" name="gender" id="op1_2" value="여성" required>
+                    <label for="op1_2">여성</label>
+                </div>
+            </div>
+
+            <div class="main_formInputBox">
+                <p>양력/음력</p>
+                <div class="radioInput">
+                    <input type="radio" name="bir1" id="op2_1" value="양력" required>
+                    <label for="op2_1">양력</label>
+
+                    <input type="radio" name="bir1" id="op2_2" value="음력" required>
+                    <label for="op2_2">음력</label>
+                </div>
+            </div>
+
+            <div class="main_formInputBox">
+                <p>생년월일</p>
+                <input type="text" name="bir2" placeholder="생년월일을 입력해주세요." required >
+            </div>
+
+            <div class="main_formInputBox">
+                <p>태어난 시간</p>
+                <div class="radioInput">
+                    <select id="birthTime" name="bir3" required>
+                        <option value="" selected>태어난 시간을 선택해주세요</option>
+                        <option value="자시">자시 [23:30~01:29]</option>
+                        <option value="축시">축시 [01:30~03:29]</option>
+                        <option value="인시">인시 [03:30~05:29]</option>
+                        <option value="묘시">묘시 [05:30~07:29]</option>
+                        <option value="진시">진시 [07:30~09:29]</option>
+                        <option value="사시">사시 [09:30~11:29]</option>
+                        <option value="오시">오시 [11:30~13:29]</option>
+                        <option value="미시">미시 [13:30~15:29]</option>
+                        <option value="신시">신시 [15:30~17:29]</option>
+                        <option value="유시">유시 [17:30~19:29]</option>
+                        <option value="술시">술시 [19:30~21:29]</option>
+                        <option value="해시">해시 [21:30~23:29]</option>
+                        <option value="모름">태어난 시간을 모름</option>
+                    </select>
+                </div>
+                <label class="check_input">
+                    <input type="checkbox" id="birthTimeUnknown" name="bir3" value="모름" >  시간 모름
+                </label>
+            </div>
+
+            <div class="main_formInputBox main_form_str">
+                <p>결혼/자녀</p>
+
+                <b>결혼 유무</b>
+                <div class="radioInput radioInput_3">
+                    <input type="radio" name="bir1" id="op2_1" value="양력" required>
+                    <label for="op2_1">양력</label>
+
+                    <input type="radio" name="bir1" id="op2_2" value="음력" required>
+                    <label for="op2_2">음력</label>
+                    
+                    <input type="radio" name="bir1" id="op2_2" value="음력" required>
+                    <label for="op2_2">음력</label>
+                </div>
+
+                <b>자녀 유무</b>
+                <div class="radioInput">
+                    <input type="radio" name="sons" id="sons_1" value="자녀있음" required>
+                    <label for="sons_1">있음</label>
+
+                    <input type="radio" name="sons" id="sons_2" value="자녀없음" required>
+                    <label for="sons_2">없음</label>
+                </div>
+            </div>
+
+            <div class="main_formInputBox">
+                <p>현재 가장 고민되는 부분 <span style="font-size: 4cqw; opacity: 0.6; font-weight: 500;">(선택)</span></p>
+                <textarea name="point" placeholder="예) 올해 이직을 해도 괜찮을지 궁금합니다"></textarea>
+            </div>
+
+            <div class="main_formAgree">
+                <label class="check_input">
+                    <input type="checkbox" name="agree1" value="Y" checked required >  &nbsp; <p>개인정보 수집 및 이용에 동의합니다.</p>  &nbsp;
+                </label>
+                <span class="show-Box">[약관보기]</span>
+            </div>
+
+
+            <div class="main_formSubmitBox">
+                <div>
+                    <img src="./img/main/tellBox.webp" alt="">
+                    <p>지금 결제시 40% 할인!</p>
+                </div>
+                <button type="submit" class="submit_button">나의 운명해설서 펼쳐보기 ></button>
+            </div>
+
+        </form>
+    </section>
+
+    <section class="main_sec3">
+        <div class="main_sec3_deco"><img src="./img/main/deco_obj2.webp" alt=""></div>
+        <div class="main_sec3_top">
+            <h2>
+                명월재가 풀어낸<br><b>10가지 운명 해설</b>
+            </h2>
+            <p>
+                당신의 사주, 겉만 보고 풀이하지 않습니다.<br>
+                타고난 명(命)부터 앞으로의 운(運)까지 깊이 살펴드립니다.
+            </p>
+        </div>
+        <div class="main_sec3_bot">
+            <div class="main_sec3_Card">
+                <div style="background-color: #e5caa3;"></div>
+                <div>
+                    <h3>01. 타고난 명(命)</h3>
+                    <p>나의 본질과 기질, 강점과 약점</p>
+                </div>
+            </div>
+            <div class="main_sec3_Card">
+                <div style="background-color: #debf92;"></div>
+                <div>
+                    <h3>02. 지금, 나의 운</h3>
+                    <p>현재 내가 지나고 있는 운의 위치와 흐름</p>
+                </div>
+            </div>
+            <div class="main_sec3_Card">
+                <div style="background-color: #d6b481;"></div>
+                <div>
+                    <h3>03. 2026년 운세</h3>
+                    <p>올해의 전체 흐름과 월별 길흉</p>
+                </div>
+            </div>
+            <div class="main_sec3_Card">
+                <div style="background-color: #cfaa6f;"></div>
+                <div>
+                    <h3>04. 앞으로의 5년</h3>
+                    <p>해마다 달라지는 운의 흐름과 중요한 시기</p>
+                </div>
+            </div>
+            <div class="main_sec3_Card">
+                <div style="background-color: #cea666;"></div>
+                <div>
+                    <h3>05. 돈이 들어오는 때</h3>
+                    <p>재물운과 돈이 모이는 시기, 손재를 경계할 때</p>
+                </div>
+            </div>
+            <div class="main_sec3_Card">
+                <div style="background-color: #cca058; height: 4lh;"></div>
+                <div>
+                    <h3>06. 일과 성공의 운</h3>
+                    <p>
+                        직장·사업·이직·승진 그리고<br>
+                        나에게 맞는 성공의 방향
+                    </p>
+                </div>
+            </div>
+            <div class="main_sec3_Card">
+                <div style="background-color: #c5984f;"></div>
+                <div>
+                    <h3>07. 인생이 바뀌는 때</h3>
+                    <p>대운과 세운으로 살펴보는 인생의 주요 전환점</p>
+                </div>
+            </div>
+            <div class="main_sec3_Card">
+                <div style="background-color: #bd8a3f;"></div>
+                <div>
+                    <h3>08. 인연과 사람복</h3>
+                    <p>연애·배우자·가족·귀인 그리고 멀리해야 할 인연</p>
+                </div>
+            </div>
+            <div class="main_sec3_Card">
+                <div style="background-color: #ae7b30;"></div>
+                <div>
+                    <h3>09. 몸과 마음의 흐름</h3>
+                    <p>평생 건강운과 특히 조심해야 할 시기</p>
+                </div>
+            </div>
+            <div class="main_sec3_Card">
+                <div style="background-color: #96631c; height: 4lh;"></div>
+                <div>
+                    <h3>10. 명월재의 마지막 당부</h3>
+                    <p>
+                        당신이 반드시 붙잡아야 할 세 가지<br>
+                        당신이 반드시 경계해야 할 세 가지
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="main_sec4"></section>
+
     <script>
         const header = document.querySelector('header');
 
-window.addEventListener('scroll', () => {
-  header.classList.toggle('scroll', window.scrollY > 30);
-});
+        window.addEventListener('scroll', () => {
+          header.classList.toggle('scroll', window.scrollY > 30);
+        });
+
+        const birthTime = document.querySelector('#birthTime');
+const birthTimeUnknown = document.querySelector('#birthTimeUnknown');
+
+function updateBirthTime() {
+    const isUnknown = birthTimeUnknown.checked;
+
+    birthTime.disabled = isUnknown;
+    birthTime.required = !isUnknown;
+
+    if (isUnknown) {
+        birthTime.value = '';
+    }
+}
+
+birthTimeUnknown.addEventListener('change', updateBirthTime);
+updateBirthTime();
     </script>
 
 </body>
