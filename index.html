@@ -233,6 +233,8 @@
             border-color: #aa7529;
             transform: scale(1.02);
         }
+        .radioInput.birt{position: relative;}
+        .radioInput.birt::before{position: absolute; content: '▼'; top: 50%; right: 0; transform: translateY(-50%) translateX(-50%) scale(0.8) scaleY(0.7); color: #442f0a;}
         .check_input{display: flex; justify-content: right; align-items: center; font-size: 4.5cqw; font-weight: 600; margin-top: 1%;}
         .check_input input{width: 1lh;}
 
@@ -626,7 +628,7 @@
 
             <div class="main_formInputBox">
                 <p>태어난 시간</p>
-                <div class="radioInput">
+                <div class="radioInput birt">
                     <select id="birthTime" name="bir3" required>
                         <option value="" selected>태어난 시간을 선택해주세요</option>
                         <option value="자시">자시 [23:30~01:29]</option>
