@@ -118,9 +118,9 @@
             width: 30%; max-width: 200px;
         }
         .menu_btn{
-            width: 1lh; height: 1lh; display: flex; flex-direction: column; justify-content: space-between; align-items: center; transform: scale(0.8);
+            width: 1.3lh; height: 1lh; display: flex; flex-direction: column; justify-content: space-between; align-items: center; transform: scale(0.8);
         }
-        .menu_btn>div{width: 100%; display: flex; justify-content: space-between; align-items: center; height: 0.2em; background-color: #000;}
+        .menu_btn>div{width: 100%; display: flex; justify-content: space-between; align-items: center; height: 0.2em; background-color: #0d253b; border-radius: 5em;}
 
 
         /* sec1 */
@@ -1038,7 +1038,7 @@
                     <p>추가금액 없음</p>
                 </div>
             </div>
-            <div class="main_sec4_btn reveal-scale">나의 운명해설서 펼쳐보기 ></div>
+            <div class="main_sec4_btn goForm reveal-scale">나의 운명해설서 펼쳐보기 ></div>
         </div>
 
     </section>
@@ -1135,6 +1135,31 @@
 <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-auto-scroll@0.5.3/dist/js/splide-extension-auto-scroll.min.js"></script>
 
     <script>
+
+        // 리뷰작성 버튼(1차_조건 없음/비 구입시 뜨는거)
+        document.querySelector('.main_review_writingBtn').addEventListener("click",()=>{
+            alert('리뷰는 구매 후 결과화면에서 작성 가능합니다.');
+        })
+
+        // 스크롤 이동버튼
+
+        function movSecton(movSec){
+            const target = document.querySelector(`.${movSec}`);;
+            const offset = 80; // 원하는 여백(px)
+            const targetY = target.getBoundingClientRect().top + window.pageYOffset - offset;
+            window.scrollTo({
+                top: targetY,
+                behavior: 'smooth'
+            });
+        }; 
+        
+    
+        document.querySelectorAll('.goForm').forEach(item => {
+            item.addEventListener('click',()=>{
+                movSecton('main_sec2');
+            })
+
+        });
 
 
         // 리뷰슬라이드
