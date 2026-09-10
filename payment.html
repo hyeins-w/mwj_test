@@ -209,14 +209,14 @@
                     <input type="text" name="name" value="김민준" required>
                 </div>
                 <div class="fld">
-                    <p>휴대폰 번호</p>
-                    <input type="tel" name="phone" placeholder="010-0000-0000" required>
+                    <p>휴대폰 번호 <span style="color:#b8503c;">*</span></p>
+                    <input type="tel" name="phone" id="payPhone" placeholder="010-0000-0000" inputmode="numeric" required>
                     <p class="hint">카카오톡 알림톡으로 해설서 링크를 보내드립니다.</p>
                 </div>
                 <div class="fld" style="margin-bottom:0;">
-                    <p>이메일</p>
-                    <input type="email" name="email" placeholder="example@email.com" required>
-                    <p class="hint">PDF 파일이 함께 발송됩니다.</p>
+                    <p>이메일 <span style="font-size:3.2cqw;opacity:.6;font-weight:500;">(선택)</span></p>
+                    <input type="email" name="email" placeholder="example@email.com">
+                    <p class="hint">입력하시면 PDF 파일도 함께 보내드립니다.</p>
                 </div>
             </div>
 
@@ -351,9 +351,21 @@
                 all.addEventListener('change', function(){ ones.forEach(function(c){ c.checked = all.checked; }); });
                 ones.forEach(function(c){ c.addEventListener('change', function(){ all.checked = ones.every(function(x){ return x.checked; }); }); });
             }
+            var phone = document.getElementById('payPhone');
+            phone.addEventListener('input', function(){
+                var v = phone.value.replace(/[^0-9]/g,'').slice(0,11);
+                phone.value = v.length > 7 ? v.slice(0,3)+'-'+v.slice(3,7)+'-'+v.slice(7)
+                            : v.length > 3 ? v.slice(0,3)+'-'+v.slice(3) : v;
+            });
+
             var form = document.getElementById('payForm');
             form.addEventListener('submit', function(e){
                 e.preventDefault();
+                if(phone.value.replace(/[^0-9]/g,'').length < 10){
+                    alert('휴대폰 번호를 정확히 입력해주세요.');
+                    phone.focus();
+                    return;
+                }
                 /* 실제 PG 연동 위치 : 아래 이동 전에 결제 호출을 넣어주세요 */
                 location.href = 'loading.html?next=result_paid.html';
             });

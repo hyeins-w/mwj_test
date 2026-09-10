@@ -12,289 +12,159 @@
         @font-face{font-family:'JoseonPalace';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ChosunGs.woff') format('woff');font-weight:normal;font-display:swap;}
     </style>
     <style>
-        :root{
-            --navy:#0D253B; --navy2:#003091; --gold:#c0944d; --gold-deep:#96631c; --gold-light:#f2c879;
-            --paper:#fcfbf9; --ink:#333244; --ink-soft:#79768a;
-            --wood:#4a7c59; --fire:#b8503c; --earth:#a37c3c; --metal:#8b8b8b; --water:#3f4f7a;
-        }
+        :root{--navy:#0D253B;--gold:#c0944d;--gold-deep:#96631c;--paper:#fcfbf9;--ink:#333244;--ink-soft:#79768a;}
         *{margin:0;padding:0;box-sizing:border-box;}
         html,body{height:100%;overscroll-behavior:none;}
         body{
-            font-family:'Pretendard Variable',sans-serif;font-size:30px;
-            background:var(--paper);color:var(--ink);overflow:hidden;
+            font-family:'Pretendard Variable',sans-serif;background:var(--paper);color:var(--ink);overflow:hidden;
             background-image:url(./img/main/sec_bg.webp);background-size:cover;background-position:center;
         }
-        @media (max-width:800px){body{font-size:30px;}}
-        @media (min-width:661px) and (max-width:730px){body{font-size:28px;}}
-        @media (min-width:591px) and (max-width:660px){body{font-size:24px;}}
-        @media (min-width:536px) and (max-width:590px){body{font-size:21px;}}
-        @media (min-width:466px) and (max-width:535px){body{font-size:20px;}}
-        @media (min-width:405px) and (max-width:465px){body{font-size:18px;}}
-        @media (min-width:350px) and (max-width:404px){body{font-size:16px;}}
-        @media (max-width:349px){body{font-size:13px;}}
 
-        .mwj_loading{
-            position:relative;width:100%;height:100vh;height:calc(var(--vh,1vh) * 100);
-            max-width:800px;margin:auto;overflow:hidden;
-            container-type:size;container-name:mwj;
+        .load{
+            position:relative;width:100%;max-width:800px;margin:auto;
+            height:100vh;height:calc(var(--vh,1vh) * 100);
+            container-type:size;
             display:flex;flex-direction:column;align-items:center;justify-content:center;
-            background:
-                radial-gradient(circle at 16% 20%, #c0944d14 0%, transparent 26%),
-                radial-gradient(circle at 84% 76%, #0D253B0f 0%, transparent 30%);
             transition:opacity .5s ease;
         }
 
-        .mwj_brand{position:relative;z-index:1;opacity:0;animation:fadeIn 1s ease forwards .2s;margin-bottom:4%;}
-        .mwj_brand img{display:block;width:22cqmin;max-width:180px;}
+        .load_logo{width:22cqmin;max-width:170px;display:block;margin-bottom:7%;opacity:0;animation:fadeIn .9s ease forwards .1s;}
 
-        .mwj_head{position:relative;z-index:1;text-align:center;font-family:'MaruBuri';opacity:0;animation:fadeUp .9s ease forwards .4s;}
-        .mwj_head .eyebrow{font-size:2.5cqmin;font-weight:600;color:var(--gold);margin-bottom:3%;}
-        .mwj_head h1{font-size:4.7cqmin;font-weight:700;line-height:1.42;color:var(--navy);}
-        .mwj_head h1 b{color:var(--gold);font-weight:700;}
-        .mwj_subcopy{position:relative;z-index:1;font-size:2.3cqmin;color:var(--ink-soft);margin-top:1.5%;opacity:0;animation:fadeIn 1s ease forwards .6s;}
-
-        /* 나침반 : 외곽 팔괘링 · 12지지링 · 오행 궤도 · 命 코어 */
-        .mwj_orbitWrap{position:relative;width:26cqmin;height:26cqmin;margin:5% auto;z-index:1;}
-        .mwj_orbitRing{position:absolute;inset:0;border-radius:50%;border:1px dashed #c0944d59;animation:spin 46s linear infinite;}
-        .mwj_orbitRing::before{content:"";position:absolute;inset:-1.4cqmin;border:1px solid #c0944d26;border-radius:50%;}
-        .mwj_jijiRing{position:absolute;inset:8%;border-radius:50%;border:1px solid #c0944d40;animation:spinRev 34s linear infinite;box-shadow:0 0 3cqmin #c0944d1a inset;}
-        .mwj_jiji{
+        .ring{position:relative;width:22cqmin;height:22cqmin;margin-bottom:8%;opacity:0;animation:fadeIn .9s ease forwards .3s;}
+        .ring_line{position:absolute;inset:0;border-radius:50%;border:1px solid #c0944d4d;animation:spin 40s linear infinite;}
+        .ring_line span{
             position:absolute;top:50%;left:50%;width:1.8em;margin-left:-0.9em;text-align:center;
-            font-family:'JoseonPalace';font-size:1.7cqmin;color:var(--gold-deep);opacity:.85;
-            transform:translate(-50%,-50%) rotate(calc(30deg * var(--i))) translateY(-10.4cqmin) rotate(calc(-30deg * var(--i)));
+            font-family:'JoseonPalace';font-size:1.7cqmin;color:var(--gold-deep);opacity:.8;
+            transform:translate(-50%,-50%) rotate(calc(30deg * var(--i))) translateY(-10.6cqmin) rotate(calc(-30deg * var(--i)));
         }
-        .mwj_elemOrbit{position:absolute;inset:24%;border-radius:50%;border:1px solid #0d253b14;animation:spin 16s linear infinite;}
-        .mwj_elem{position:absolute;width:1.1cqmin;height:1.1cqmin;min-width:6px;min-height:6px;border-radius:50%;}
-        .e_wood {top:-0.55cqmin;left:50%;transform:translateX(-50%);background:var(--wood);box-shadow:0 0 1.2cqmin var(--wood);}
-        .e_fire {top:33%;right:-0.55cqmin;transform:translate(50%,-50%);background:var(--fire);box-shadow:0 0 1.2cqmin var(--fire);}
-        .e_earth{bottom:4%;right:12%;transform:translate(50%,50%);background:var(--earth);box-shadow:0 0 1.2cqmin var(--earth);}
-        .e_metal{bottom:4%;left:12%;transform:translate(-50%,50%);background:var(--metal);box-shadow:0 0 1.2cqmin var(--metal);}
-        .e_water{top:33%;left:-0.55cqmin;transform:translate(-50%,-50%);background:var(--water);box-shadow:0 0 1.2cqmin var(--water);}
+        .ring_core{
+            position:absolute;inset:28%;border-radius:50%;
+            background:radial-gradient(circle at 34% 28%, #fffdf8 0%, #f3e4c6 55%, #ddc18b 100%);
+            border:1px solid #c0944d;box-shadow:0 0 3cqmin #c0944d40;
+            display:flex;align-items:center;justify-content:center;
+            animation:breathe 2.8s ease-in-out infinite;
+        }
+        .ring_core::after{content:"命";font-family:'JoseonPalace';font-size:6cqmin;color:var(--gold-deep);}
 
-        .mwj_core{
-            position:absolute;inset:35%;border-radius:50%;
-            background:radial-gradient(circle at 34% 28%, #fffdf8 0%, #f2e2c2 55%, #dcbf88 100%);
-            border:1px solid #c0944d;box-shadow:0 0 3cqmin #c0944d4d, 0 0.6cqmin 2cqmin #0d253b1f;
-            display:flex;align-items:center;justify-content:center;transition:box-shadow .6s ease;
-        }
-        .mwj_core::after{
-            content:"命";font-family:'JoseonPalace';font-size:5cqmin;color:var(--gold-deep);
-            animation:pulseCore 2.6s ease-in-out infinite alternate;
-        }
-        .mwj_loading.done .mwj_core{box-shadow:0 0 6cqmin #c0944d80, 0 0 10cqmin #c0944d40;}
+        .load_tit{font-family:'MaruBuri';font-weight:700;font-size:4.4cqmin;color:var(--navy);text-align:center;line-height:1.45;margin-bottom:2.5%;opacity:0;animation:fadeUp .8s ease forwards .45s;}
 
-        /* 체크리스트 티커 */
-        .mwj_checklistWrap{position:relative;z-index:1;width:84%;opacity:0;animation:fadeIn .8s ease forwards .9s;}
-        .mwj_checklist{
-            position:relative;height:calc(2.6cqmin * 9.4);overflow:hidden;
-            -webkit-mask-image:linear-gradient(to bottom,transparent 0%,#000 16%,#000 84%,transparent 100%);
-            mask-image:linear-gradient(to bottom,transparent 0%,#000 16%,#000 84%,transparent 100%);
+        .load_step{height:2.6em;position:relative;width:86%;opacity:0;animation:fadeIn .8s ease forwards .6s;}
+        .load_step p{
+            position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+            font-size:2.5cqmin;font-weight:500;color:var(--ink-soft);text-align:center;
+            opacity:0;transform:translateY(8px);transition:opacity .4s ease,transform .4s ease;
         }
-        .mwj_checklist_inner{list-style:none;display:flex;flex-direction:column;transition:transform .42s cubic-bezier(.16,.84,.44,1);will-change:transform;}
-        .mwj_checklist_inner li{
-            display:flex;align-items:center;justify-content:center;gap:0.5em;height:2.35em;
-            font-size:2.6cqmin;font-weight:500;color:#9d9a8f;text-align:center;
-            opacity:0;transform:translateY(10px);
-            transition:opacity .3s ease,transform .3s ease,color .3s ease;
-        }
-        .mwj_checklist_inner li.show{opacity:1;transform:translateY(0);}
-        .mwj_checklist_inner li.latest{color:var(--navy);font-weight:600;}
-        .mwj_checklist_inner li .chk{
-            flex-shrink:0;width:1.3em;height:1.3em;border-radius:50%;display:flex;align-items:center;justify-content:center;
-            background:#c0944d1f;border:1px solid #c0944d80;color:var(--gold-deep);font-size:0.7em;font-weight:900;
-        }
+        .load_step p.on{opacity:1;transform:translateY(0);}
 
-        .mwj_progressWrap{position:relative;z-index:1;width:84%;margin-top:4%;opacity:0;animation:fadeIn .8s ease forwards 1s;display:flex;align-items:center;gap:3%;}
-        .mwj_progressTrack{flex:1;height:0.26em;background:#c0944d26;border-radius:5em;overflow:hidden;}
-        .mwj_progressFill{height:100%;width:0%;border-radius:5em;background:linear-gradient(90deg,var(--navy) 0%,var(--gold) 100%);transition:width .35s ease;}
-        .mwj_progressPct{font-size:2.4cqmin;font-weight:700;color:var(--navy);width:3em;text-align:right;font-variant-numeric:tabular-nums;}
+        .bar{width:70%;max-width:340px;display:flex;align-items:center;gap:3%;opacity:0;animation:fadeIn .8s ease forwards .7s;}
+        .bar_track{flex:1;height:0.24em;font-size:2.4cqmin;background:#c0944d26;border-radius:5em;overflow:hidden;}
+        .bar_fill{height:100%;width:0%;border-radius:5em;background:linear-gradient(90deg,var(--navy) 0%,var(--gold) 100%);transition:width .35s ease;}
+        .bar_pct{font-size:2.3cqmin;font-weight:700;color:var(--navy);width:3em;text-align:right;font-variant-numeric:tabular-nums;}
 
-        .mwj_notice{
-            position:relative;z-index:1;margin-top:4%;padding:0.55em 1.1em;border-radius:999px;
-            background:#ffffffa6;border:1px solid #c0944d33;color:var(--ink-soft);
-            font-size:1.9cqmin;opacity:0;animation:fadeIn .8s ease forwards 1.15s;
-            display:flex;align-items:center;gap:0.5em;
-        }
-        .mwj_notice::before{content:'✧';color:var(--gold);}
+        .load_note{margin-top:6%;font-size:1.9cqmin;color:#a09a8d;font-weight:500;opacity:0;animation:fadeIn .8s ease forwards .85s;}
 
         @keyframes spin{to{transform:rotate(360deg);}}
-        @keyframes spinRev{from{transform:rotate(360deg);}to{transform:rotate(0deg);}}
-        @keyframes pulseCore{0%{transform:scale(.94);opacity:.85;}100%{transform:scale(1.08);opacity:1;}}
+        @keyframes breathe{0%,100%{transform:scale(1);}50%{transform:scale(1.05);}}
         @keyframes fadeIn{to{opacity:1;}}
-        @keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
-
+        @keyframes fadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
         @media (prefers-reduced-motion: reduce){
-            .mwj_orbitRing,.mwj_jijiRing,.mwj_elemOrbit,.mwj_core::after{animation:none!important;}
-            .mwj_checklist_inner li{transition:opacity .5s ease!important;transform:none!important;}
+            .ring_line,.ring_core{animation:none!important;}
         }
         @media (max-height:460px){
-            .mwj_subcopy{display:none;}
-            .mwj_brand{margin-bottom:2%;}
-            .mwj_orbitWrap{width:18cqmin;height:18cqmin;margin:2% auto;}
-            .mwj_jiji{transform:translate(-50%,-50%) rotate(calc(30deg * var(--i))) translateY(-7.2cqmin) rotate(calc(-30deg * var(--i)));}
-            .mwj_checklist{height:calc(2.6cqmin * 7);}
-            .mwj_progressWrap,.mwj_notice{margin-top:3%;}
+            .load_logo{margin-bottom:3%;}
+            .ring{width:15cqmin;height:15cqmin;margin-bottom:4%;}
+            .ring_line span{transform:translate(-50%,-50%) rotate(calc(30deg * var(--i))) translateY(-7.2cqmin) rotate(calc(-30deg * var(--i)));}
+            .load_note{margin-top:3%;}
         }
     </style>
 </head>
 <body>
 
-    <div class="mwj_loading" id="mwjLoading">
+    <div class="load" id="load">
+        <img class="load_logo" src="./img/main/logo.webp" alt="명월재">
 
-        <div class="mwj_brand"><img src="./img/main/logo.webp" alt="명월재"></div>
-
-        <div class="mwj_head">
-            <p class="eyebrow">상위 1% 정통 역술가 21인이 함께한</p>
-            <h1>당신의 사주를<br><b>풀이하고 있습니다</b></h1>
-        </div>
-        <p class="mwj_subcopy">한 글자도 놓치지 않고 정성껏 살펴보는 중이에요</p>
-
-        <div class="mwj_orbitWrap">
-            <div class="mwj_orbitRing"></div>
-            <div class="mwj_jijiRing">
-                <span class="mwj_jiji" style="--i:0">子</span>
-                <span class="mwj_jiji" style="--i:1">丑</span>
-                <span class="mwj_jiji" style="--i:2">寅</span>
-                <span class="mwj_jiji" style="--i:3">卯</span>
-                <span class="mwj_jiji" style="--i:4">辰</span>
-                <span class="mwj_jiji" style="--i:5">巳</span>
-                <span class="mwj_jiji" style="--i:6">午</span>
-                <span class="mwj_jiji" style="--i:7">未</span>
-                <span class="mwj_jiji" style="--i:8">申</span>
-                <span class="mwj_jiji" style="--i:9">酉</span>
-                <span class="mwj_jiji" style="--i:10">戌</span>
-                <span class="mwj_jiji" style="--i:11">亥</span>
+        <div class="ring">
+            <div class="ring_line">
+                <span style="--i:0">子</span><span style="--i:1">丑</span><span style="--i:2">寅</span>
+                <span style="--i:3">卯</span><span style="--i:4">辰</span><span style="--i:5">巳</span>
+                <span style="--i:6">午</span><span style="--i:7">未</span><span style="--i:8">申</span>
+                <span style="--i:9">酉</span><span style="--i:10">戌</span><span style="--i:11">亥</span>
             </div>
-            <div class="mwj_elemOrbit">
-                <span class="mwj_elem e_wood"></span>
-                <span class="mwj_elem e_fire"></span>
-                <span class="mwj_elem e_earth"></span>
-                <span class="mwj_elem e_metal"></span>
-                <span class="mwj_elem e_water"></span>
-            </div>
-            <div class="mwj_core"></div>
+            <div class="ring_core"></div>
         </div>
 
-        <div class="mwj_checklistWrap">
-            <div class="mwj_checklist">
-                <ul class="mwj_checklist_inner" id="mwjChecklistInner"></ul>
-            </div>
+        <h1 class="load_tit">당신의 사주를<br>풀이하고 있습니다</h1>
+
+        <div class="load_step" id="steps">
+            <p>사주 원국을 세우는 중입니다</p>
+            <p>오행의 균형을 살피는 중입니다</p>
+            <p>대운과 세운의 흐름을 읽는 중입니다</p>
+            <p>21인의 해석을 대조하는 중입니다</p>
+            <p>해설서를 정리하는 중입니다</p>
         </div>
 
-        <div class="mwj_progressWrap" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="사주 분석 진행률">
-            <div class="mwj_progressTrack"><div class="mwj_progressFill" id="mwjProgressFill"></div></div>
-            <span class="mwj_progressPct" id="mwjProgressPct">0%</span>
+        <div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="사주 분석 진행률">
+            <div class="bar_track"><div class="bar_fill" id="barFill"></div></div>
+            <span class="bar_pct" id="barPct">0%</span>
         </div>
 
-        <div class="mwj_notice">새로고침하지 않아도 완료되면 자동으로 넘어가요</div>
+        <p class="load_note">완료되면 자동으로 넘어갑니다</p>
     </div>
 
     <script>
-        /* ▼ 이동할 다음 페이지 : loading.html?next=result_paid.html 처럼 지정할 수 있습니다 */
+        /* ▼ 다음 페이지 : loading.html?next=result_paid.html 처럼 지정 */
         var NEXT_URL = new URLSearchParams(location.search).get('next') || 'result_free.html';
-        /* ▼ 실제 API 연동 시 false 로 두고, 응답 도착 시 mwjLoadingComplete(NEXT_URL) 를 호출하세요 */
+        /* ▼ 실제 API 연동 시 false 로 두고, 응답 도착 시 mwjLoadingComplete(NEXT_URL) 호출 */
         var AUTO_COMPLETE = true;
+        var DURATION = 6000;
 
         function setVh(){ document.documentElement.style.setProperty('--vh', window.innerHeight * 0.01 + 'px'); }
         setVh();
         window.addEventListener('resize', setVh);
         window.addEventListener('orientationchange', setVh);
 
-        var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var root = document.getElementById('load');
+        var steps = document.querySelectorAll('#steps p');
+        var fill = document.getElementById('barFill');
+        var pct = document.getElementById('barPct');
+        var wrap = document.querySelector('[role="progressbar"]');
+        var cur = -1, finished = false, rafId = null;
 
-        var CHECK_ITEMS = [
-            '생년월일시 정보 확인',
-            '음력·양력 변환 확인',
-            '연주(年柱) 계산',
-            '월주(月柱) 계산',
-            '일주(日柱) 계산',
-            '시주(時柱) 계산',
-            '오행(五行) 분포 분석',
-            '십성(十星) 구성 분석',
-            '지장간(支藏干) 배열 확인',
-            '공망(空亡) 확인',
-            '신살(神殺) 조회',
-            '대운(大運) 흐름 계산',
-            '2026년 세운(歲運) 계산',
-            '재성·관성·인성 균형 분석',
-            '귀인성·인연운 분석',
-            '21인의 역술가 데이터 대조',
-            '심층 해설 초안 생성',
-            '결과 정리 중'
-        ];
-        var ITEM_MS = 260, ITEM_MS_JITTER = 60, PROGRESS_CAP = 92;
+        function setProgress(v){
+            v = Math.max(0, Math.min(100, Math.round(v)));
+            fill.style.width = v + '%';
+            pct.textContent = v + '%';
+            wrap.setAttribute('aria-valuenow', v);
 
-        var root = document.getElementById('mwjLoading');
-        var listEl = document.getElementById('mwjChecklistInner');
-        var checklistBox = listEl.parentElement;
-        var fillEl = document.getElementById('mwjProgressFill');
-        var pctEl = document.getElementById('mwjProgressPct');
-        var progressWrap = document.querySelector('[role="progressbar"]');
-
-        var checklistTimer = null, itemHeight = 0, visibleLines = 5, shownCount = 0, ci = 0, finished = false;
-
-        function setProgress(pct){
-            var v = Math.max(0, Math.min(100, Math.round(pct)));
-            fillEl.style.width = v + '%';
-            pctEl.textContent = v + '%';
-            progressWrap.setAttribute('aria-valuenow', v);
-        }
-
-        function addChecklistItem(text){
-            var prev = listEl.querySelector('li.latest');
-            if(prev) prev.classList.remove('latest');
-
-            var li = document.createElement('li');
-            li.className = 'latest';
-            li.innerHTML = '<span class="chk">✓</span><span>' + text + '</span>';
-            listEl.appendChild(li);
-
-            if(!itemHeight){
-                itemHeight = li.getBoundingClientRect().height || 0;
-                if(itemHeight && checklistBox.clientHeight){
-                    visibleLines = Math.max(2, Math.round(checklistBox.clientHeight / itemHeight));
-                }
-            }
-            requestAnimationFrame(function(){ li.classList.add('show'); });
-
-            shownCount++;
-            if(shownCount > visibleLines && itemHeight){
-                listEl.style.transform = 'translateY(' + (-(shownCount - visibleLines) * itemHeight) + 'px)';
+            var idx = Math.min(Math.floor((v / 100) * steps.length), steps.length - 1);
+            if(idx !== cur){
+                if(cur >= 0) steps[cur].classList.remove('on');
+                steps[idx].classList.add('on');
+                cur = idx;
             }
         }
+        setProgress(0);
 
-        function runChecklist(){
-            if(ci >= CHECK_ITEMS.length) return;
-            var isLast = ci === CHECK_ITEMS.length - 1;
-            addChecklistItem(CHECK_ITEMS[ci]);
-            setProgress(((ci + 1) / CHECK_ITEMS.length) * PROGRESS_CAP);
-            ci++;
-            if(!isLast){
-                checklistTimer = setTimeout(runChecklist, prefersReduced ? 450 : ITEM_MS + Math.random() * ITEM_MS_JITTER);
-            } else if(AUTO_COMPLETE){
-                setTimeout(function(){ window.mwjLoadingComplete(NEXT_URL); }, 600);
-            }
+        var start = null;
+        function frame(ts){
+            if(!start) start = ts;
+            var p = Math.min((ts - start) / DURATION, 1);
+            setProgress((1 - Math.pow(1 - p, 2.2)) * (AUTO_COMPLETE ? 100 : 92));
+            if(p < 1) rafId = requestAnimationFrame(frame);
+            else if(AUTO_COMPLETE) window.mwjLoadingComplete(NEXT_URL);
         }
-        checklistTimer = setTimeout(runChecklist, prefersReduced ? 450 : ITEM_MS);
+        rafId = requestAnimationFrame(frame);
 
-        /* =========================================================
-           실제 연동 훅 : 응답이 도착하면 호출하세요.
-             mwjLoadingComplete('result_paid.html')
-           남은 체크리스트를 먼저 채우고 100%로 올린 뒤 페이드아웃 후 이동합니다.
-           ========================================================= */
+        /* 실제 연동 훅 : 응답 도착 시 호출 — mwjLoadingComplete('result_paid.html') */
         window.mwjLoadingComplete = function(redirectUrl){
             if(finished) return;
             finished = true;
-            if(checklistTimer) clearTimeout(checklistTimer);
-
-            while(ci < CHECK_ITEMS.length){ addChecklistItem(CHECK_ITEMS[ci]); ci++; }
+            if(rafId) cancelAnimationFrame(rafId);
             setProgress(100);
-            root.classList.add('done');
-
             setTimeout(function(){
                 root.style.opacity = '0';
                 setTimeout(function(){ if(redirectUrl) location.href = redirectUrl; }, 520);
-            }, 450);
+            }, 400);
         };
     </script>
 </body>
