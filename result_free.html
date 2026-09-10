@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+    <style>
+        @font-face{font-family:'MaruBuri';src:url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.woff2);font-weight:600;font-display:swap;}
+        @font-face{font-family:'MaruBuri';src:url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-Bold.woff2);font-weight:700;font-display:swap;}
+        @font-face{font-family:'JoseonPalace';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ChosunGs.woff') format('woff');font-weight:normal;font-display:swap;}
+    </style>
+    <style>
+        a{text-decoration:none;color:inherit;}
+        a:hover{color:#aa7529;}
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{
+            width:100%;container-type:inline-size;background-color:#fcfbf9;
+            position:relative;overflow-x:hidden;font-size:30px;font-family:'Pretendard Variable';color:#333244;
+            background-image:url(./img/main/sec_bg.webp);background-position:center;background-repeat:repeat;background-size:cover;
+        }
+        section{width:100%;max-width:800px;margin:auto;position:relative;z-index:1;container-type:inline-size;}
+        header img{width:100%;object-fit:contain;}
+        section img{width:100%;object-fit:contain;}
+        @media (max-width:800px){body{font-size:30px;}}
+        @media (min-width:661px) and (max-width:730px){body{font-size:28px;}}
+        @media (min-width:591px) and (max-width:660px){body{font-size:24px;}}
+        @media (min-width:536px) and (max-width:590px){body{font-size:21px;}}
+        @media (min-width:466px) and (max-width:535px){body{font-size:20px;}}
+        @media (min-width:405px) and (max-width:465px){body{font-size:18px;}}
+        @media (min-width:350px) and (max-width:404px){body{font-size:16px;}}
+        @media (max-width:349px){body{font-size:13px;}}
+
+        header{width:100%;position:fixed;top:0;left:50%;transform:translateX(-50%);z-index:1000;border-bottom:1px solid #0d253b00;transition:0.3s;padding:1lh 0;}
+        header.scroll{border-bottom:1px solid #0d253b4b;background-color:rgba(255,255,255,0.699);backdrop-filter:blur(2.5px);-webkit-backdrop-filter:blur(22px);padding:0.5lh 0;}
+        header>div{width:95%;max-width:1200px;margin:auto;display:flex;justify-content:space-between;align-items:center;}
+        .logo{width:30%;max-width:200px;display:block;}
+        .menu_btn{width:1.3lh;height:1lh;display:flex;flex-direction:column;justify-content:space-between;align-items:center;transform:scale(0.8);cursor:pointer;}
+        .menu_btn>div{width:100%;height:0.2em;background-color:#0d253b;border-radius:5em;}
+        .menu_List{display:none;}
+        @media (min-width:801px){
+            .menu_btn{display:none;}
+            .menu_List{display:flex;justify-content:right;align-items:center;gap:2cqw;font-size:0.7em;}
+            .menu_List a{color:#0D253B;opacity:0.67;width:fit-content;}
+            .menu_List a:hover{opacity:1;color:#0D253B;}
+            .menu_List a.active{opacity:1;padding-left:0.2lh;border-left:0.2em solid #0D253B;}
+        }
+
+        .menu_dim{position:fixed;inset:0;background:#0d253b73;opacity:0;visibility:hidden;transition:opacity .3s ease,visibility .3s ease;z-index:1100;}
+        .menu_dim.open{opacity:1;visibility:visible;}
+        .menu_drawer{
+            position:fixed;top:0;right:0;height:100%;width:80%;max-width:330px;z-index:1101;
+            background-color:#fcfbf9;background-image:url(./img/main/sec_bg.webp);background-size:cover;background-position:center;
+            box-shadow:-6px 0 24px #44362438;transform:translateX(100%);transition:transform .38s cubic-bezier(.16,.84,.44,1);
+            display:flex;flex-direction:column;padding:22px 24px 28px;
+        }
+        .menu_drawer.open{transform:translateX(0);}
+        .menu_drawer_top{display:flex;justify-content:space-between;align-items:center;margin-bottom:34px;}
+        .menu_drawer_top img{width:120px;display:block;}
+        .menu_close{width:26px;height:26px;position:relative;cursor:pointer;flex-shrink:0;background:none;border:none;}
+        .menu_close::before,.menu_close::after{content:"";position:absolute;top:50%;left:50%;width:100%;height:2px;background:#0d253b;border-radius:5em;}
+        .menu_close::before{transform:translate(-50%,-50%) rotate(45deg);}
+        .menu_close::after{transform:translate(-50%,-50%) rotate(-45deg);}
+        .menu_nav{display:flex;flex-direction:column;gap:4px;}
+        .menu_nav a{
+            font-family:'MaruBuri';font-weight:600;font-size:20px;color:#0D253B;padding:16px 4px;
+            border-bottom:1px solid #c8aa6440;display:flex;justify-content:space-between;align-items:center;
+            opacity:0;transform:translateX(18px);transition:opacity .4s ease,transform .4s cubic-bezier(.16,.84,.44,1),color .2s ease;
+        }
+        .menu_drawer.open .menu_nav a{opacity:1;transform:translateX(0);}
+        .menu_drawer.open .menu_nav a:nth-child(1){transition-delay:.08s;}
+        .menu_drawer.open .menu_nav a:nth-child(2){transition-delay:.14s;}
+        .menu_drawer.open .menu_nav a:nth-child(3){transition-delay:.20s;}
+        .menu_nav a span{color:#c0944d;font-size:15px;font-family:'Pretendard Variable';font-weight:500;}
+        .menu_nav a.active{color:#aa7529;}
+        .menu_drawer_bot{margin-top:auto;}
+        .menu_drawer_bot p{font-size:13px;color:#796f58;line-height:1.6;margin-bottom:12px;font-weight:500;}
+        .menu_kakao{display:block;width:100%;text-align:center;background-color:#ffec02;color:#442f0a;font-weight:700;font-size:16px;padding:14px 0;border-radius:8px;border:none;cursor:pointer;font-family:'Pretendard Variable';}
+        .menu_kakao:hover{color:#442f0a;}
+        @media (min-width:801px){.menu_dim,.menu_drawer{display:none;}}
+        body.menu_open{overflow:hidden;}
+
+        footer{width:100%;background-color:#818181;padding:1lh 2.5%;position:relative;z-index:2;}
+        .footTxt{display:flex;justify-content:left;gap:0.7lh;margin-bottom:5%;color:white;font-size:3cqw;font-weight:300;}
+        .footL{opacity:0.7;}
+        .foot_movPage{color:white;font-size:3cqw;}
+        .foot_movPage a:hover{color:#fff;text-decoration:underline;}
+        @media (min-width:801px){.footTxt{font-size:0.8em;}.foot_movPage{font-size:1em;}}
+
+        .page_head{padding-top:5.5lh;text-align:center;margin-bottom:6%;padding-left:5%;padding-right:5%;}
+        .page_head .deco{width:5cqw;margin:auto;display:block;animation:twinkle 2.6s ease-in-out infinite;}
+        .page_head .eyebrow{font-weight:800;color:#aa7529;font-size:3.4cqw;margin:3% auto 4%;font-family:'MaruBuri';}
+        .page_head h1{font-family:'MaruBuri';font-weight:700;font-size:7.5cqw;margin-bottom:0.25lh;word-break:keep-all;}
+        .page_head .sub{font-size:3.6cqw;font-weight:500;color:#6f6555;line-height:1.7;word-break:keep-all;}
+        @keyframes twinkle{0%,100%{transform:scale(1);opacity:1;}50%{transform:scale(1.18);opacity:.75;}}
+
+        .card{width:90%;margin:0 auto 4%;background:#fffdf8;border:1px solid #c8aa64;border-radius:0.5lh;box-shadow:0 0 5px #4436243a;padding:1lh 5%;}
+        .card_tit{font-family:'MaruBuri';font-weight:700;font-size:5cqw;margin-bottom:0.7lh;display:flex;align-items:center;gap:0.4lh;}
+        .card_tit::before{content:"";width:0.25lh;height:1.1lh;background:#c0944d;border-radius:5em;flex-shrink:0;}
+        .btn_navy{display:block;width:100%;text-align:center;color:white;font-size:5cqw;font-weight:600;padding:0.7lh 0;border-radius:0.5lh;border:none;font-family:'Pretendard Variable';cursor:pointer;background:linear-gradient(-30deg,rgba(13,37,59,1) 0%,rgba(0,48,145,1) 100%);transition:transform .25s ease,box-shadow .25s ease;}
+        .btn_navy:hover{transform:translateY(-2px);box-shadow:0 8px 20px #00309166;color:#fff;}
+        .btn_navy:active{transform:scale(0.97);}
+        .btn_line{display:block;width:100%;text-align:center;color:#786d56;font-size:4.3cqw;font-weight:600;padding:0.55lh 0;border-radius:0.5lh;background:#f7f1e4;border:1px solid #dec183;cursor:pointer;font-family:'Pretendard Variable';transition:background-color .2s ease,transform .2s ease;}
+        .btn_line:hover{background:#f2e6cc;color:#786d56;}
+        .btn_line:active{transform:scale(0.97);}
+        .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s cubic-bezier(.16,.84,.44,1);}
+        .reveal.is-visible{opacity:1;transform:translateY(0);}
+        @media (prefers-reduced-motion:reduce){.reveal{transition:none!important;opacity:1!important;transform:none!important;}.page_head .deco{animation:none!important;}}
+    </style>
+    <title>무료 사주 결과 | 명월재</title>
+    <style>
+
+        .chipRow{display:flex;justify-content:center;flex-wrap:wrap;gap:0.25lh;margin-top:4%;}
+        .chip{font-size:3.2cqw;font-weight:600;color:#786d56;background:#f7f1e4;border:1px solid #dec183;border-radius:5em;padding:0.2lh 0.7lh;}
+        .pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:0.25lh;}
+        .pillar{background:#fff;border:1px solid #c8aa6455;border-radius:0.45em;padding:0.5lh 2% 0.55lh;text-align:center;}
+        .pillar.me{border-color:#c0944d;box-shadow:0 0 0 2px #c8aa6433;background:#fffdf6;}
+        .p_name{font-family:'MaruBuri';font-weight:700;font-size:3.1cqw;line-height:1.3;}
+        .p_name span{display:block;font-family:'Pretendard Variable';font-size:2.5cqw;color:#9a917f;font-weight:500;}
+        .p_god{font-size:2.7cqw;font-weight:700;color:#786d56;margin:0.3lh 0 0.25lh;}
+        .p_tile{width:2.1lh;height:2.1lh;margin:0 auto;border-radius:0.3em;display:flex;align-items:center;justify-content:center;font-family:'JoseonPalace';font-size:6cqw;color:#fff;line-height:1;}
+        .p_tile+.p_tile{margin-top:0.2lh;}
+        .pillar_note{font-size:3.1cqw;color:#796f58;font-weight:500;margin-top:0.6lh;line-height:1.7;word-break:keep-all;}
+        .pillar_note b{color:#aa7529;font-weight:700;}
+        .wg_note{font-size:3cqw;color:#796f58;font-weight:500;margin-top:0.6lh;line-height:1.6;word-break:keep-all;}
+        .ohaeng{display:flex;flex-direction:column;gap:0.35lh;}
+        .oh_row{display:flex;align-items:center;gap:0.4lh;}
+        .oh_name{width:3.6lh;flex-shrink:0;font-family:'MaruBuri';font-weight:700;font-size:3.6cqw;}
+        .oh_track{flex:1;height:0.62lh;background:#f1ece1;border-radius:5em;overflow:hidden;}
+        .oh_bar{height:100%;width:0;border-radius:5em;transition:width 1.1s cubic-bezier(.16,.84,.44,1);}
+        .oh_val{width:2.2lh;text-align:right;font-size:3.2cqw;font-weight:700;color:#6f6555;flex-shrink:0;}
+        .body_txt{font-size:3.6cqw;font-weight:500;line-height:1.85;color:#4a4436;word-break:keep-all;}
+        .body_txt+.body_txt{margin-top:0.5lh;}
+        .body_txt b{color:#aa7529;font-weight:700;}
+        .year_line{background:linear-gradient(-30deg,#f7f0e4 0%,#fff 100%);border:1px solid #c0944d;border-radius:0.4em;padding:0.8lh 5%;text-align:center;}
+        .year_line .yl_kw{font-family:'MaruBuri';font-weight:700;font-size:6.5cqw;color:#c0944d;margin-bottom:0.3lh;}
+        .year_line p{font-size:3.6cqw;font-weight:600;line-height:1.7;word-break:keep-all;}
+        .lock_wrap{width:90%;margin:8% auto 0;position:relative;}
+        .lock_head{text-align:center;margin-bottom:4%;}
+        .lock_head h2{font-family:'MaruBuri';font-weight:700;font-size:6cqw;margin-bottom:0.25lh;}
+        .lock_head p{font-size:3.4cqw;font-weight:500;color:#6f6555;line-height:1.6;word-break:keep-all;}
+        .lock_list{display:flex;flex-direction:column;gap:0.3lh;position:relative;}
+        .lock_item{background:#fff;border:1px solid #c8aa6481;border-radius:0.4em;padding:0.7lh 4%;box-shadow:0 0 5px #44362415;display:flex;gap:0.5lh;align-items:flex-start;}
+        .lock_item>div:first-child{width:0.25lh;min-height:2.4lh;background:#c0944d;border-radius:5em;flex-shrink:0;opacity:.55;}
+        .lock_item h3{font-family:'MaruBuri';font-weight:700;font-size:4.4cqw;margin-bottom:0.2lh;}
+        .lock_item p{font-size:3.4cqw;font-weight:500;color:#6f6555;line-height:1.6;}
+        .lock_item.blur{filter:blur(4.5px);opacity:.7;user-select:none;pointer-events:none;}
+        .lock_veil{position:absolute;left:0;right:0;bottom:0;height:78%;background:linear-gradient(180deg,rgba(252,251,249,0) 0%,rgba(252,251,249,.88) 45%,#fcfbf9 100%);display:flex;flex-direction:column;justify-content:flex-end;align-items:center;padding-bottom:1lh;}
+        .lock_badge{background:#0D253B;color:#fff;font-size:3.2cqw;font-weight:700;padding:0.25lh 0.9lh;border-radius:5em;margin-bottom:0.5lh;}
+        .lock_veil p{font-size:3.8cqw;font-weight:700;text-align:center;line-height:1.6;word-break:keep-all;}
+        .cta{width:90%;margin:8% auto 12%;background:#fffdf8;border:1px solid #c8aa64;border-radius:0.5lh;box-shadow:8px 6px 5px #4436243f;padding:1lh 6% 1.2lh;text-align:center;position:relative;overflow:hidden;}
+        .cta_deco{position:absolute;bottom:0;left:0;width:100%;z-index:0;transform:translateY(12%);opacity:.9;}
+        .cta>*{position:relative;z-index:1;}
+        .cta .cta_kw{font-family:'MaruBuri';font-weight:700;font-size:5.4cqw;margin-bottom:0.4lh;word-break:keep-all;}
+        .cta .cta_sub{font-size:3.4cqw;font-weight:500;color:#6f6555;line-height:1.7;margin-bottom:0.8lh;word-break:keep-all;}
+        .price{display:flex;justify-content:center;align-items:baseline;gap:0.35lh;margin-bottom:0.7lh;}
+        .price .off{background:#aa7529;color:#fff;font-size:3.4cqw;font-weight:800;padding:0.1lh 0.4lh;border-radius:0.25em;align-self:center;}
+        .price .was{font-size:3.6cqw;color:#9a917f;text-decoration:line-through;font-weight:500;}
+        .price .now{font-size:7.5cqw;font-weight:900;background:linear-gradient(-30deg,rgba(13,37,59,1) 0%,rgba(0,48,145,1) 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+    </style>
+</head>
+<body>
+    <header>
+        <div>
+            <a href="index.html" class="logo"><img src="./img/main/logo.webp" alt="명월재"></a>
+            <div class="menu_btn" id="menuBtn" role="button" tabindex="0" aria-label="메뉴 열기" aria-controls="menuDrawer" aria-expanded="false">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <nav class="menu_List">
+                <a href="support.html">고객센터</a>
+                <a href="result_lookup.html">내 사주 결과 다시보기</a>
+                <a href="index.html">사주보기</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="menu_dim" id="menuDim"></div>
+    <aside class="menu_drawer" id="menuDrawer" aria-hidden="true">
+        <div class="menu_drawer_top">
+            <img src="./img/main/logo.webp" alt="명월재">
+            <button type="button" class="menu_close" id="menuClose" aria-label="메뉴 닫기"></button>
+        </div>
+        <nav class="menu_nav">
+            <a href="index.html">사주보기<span>신청하기</span></a>
+            <a href="result_lookup.html">내 사주 결과 다시보기<span>다시보기</span></a>
+            <a href="support.html">고객센터<span>문의</span></a>
+        </nav>
+        <div class="menu_drawer_bot">
+            <p>신청·입금 확인 등 궁금한 점은<br>카카오톡 채널로 문의해주세요.</p>
+            <button type="button" class="menu_kakao js-kakao">카카오톡 채널 문의하기</button>
+        </div>
+    </aside>
+
+    <section>
+        <div class="page_head">
+            <img class="deco" src="./img/main/star2.webp" alt="">
+            <p class="eyebrow">명월재 무료 사주 풀이</p>
+            <h1>김민준 님의<br>사주 원국이 세워졌습니다</h1>
+            <div class="chipRow">
+                <span class="chip">1994.03.21</span>
+                <span class="chip">양력 · 진시</span>
+                <span class="chip">남성</span>
+            </div>
+        </div>
+
+        <div class="card reveal">
+            <div class="card_tit">사주 원국 (四柱八字)</div>
+            <div class="pillars">
+                <div class="pillar">
+                    <div class="p_name">시주(時柱)<span>말년운</span></div>
+                    <div class="p_god">+금편재</div>
+                    <div class="p_tile" style="background:#8b8b8b;">庚</div>
+                    <div class="p_tile" style="background:#a37c3c;">辰</div>
+                    <div class="p_god">+토식신</div>
+                </div>
+                <div class="pillar me">
+                    <div class="p_name">일주(日柱)<span>나(본원)</span></div>
+                    <div class="p_god">-화일元</div>
+                    <div class="p_tile" style="background:#b8503c;">丙</div>
+                    <div class="p_tile" style="background:#4a7c59;">寅</div>
+                    <div class="p_god">+목편인</div>
+                </div>
+                <div class="pillar">
+                    <div class="p_name">월주(月柱)<span>사회운</span></div>
+                    <div class="p_god">-수편관</div>
+                    <div class="p_tile" style="background:#3f4f7a;">壬</div>
+                    <div class="p_tile" style="background:#8b8b8b;">申</div>
+                    <div class="p_god">-금편재</div>
+                </div>
+                <div class="pillar">
+                    <div class="p_name">년주(年柱)<span>선천운</span></div>
+                    <div class="p_god">+목편인</div>
+                    <div class="p_tile" style="background:#4a7c59;">甲</div>
+                    <div class="p_tile" style="background:#a37c3c;">戌</div>
+                    <div class="p_god">+토식신</div>
+                </div>
+            </div>
+            <p class="wg_note">일간(日干)은 <b>병화(丙火)</b>. 한여름 태양처럼 밝고 드러나는 기운을 타고났습니다.</p>
+        </div>
+
+        <div class="card reveal">
+            <div class="card_tit">오행 분포</div>
+            <div class="ohaeng" id="ohaeng">
+                <div class="oh_row"><div class="oh_name">목(木)</div><div class="oh_track"><div class="oh_bar" data-w="60" style="background:#4a7c59;"></div></div><div class="oh_val">2</div></div>
+                <div class="oh_row"><div class="oh_name">화(火)</div><div class="oh_track"><div class="oh_bar" data-w="30" style="background:#b8503c;"></div></div><div class="oh_val">1</div></div>
+                <div class="oh_row"><div class="oh_name">토(土)</div><div class="oh_track"><div class="oh_bar" data-w="60" style="background:#a37c3c;"></div></div><div class="oh_val">2</div></div>
+                <div class="oh_row"><div class="oh_name">금(金)</div><div class="oh_track"><div class="oh_bar" data-w="60" style="background:#8b8b8b;"></div></div><div class="oh_val">2</div></div>
+                <div class="oh_row"><div class="oh_name">수(水)</div><div class="oh_track"><div class="oh_bar" data-w="30" style="background:#3f4f7a;"></div></div><div class="oh_val">1</div></div>
+            </div>
+            <p class="wg_note">목·토·금이 고르게 자리했고 <b>화(火)와 수(水)가 다소 약합니다.</b> 추진력은 충분하나 열기를 이어가는 힘과 마음을 식히는 힘을 함께 챙겨야 합니다.</p>
+        </div>
+
+        <div class="card reveal">
+            <div class="card_tit">타고난 성격과 기질</div>
+            <p class="body_txt">
+                감추는 법을 모르는 사람입니다. 생각한 것을 곧바로 말하고 움직이며, 그 <b>솔직함이 주변 사람을 끌어당기는 가장 큰 힘</b>입니다.
+                일을 벌이는 데 재능이 있고, 새로운 판을 짜는 자리에서 능력이 가장 잘 드러납니다.
+            </p>
+            <p class="body_txt">
+                다만 관심이 빠르게 옮겨가는 편이라 마무리에서 아쉬움이 남습니다.
+                <b>끝까지 남는 사람이 되는 것</b>, 그것이 이 사주가 평생 안고 가야 할 과제입니다.
+            </p>
+        </div>
+
+        <div class="card reveal">
+            <div class="card_tit">2026년 한 줄 요약</div>
+            <div class="year_line">
+                <div class="yl_kw">파(破)하고 다시 세우는 해</div>
+                <p>
+                    묵혀두었던 일이 정리되며 자리가 바뀝니다.<br>
+                    <b>상반기의 손실이 하반기의 기회</b>로 돌아옵니다.
+                </p>
+            </div>
+        </div>
+
+        <div class="lock_wrap reveal">
+            <div class="lock_head">
+                <h2>이어지는 10가지 해설</h2>
+                <p>아래 항목은 심층사주 결제 후 전부 확인하실 수 있습니다.</p>
+            </div>
+            <div class="lock_list">
+                <div class="lock_item"><div></div><div><h3>01. 타고난 명(命)</h3><p>나의 본질과 기질, 강점과 약점</p></div></div>
+                <div class="lock_item blur"><div></div><div><h3>02. 지금, 나의 운</h3><p>현재 내가 지나고 있는 운의 위치와 흐름</p></div></div>
+                <div class="lock_item blur"><div></div><div><h3>03. 2026년 운세</h3><p>올해의 전체 흐름과 월별 길흉</p></div></div>
+                <div class="lock_item blur"><div></div><div><h3>04. 앞으로의 5년</h3><p>해마다 달라지는 운의 흐름과 중요한 시기</p></div></div>
+                <div class="lock_item blur"><div></div><div><h3>05. 돈이 들어오는 때</h3><p>재물운과 돈이 모이는 시기, 손재를 경계할 때</p></div></div>
+                <div class="lock_item blur"><div></div><div><h3>06. 일과 성공의 운</h3><p>직장·사업·이직·승진 그리고 나에게 맞는 성공의 방향</p></div></div>
+                <div class="lock_item blur"><div></div><div><h3>07. 인생이 바뀌는 때</h3><p>대운과 세운으로 살펴보는 인생의 주요 전환점</p></div></div>
+                <div class="lock_item blur"><div></div><div><h3>08. 인연과 사람복</h3><p>연애·배우자·가족·귀인 그리고 멀리해야 할 인연</p></div></div>
+                <div class="lock_item blur"><div></div><div><h3>09. 몸과 마음의 흐름</h3><p>평생 건강운과 특히 조심해야 할 시기</p></div></div>
+                <div class="lock_item blur"><div></div><div><h3>10. 명월재의 마지막 당부</h3><p>반드시 붙잡아야 할 세 가지, 반드시 경계해야 할 세 가지</p></div></div>
+                <div class="lock_veil">
+                    <div class="lock_badge">잠금 해제 필요</div>
+                    <p>9개 항목 · 50개 이상의 세부 해설이<br>아직 열리지 않았습니다</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta reveal">
+            <div class="cta_deco"><img src="./img/main/deco_obj1.webp" alt=""></div>
+            <div class="cta_kw">심층사주 전체 해설 열기</div>
+            <p class="cta_sub">21인의 역술가가 함께 정리한 10개 파트 전문을<br>PDF로 소장하실 수 있습니다.</p>
+            <div class="price">
+                <span class="off">40%</span>
+                <span class="was">48,000원</span>
+                <span class="now">29,000원</span>
+            </div>
+            <a href="payment.html" class="btn_navy">나의 운명해설서 펼쳐보기 &gt;</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footTxt">
+            <div class="footL">
+                <p>상호명</p><p>대표자</p><p>사업자등록번호</p><p>통신판매번호</p><p>주소</p><p>이메일</p><p>전화</p>
+            </div>
+            <div class="footR">
+                <p>(주)위드어스</p>
+                <p>이경식</p>
+                <p>332-88-03445</p>
+                <p>사업자등록번호 332-88-03445</p>
+                <p>경기도 부천시 원미구 소향로 37번길 31-7</p>
+                <p>withusmkt@daum.net</p>
+                <p>0507-1356-1719</p>
+            </div>
+        </div>
+        <!-- 팝업 링크 추가 위치 : href="" 안에 주소만 넣으면 바로 동작합니다 -->
+        <div class="foot_movPage">
+            <a href="" class="foot_link" data-popup="회사소개">회사소개</a> |
+            <a href="" class="foot_link" data-popup="이용약관">이용약관</a> |
+            <a href="" class="foot_link" data-popup="개인정보 처리방침">개인정보 처리방침</a> |
+            <a href="" class="foot_link" data-popup="환불정책">환불정책</a>
+        </div>
+    </footer>
+
+    <script>
+        /* ▼▼ 링크 설정 : 주소만 넣으면 바로 동작합니다 ▼▼ */
+        var KAKAO_CHANNEL_URL = ''; // 예) 'https://pf.kakao.com/_xxxxxx'
+        /* ▲▲ ----------------------------------------- ▲▲ */
+
+        (function(){
+            var hd = document.querySelector('header');
+            if(hd){ window.addEventListener('scroll', function(){ hd.classList.toggle('scroll', window.scrollY > 30); }); }
+
+            var btn = document.getElementById('menuBtn'),
+                dim = document.getElementById('menuDim'),
+                drawer = document.getElementById('menuDrawer'),
+                closeBtn = document.getElementById('menuClose');
+
+            function openMenu(){
+                drawer.classList.add('open'); dim.classList.add('open');
+                document.body.classList.add('menu_open');
+                btn.setAttribute('aria-expanded','true'); drawer.setAttribute('aria-hidden','false');
+            }
+            function closeMenu(){
+                drawer.classList.remove('open'); dim.classList.remove('open');
+                document.body.classList.remove('menu_open');
+                btn.setAttribute('aria-expanded','false'); drawer.setAttribute('aria-hidden','true');
+            }
+            if(btn && drawer){
+                btn.addEventListener('click', openMenu);
+                btn.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); openMenu(); } });
+                dim.addEventListener('click', closeMenu);
+                closeBtn.addEventListener('click', closeMenu);
+                document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeMenu(); });
+            }
+
+            document.querySelectorAll('.js-kakao').forEach(function(el){
+                el.addEventListener('click', function(){
+                    if(KAKAO_CHANNEL_URL){ window.open(KAKAO_CHANNEL_URL, '_blank'); }
+                    else { alert('카카오톡 채널 링크 준비 중입니다.'); }
+                });
+            });
+
+            document.querySelectorAll('.foot_link').forEach(function(el){
+                el.addEventListener('click', function(e){
+                    e.preventDefault();
+                    var url = el.getAttribute('href');
+                    if(!url){ alert(el.dataset.popup + ' 페이지 준비 중입니다.'); return; }
+                    window.open(url, el.dataset.popup, 'width=720,height=860,scrollbars=yes');
+                });
+            });
+
+            var rv = document.querySelectorAll('.reveal');
+            if(rv.length && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+                var ob = new IntersectionObserver(function(es,o){
+                    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('is-visible'); o.unobserve(e.target); } });
+                }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+                rv.forEach(function(el){ ob.observe(el); });
+            } else { rv.forEach(function(el){ el.classList.add('is-visible'); }); }
+        })();
+
+        (function(){
+            var box = document.getElementById('ohaeng');
+            if(!box) return;
+            function fill(){ box.querySelectorAll('.oh_bar').forEach(function(b){ b.style.width = b.dataset.w + '%'; }); }
+            if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){ fill(); return; }
+            new IntersectionObserver(function(es,o){
+                es.forEach(function(e){ if(e.isIntersecting){ fill(); o.disconnect(); } });
+            },{threshold:.35}).observe(box);
+        })();
+    </script>
+</body>
+</html>

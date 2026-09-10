@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+    <style>
+        @font-face{font-family:'MaruBuri';src:url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.woff2);font-weight:600;font-display:swap;}
+        @font-face{font-family:'MaruBuri';src:url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-Bold.woff2);font-weight:700;font-display:swap;}
+        @font-face{font-family:'JoseonPalace';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ChosunGs.woff') format('woff');font-weight:normal;font-display:swap;}
+    </style>
+    <style>
+        a{text-decoration:none;color:inherit;}
+        a:hover{color:#aa7529;}
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{
+            width:100%;container-type:inline-size;background-color:#fcfbf9;
+            position:relative;overflow-x:hidden;font-size:30px;font-family:'Pretendard Variable';color:#333244;
+            background-image:url(./img/main/sec_bg.webp);background-position:center;background-repeat:repeat;background-size:cover;
+        }
+        section{width:100%;max-width:800px;margin:auto;position:relative;z-index:1;container-type:inline-size;}
+        header img{width:100%;object-fit:contain;}
+        section img{width:100%;object-fit:contain;}
+        @media (max-width:800px){body{font-size:30px;}}
+        @media (min-width:661px) and (max-width:730px){body{font-size:28px;}}
+        @media (min-width:591px) and (max-width:660px){body{font-size:24px;}}
+        @media (min-width:536px) and (max-width:590px){body{font-size:21px;}}
+        @media (min-width:466px) and (max-width:535px){body{font-size:20px;}}
+        @media (min-width:405px) and (max-width:465px){body{font-size:18px;}}
+        @media (min-width:350px) and (max-width:404px){body{font-size:16px;}}
+        @media (max-width:349px){body{font-size:13px;}}
+
+        header{width:100%;position:fixed;top:0;left:50%;transform:translateX(-50%);z-index:1000;border-bottom:1px solid #0d253b00;transition:0.3s;padding:1lh 0;}
+        header.scroll{border-bottom:1px solid #0d253b4b;background-color:rgba(255,255,255,0.699);backdrop-filter:blur(2.5px);-webkit-backdrop-filter:blur(22px);padding:0.5lh 0;}
+        header>div{width:95%;max-width:1200px;margin:auto;display:flex;justify-content:space-between;align-items:center;}
+        .logo{width:30%;max-width:200px;display:block;}
+        .menu_btn{width:1.3lh;height:1lh;display:flex;flex-direction:column;justify-content:space-between;align-items:center;transform:scale(0.8);cursor:pointer;}
+        .menu_btn>div{width:100%;height:0.2em;background-color:#0d253b;border-radius:5em;}
+        .menu_List{display:none;}
+        @media (min-width:801px){
+            .menu_btn{display:none;}
+            .menu_List{display:flex;justify-content:right;align-items:center;gap:2cqw;font-size:0.7em;}
+            .menu_List a{color:#0D253B;opacity:0.67;width:fit-content;}
+            .menu_List a:hover{opacity:1;color:#0D253B;}
+            .menu_List a.active{opacity:1;padding-left:0.2lh;border-left:0.2em solid #0D253B;}
+        }
+
+        .menu_dim{position:fixed;inset:0;background:#0d253b73;opacity:0;visibility:hidden;transition:opacity .3s ease,visibility .3s ease;z-index:1100;}
+        .menu_dim.open{opacity:1;visibility:visible;}
+        .menu_drawer{
+            position:fixed;top:0;right:0;height:100%;width:80%;max-width:330px;z-index:1101;
+            background-color:#fcfbf9;background-image:url(./img/main/sec_bg.webp);background-size:cover;background-position:center;
+            box-shadow:-6px 0 24px #44362438;transform:translateX(100%);transition:transform .38s cubic-bezier(.16,.84,.44,1);
+            display:flex;flex-direction:column;padding:22px 24px 28px;
+        }
+        .menu_drawer.open{transform:translateX(0);}
+        .menu_drawer_top{display:flex;justify-content:space-between;align-items:center;margin-bottom:34px;}
+        .menu_drawer_top img{width:120px;display:block;}
+        .menu_close{width:26px;height:26px;position:relative;cursor:pointer;flex-shrink:0;background:none;border:none;}
+        .menu_close::before,.menu_close::after{content:"";position:absolute;top:50%;left:50%;width:100%;height:2px;background:#0d253b;border-radius:5em;}
+        .menu_close::before{transform:translate(-50%,-50%) rotate(45deg);}
+        .menu_close::after{transform:translate(-50%,-50%) rotate(-45deg);}
+        .menu_nav{display:flex;flex-direction:column;gap:4px;}
+        .menu_nav a{
+            font-family:'MaruBuri';font-weight:600;font-size:20px;color:#0D253B;padding:16px 4px;
+            border-bottom:1px solid #c8aa6440;display:flex;justify-content:space-between;align-items:center;
+            opacity:0;transform:translateX(18px);transition:opacity .4s ease,transform .4s cubic-bezier(.16,.84,.44,1),color .2s ease;
+        }
+        .menu_drawer.open .menu_nav a{opacity:1;transform:translateX(0);}
+        .menu_drawer.open .menu_nav a:nth-child(1){transition-delay:.08s;}
+        .menu_drawer.open .menu_nav a:nth-child(2){transition-delay:.14s;}
+        .menu_drawer.open .menu_nav a:nth-child(3){transition-delay:.20s;}
+        .menu_nav a span{color:#c0944d;font-size:15px;font-family:'Pretendard Variable';font-weight:500;}
+        .menu_nav a.active{color:#aa7529;}
+        .menu_drawer_bot{margin-top:auto;}
+        .menu_drawer_bot p{font-size:13px;color:#796f58;line-height:1.6;margin-bottom:12px;font-weight:500;}
+        .menu_kakao{display:block;width:100%;text-align:center;background-color:#ffec02;color:#442f0a;font-weight:700;font-size:16px;padding:14px 0;border-radius:8px;border:none;cursor:pointer;font-family:'Pretendard Variable';}
+        .menu_kakao:hover{color:#442f0a;}
+        @media (min-width:801px){.menu_dim,.menu_drawer{display:none;}}
+        body.menu_open{overflow:hidden;}
+
+        footer{width:100%;background-color:#818181;padding:1lh 2.5%;position:relative;z-index:2;}
+        .footTxt{display:flex;justify-content:left;gap:0.7lh;margin-bottom:5%;color:white;font-size:3cqw;font-weight:300;}
+        .footL{opacity:0.7;}
+        .foot_movPage{color:white;font-size:3cqw;}
+        .foot_movPage a:hover{color:#fff;text-decoration:underline;}
+        @media (min-width:801px){.footTxt{font-size:0.8em;}.foot_movPage{font-size:1em;}}
+
+        .page_head{padding-top:5.5lh;text-align:center;margin-bottom:6%;padding-left:5%;padding-right:5%;}
+        .page_head .deco{width:5cqw;margin:auto;display:block;animation:twinkle 2.6s ease-in-out infinite;}
+        .page_head .eyebrow{font-weight:800;color:#aa7529;font-size:3.4cqw;margin:3% auto 4%;font-family:'MaruBuri';}
+        .page_head h1{font-family:'MaruBuri';font-weight:700;font-size:7.5cqw;margin-bottom:0.25lh;word-break:keep-all;}
+        .page_head .sub{font-size:3.6cqw;font-weight:500;color:#6f6555;line-height:1.7;word-break:keep-all;}
+        @keyframes twinkle{0%,100%{transform:scale(1);opacity:1;}50%{transform:scale(1.18);opacity:.75;}}
+
+        .card{width:90%;margin:0 auto 4%;background:#fffdf8;border:1px solid #c8aa64;border-radius:0.5lh;box-shadow:0 0 5px #4436243a;padding:1lh 5%;}
+        .card_tit{font-family:'MaruBuri';font-weight:700;font-size:5cqw;margin-bottom:0.7lh;display:flex;align-items:center;gap:0.4lh;}
+        .card_tit::before{content:"";width:0.25lh;height:1.1lh;background:#c0944d;border-radius:5em;flex-shrink:0;}
+        .btn_navy{display:block;width:100%;text-align:center;color:white;font-size:5cqw;font-weight:600;padding:0.7lh 0;border-radius:0.5lh;border:none;font-family:'Pretendard Variable';cursor:pointer;background:linear-gradient(-30deg,rgba(13,37,59,1) 0%,rgba(0,48,145,1) 100%);transition:transform .25s ease,box-shadow .25s ease;}
+        .btn_navy:hover{transform:translateY(-2px);box-shadow:0 8px 20px #00309166;color:#fff;}
+        .btn_navy:active{transform:scale(0.97);}
+        .btn_line{display:block;width:100%;text-align:center;color:#786d56;font-size:4.3cqw;font-weight:600;padding:0.55lh 0;border-radius:0.5lh;background:#f7f1e4;border:1px solid #dec183;cursor:pointer;font-family:'Pretendard Variable';transition:background-color .2s ease,transform .2s ease;}
+        .btn_line:hover{background:#f2e6cc;color:#786d56;}
+        .btn_line:active{transform:scale(0.97);}
+        .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s cubic-bezier(.16,.84,.44,1);}
+        .reveal.is-visible{opacity:1;transform:translateY(0);}
+        @media (prefers-reduced-motion:reduce){.reveal{transition:none!important;opacity:1!important;transform:none!important;}.page_head .deco{animation:none!important;}}
+    </style>
+    <title>나의 운명 해설서 | 명월재</title>
+    <style>
+
+        .stamp{display:flex;justify-content:center;gap:0.3lh;margin-top:4%;flex-wrap:wrap;}
+        .stamp span{font-size:3.1cqw;font-weight:600;color:#786d56;background:#f7f1e4;border:1px solid #dec183;border-radius:5em;padding:0.2lh 0.7lh;}
+
+        .hero_score{width:90%;margin:0 auto 7%;background:#fffdf8;border:1px solid #c8aa64;border-radius:0.6lh;box-shadow:0 0 6px #4436243a;padding:1.1lh 6%;display:flex;align-items:center;gap:1lh;flex-wrap:wrap;justify-content:center;}
+        .hero_score .gauge{width:9lh;flex-shrink:0;}
+        .hero_score .side{flex:1;min-width:8lh;}
+        .hero_score .side .lb{font-size:3cqw;color:#9a917f;font-weight:600;margin-bottom:0.35lh;letter-spacing:0.05em;}
+        .kw{display:flex;flex-wrap:wrap;gap:0.25lh;}
+        .kw span{font-size:3.1cqw;font-weight:700;color:#aa7529;background:#f7f1e4;border:1px solid #dec183;border-radius:5em;padding:0.2lh 0.65lh;}
+
+        .notice{width:90%;margin:0 auto 7%;background:#fbf5e8;border:1px solid #e2cd9c;border-radius:0.4em;padding:0.6lh 5%;font-size:3cqw;line-height:1.75;color:#7a6a45;font-weight:500;word-break:keep-all;}
+
+        .sec{width:90%;margin:0 auto 6.5%;scroll-margin-top:1lh;}
+        .sec_hd{display:flex;align-items:center;gap:0.5lh;margin-bottom:0.7lh;}
+        .sec_num{width:1.9lh;height:1.9lh;flex-shrink:0;border-radius:50%;background:#0D253B;color:#dec183;font-family:'JoseonPalace';font-size:4cqw;display:flex;align-items:center;justify-content:center;line-height:1;}
+        .sec_tit{font-family:'MaruBuri';font-weight:700;font-size:5.4cqw;line-height:1.3;}
+        .lead{font-size:3.5cqw;line-height:1.95;margin-bottom:0.8lh;word-break:keep-all;}
+        .lead .oracle{color:#0D253B;font-weight:700;}
+        .lead .bridge{color:#6f6555;font-weight:500;}
+
+        .cardbox{background:#fffdf8;border:1px solid #c8aa6470;border-radius:0.5lh;box-shadow:0 0 5px #44362422;padding:0.9lh 5%;margin-bottom:0.45lh;}
+        .cardbox_tit{font-size:2.9cqw;letter-spacing:0.08em;color:#9a917f;font-weight:700;margin-bottom:0.55lh;}
+
+        .tbox{background:#fff;border:1px solid #c8aa6444;border-left:0.2lh solid #dec183;border-radius:0 0.4em 0.4em 0;padding:0.7lh 5%;margin-bottom:0.35lh;}
+        .tbox h4{font-family:'MaruBuri';font-weight:700;font-size:4.1cqw;margin-bottom:0.3lh;}
+        .tbox p{font-size:3.4cqw;line-height:1.9;color:#4a4436;font-weight:500;word-break:keep-all;}
+        .tbox p b{color:#aa7529;font-weight:700;}
+        .t2{border-left-color:#a7bfa5;}
+        .t3{border-left-color:#9fb0c9;}
+        .t4{border-left-color:#d9b3a6;}
+        .pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:0.25lh;}
+        .pillar{background:#fff;border:1px solid #c8aa6455;border-radius:0.45em;padding:0.5lh 2% 0.55lh;text-align:center;}
+        .pillar.me{border-color:#c0944d;box-shadow:0 0 0 2px #c8aa6433;background:#fffdf6;}
+        .p_name{font-family:'MaruBuri';font-weight:700;font-size:3.1cqw;line-height:1.3;}
+        .p_name span{display:block;font-family:'Pretendard Variable';font-size:2.5cqw;color:#9a917f;font-weight:500;}
+        .p_god{font-size:2.7cqw;font-weight:700;color:#786d56;margin:0.3lh 0 0.25lh;}
+        .p_tile{width:2.1lh;height:2.1lh;margin:0 auto;border-radius:0.3em;display:flex;align-items:center;justify-content:center;font-family:'JoseonPalace';font-size:6cqw;color:#fff;line-height:1;}
+        .p_tile+.p_tile{margin-top:0.2lh;}
+        .pillar_note{font-size:3.1cqw;color:#796f58;font-weight:500;margin-top:0.6lh;line-height:1.7;word-break:keep-all;}
+        .pillar_note b{color:#aa7529;font-weight:700;}
+
+        .chips{display:flex;flex-wrap:wrap;gap:0.25lh;}
+        .chips span{font-size:3cqw;font-weight:700;color:#aa7529;background:#f7f1e4;border:1px solid #dec183;border-radius:5em;padding:0.2lh 0.6lh;}
+        .chips.muted span{color:#786d56;background:#f0eee8;border-color:#d8d2c4;}
+        .chips_lb{font-size:2.9cqw;color:#9a917f;font-weight:600;margin:0.55lh 0 0.3lh;}
+        .stats{display:grid;grid-template-columns:1fr 1fr;gap:0.3lh;margin-top:0.6lh;}
+        .stats>div{border:1px solid #c8aa6455;border-radius:0.4em;padding:0.45lh 4%;background:#fdfbf6;}
+        .stats .sl{font-size:2.8cqw;color:#9a917f;font-weight:600;margin-bottom:0.1lh;}
+        .stats .sv{font-family:'MaruBuri';font-weight:700;font-size:3.8cqw;color:#0D253B;}
+        .stats .warn .sv{color:#b8503c;}
+        @media (max-width:480px){.stats{grid-template-columns:1fr;}}
+        .p_un{font-size:2.6cqw;color:#9a917f;font-weight:600;margin-top:0.3lh;}
+        .jj{display:grid;grid-template-columns:repeat(4,1fr);gap:0.25lh;}
+        .jj .jc{text-align:center;}
+        .jj .jl{font-size:2.8cqw;color:#9a917f;font-weight:600;margin-bottom:0.3lh;}
+        .jj .jv{display:flex;flex-direction:column;align-items:center;gap:0.15lh;}
+        .jj .jv span{font-family:'JoseonPalace';font-size:4cqw;color:#4a4436;background:#f2ece0;border-radius:0.3em;padding:0.12lh 0.5lh;min-width:1.5lh;}
+        .summary{background:linear-gradient(-30deg,#f7f0e4 0%,#fff 100%);border:1px solid #c0944d;border-radius:0.5lh;padding:1lh 5.5%;}
+        .summary .st{font-size:2.9cqw;letter-spacing:0.06em;color:#aa7529;font-weight:700;margin-bottom:0.45lh;}
+        .summary p{font-size:3.4cqw;line-height:1.95;color:#4a4436;font-weight:500;word-break:keep-all;}
+        .summary p+p{margin-top:0.45lh;}
+        .two{display:grid;grid-template-columns:1fr 1fr;gap:0.35lh;}
+        @media (max-width:620px){.two{grid-template-columns:1fr;}}
+
+        .legend{display:flex;flex-direction:column;gap:0.3lh;}
+        .legend .it{display:flex;align-items:center;gap:0.35lh;font-size:3.1cqw;color:#6f6555;font-weight:600;}
+        .legend .dot{width:0.4lh;height:0.4lh;border-radius:50%;flex-shrink:0;}
+        .donutRow{display:flex;align-items:center;gap:0.8lh;flex-wrap:wrap;justify-content:center;}
+        .donutRow svg{width:7.5lh;height:7.5lh;flex-shrink:0;}
+
+        .hbar{display:flex;align-items:center;gap:0.4lh;margin-bottom:0.3lh;font-size:3.1cqw;}
+        .hbar .hl{width:3.4lh;flex-shrink:0;color:#6f6555;font-weight:600;}
+        .hbar .ht{flex:1;height:0.42lh;background:#efe6d5;border-radius:5em;overflow:hidden;}
+        .hbar .hf{height:100%;border-radius:5em;background:linear-gradient(90deg,#dec183,#c0944d);}
+        .hbar .hv{width:1.6lh;text-align:right;font-weight:700;color:#4a4436;flex-shrink:0;}
+        .hbar.stack{flex-direction:column;align-items:stretch;gap:0.25lh;margin-bottom:0.6lh;}
+        .hbar.stack .hl{width:auto;color:#4a4436;font-weight:700;font-size:3.4cqw;}
+        .hbar.stack .line{display:flex;align-items:center;gap:0.4lh;}
+
+        .prog{height:0.36lh;background:#efe6d5;border-radius:5em;overflow:hidden;margin-top:0.5lh;}
+        .prog i{display:block;height:100%;border-radius:5em;background:linear-gradient(90deg,#dec183,#c0944d);}
+        .prog_t1{font-size:3.8cqw;font-weight:700;font-family:'MaruBuri';}
+        .prog_t2{font-size:3.1cqw;color:#6f6555;font-weight:500;margin-top:0.15lh;}
+
+        .gaugeRow{display:flex;align-items:center;gap:0.8lh;flex-wrap:wrap;}
+        .gaugeRow svg{width:5.5lh;height:5.5lh;flex-shrink:0;}
+        .gaugeRow .gi{flex:1;min-width:7lh;}
+        .gaugeRow .gi .t1{font-size:3.8cqw;font-weight:700;font-family:'MaruBuri';margin-bottom:0.15lh;}
+        .gaugeRow .gi .t2{font-size:3.1cqw;color:#6f6555;font-weight:500;line-height:1.7;}
+
+        .chart svg{width:100%;height:auto;display:block;}
+
+        .month{border:1px solid #c8aa6455;border-radius:0.45em;overflow:hidden;margin-top:0.45lh;}
+        .month>div{padding:0.55lh 5%;border-top:1px solid #c8aa6440;}
+        .month>div:first-child{border-top:none;}
+        .month>div:nth-child(odd){background:#fdfbf6;}
+        .month b{display:block;font-family:'MaruBuri';font-weight:700;font-size:3.5cqw;color:#aa7529;margin-bottom:0.15lh;}
+        .month p{font-size:3.2cqw;line-height:1.8;color:#4a4436;font-weight:500;word-break:keep-all;}
+
+        .yr{display:flex;gap:0.55lh;align-items:flex-start;padding:0.7lh 0;border-top:1px solid #c8aa6440;}
+        .yr:first-child{border-top:none;}
+        .yr_sc{width:3.9lh;flex-shrink:0;text-align:center;background:#faf7f0;border:1px solid #c8aa6455;border-radius:0.4em;padding:0.35lh 0;}
+        .yr_sc .y{font-size:2.8cqw;font-weight:700;color:#6f6555;}
+        .yr_sc .n{font-size:6cqw;font-weight:900;line-height:1.15;}
+        .yr_sc .t{font-size:2.5cqw;font-weight:700;color:#9a917f;}
+        .yr_tx h4{font-family:'MaruBuri';font-weight:700;font-size:4cqw;margin-bottom:0.25lh;}
+        .yr_tx p{font-size:3.3cqw;line-height:1.85;color:#4a4436;font-weight:500;word-break:keep-all;}
+
+        .keeps{display:grid;grid-template-columns:1fr 1fr;gap:0.35lh;}
+        @media (max-width:560px){.keeps{grid-template-columns:1fr;}}
+        .keeps>div{border-radius:0.45em;padding:0.75lh 5%;}
+        .keeps .hold{background:#f7f1e4;border:1px solid #dec183;}
+        .keeps .ward{background:#f6f0ee;border:1px solid #d9b3a6;}
+        .keeps h4{font-family:'MaruBuri';font-weight:700;font-size:4cqw;margin-bottom:0.4lh;}
+        .keeps ol{list-style:none;counter-reset:k;}
+        .keeps li{counter-increment:k;font-size:3.3cqw;line-height:1.8;color:#4a4436;font-weight:500;padding-left:1lh;position:relative;word-break:keep-all;}
+        .keeps li::before{content:counter(k);position:absolute;left:0;top:0.15lh;width:0.75lh;height:0.75lh;border-radius:50%;background:#0D253B;color:#dec183;font-size:2.5cqw;font-weight:700;display:flex;align-items:center;justify-content:center;}
+
+        .outro{width:90%;margin:2% auto 6%;background:#0D253B;color:#fff;border-radius:0.6lh;padding:1.4lh 7%;text-align:center;}
+        .outro .spark{color:#dec183;font-size:5cqw;display:block;margin-bottom:0.4lh;}
+        .outro p{font-family:'MaruBuri';font-size:4cqw;line-height:2.05;font-weight:600;opacity:.95;word-break:keep-all;}
+        .outro .sign{margin-top:0.8lh;font-size:3.2cqw;letter-spacing:0.3em;color:#dec183;font-weight:700;}
+
+        .acts{width:90%;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:0.35lh;}
+        .act_kakao{display:block;width:100%;text-align:center;background:#ffec02;color:#442f0a;font-size:4.3cqw;font-weight:700;padding:0.55lh 0;border-radius:0.5lh;border:none;cursor:pointer;font-family:'Pretendard Variable';transition:transform .2s ease,box-shadow .2s ease;}
+        .act_kakao:hover{transform:translateY(-2px);box-shadow:0 6px 14px #00000026;color:#442f0a;}
+        .rev_wrap{width:90%;margin:4% auto 20%;}
+        .rev_toggle{font-size:4.3cqw;}
+        .rev_form{width:100%;margin:0.5lh 0 0;background:#fffdf8;border:1px solid #c8aa64;border-radius:0.5lh;box-shadow:0 0 5px #4436243a;padding:1lh 6% 1.1lh;}
+        .rev_form h3{font-family:'MaruBuri';font-weight:700;font-size:5cqw;margin-bottom:0.2lh;text-align:center;}
+        .rev_form>p{font-size:3.2cqw;color:#6f6555;font-weight:500;text-align:center;margin-bottom:0.7lh;}
+        .stars{display:flex;justify-content:center;gap:0.25lh;margin-bottom:0.7lh;}
+        .stars button{background:none;border:none;cursor:pointer;width:1.5lh;padding:0;transition:transform .15s ease;}
+        .stars button:active{transform:scale(0.88);}
+        .stars img{width:100%;display:block;filter:grayscale(1);opacity:.35;transition:filter .2s ease,opacity .2s ease,transform .2s ease;}
+        .stars button.on img{filter:none;opacity:1;transform:scale(1.06);}
+        .rev_form textarea{width:100%;min-height:5lh;resize:vertical;padding:0.7lh;background:#fff;border:1px solid #afa090;border-radius:0.3em;font-family:'Pretendard Variable';font-size:3.6cqw;font-weight:500;color:#442f0a;line-height:1.6;}
+        .rev_form textarea:focus{outline:none;border-color:#333;box-shadow:0 0 0 3px #c8aa6433;}
+        .rev_meta{display:flex;gap:0.3lh;margin-top:0.4lh;}
+        .rev_meta input,.rev_meta select{width:50%;padding:0.6lh;background:#fff;border:1px solid #afa090;border-radius:0.3em;font-family:'Pretendard Variable';font-size:3.4cqw;font-weight:500;color:#442f0a;-webkit-appearance:none;appearance:none;}
+        .rev_meta input:focus,.rev_meta select:focus{outline:none;border-color:#333;box-shadow:0 0 0 3px #c8aa6433;}
+        .rev_form .btn_navy{margin-top:0.6lh;}
+
+        .tocFab{position:fixed;left:50%;transform:translateX(-50%);bottom:18px;z-index:950;background:#0D253B;color:#fff;border:none;border-radius:5em;padding:13px 24px;font-family:'Pretendard Variable';font-size:15px;font-weight:700;cursor:pointer;box-shadow:0 8px 22px #0d253b59;display:flex;align-items:center;gap:9px;transition:transform .2s ease,box-shadow .2s ease;}
+        .tocFab:hover{transform:translateX(-50%) translateY(-2px);box-shadow:0 12px 26px #0d253b6b;color:#fff;}
+        .tocFab:active{transform:translateX(-50%) scale(0.96);}
+        .tocFab .ic{display:flex;flex-direction:column;gap:3px;}
+        .tocFab .ic i{display:block;width:14px;height:2px;background:#dec183;border-radius:5em;}
+        .tocFab .now{font-weight:500;opacity:.72;font-size:13px;max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+        .tocDim{position:fixed;inset:0;background:#0d253b73;opacity:0;visibility:hidden;transition:opacity .3s ease,visibility .3s ease;z-index:1001;}
+        .tocDim.open{opacity:1;visibility:visible;}
+        .tocSheet{position:fixed;left:50%;bottom:0;width:100%;max-width:520px;z-index:1002;transform:translateX(-50%) translateY(105%);transition:transform .38s cubic-bezier(.16,.84,.44,1);background:#fcfbf9;background-image:url(./img/main/sec_bg.webp);background-size:cover;border-radius:18px 18px 0 0;box-shadow:0 -8px 30px #44362444;padding:14px 20px 24px;max-height:78vh;overflow-y:auto;}
+        .tocSheet.open{transform:translateX(-50%) translateY(0);}
+        .tocSheet .grip{width:44px;height:4px;background:#c8aa6480;border-radius:5em;margin:0 auto 14px;}
+        .tocSheet h3{font-family:'MaruBuri';font-weight:700;font-size:18px;margin-bottom:10px;}
+        .tocSheet a{display:flex;align-items:center;gap:12px;padding:12px 6px;border-bottom:1px solid #c8aa6440;font-size:15.5px;font-weight:600;color:#0D253B;}
+        .tocSheet a b{font-family:'JoseonPalace';font-size:15px;color:#c0944d;width:22px;flex-shrink:0;}
+        .tocSheet a.on{color:#aa7529;}
+        .tocSheet a.on b{color:#aa7529;}
+        body.toc_open{overflow:hidden;}
+        @media print{
+            header,.menu_dim,.menu_drawer,.tocFab,.tocDim,.tocSheet,.acts,.rev_wrap,footer{display:none!important;}
+            body{background:#fff;}
+            .sec{break-inside:avoid;}
+            .reveal{opacity:1!important;transform:none!important;}
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div>
+            <a href="index.html" class="logo"><img src="./img/main/logo.webp" alt="명월재"></a>
+            <div class="menu_btn" id="menuBtn" role="button" tabindex="0" aria-label="메뉴 열기" aria-controls="menuDrawer" aria-expanded="false">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <nav class="menu_List">
+                <a href="support.html">고객센터</a>
+                <a href="result_lookup.html" class="active">내 사주 결과 다시보기</a>
+                <a href="index.html">사주보기</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="menu_dim" id="menuDim"></div>
+    <aside class="menu_drawer" id="menuDrawer" aria-hidden="true">
+        <div class="menu_drawer_top">
+            <img src="./img/main/logo.webp" alt="명월재">
+            <button type="button" class="menu_close" id="menuClose" aria-label="메뉴 닫기"></button>
+        </div>
+        <nav class="menu_nav">
+            <a href="index.html">사주보기<span>신청하기</span></a>
+            <a href="result_lookup.html" class="active">내 사주 결과 다시보기<span>다시보기</span></a>
+            <a href="support.html">고객센터<span>문의</span></a>
+        </nav>
+        <div class="menu_drawer_bot">
+            <p>신청·입금 확인 등 궁금한 점은<br>카카오톡 채널로 문의해주세요.</p>
+            <button type="button" class="menu_kakao js-kakao">카카오톡 채널 문의하기</button>
+        </div>
+    </aside>
+
+    <section>
+        <div class="page_head">
+            <img class="deco" src="./img/main/star2.webp" alt="">
+            <p class="eyebrow">상위 1% 정통 역술가 21인이 함께한 심층사주</p>
+            <h1>김민준 님의<br>운명 해설서</h1>
+            <div class="stamp">
+                <span>1994.03.21 · 양력 진시</span>
+                <span>발행 2026.09.10</span>
+            </div>
+        </div>
+
+        <div class="hero_score reveal">
+            <div class="gauge" id="overallGauge"></div>
+            <div class="side">
+                <div class="lb">2026년 종합운 지수</div>
+                <div class="kw">
+                    <span>전환의 해</span><span>재물 상승기</span><span>인연 확장</span>
+                </div>
+            </div>
+        </div>
+
+        <p class="notice">※ 본 해설서는 생년월일시에 기반한 전통 명리 해석을 바탕으로 한 참고용 조언입니다. 중대한 의학·법률·재정 결정을 대신하지 않으며 결과를 보장하지 않습니다.</p>
+
+        <div class="sec reveal" id="sec-summary">
+            <div class="sec_hd"><span class="sec_num">評</span><span class="sec_tit">명월재 종합 총평</span></div>
+            <div class="summary">
+                <div class="st">21인의 역술가가 함께 본 김민준 님의 사주</div>
+                <p>병화(丙火) 일간이 인목(寅木)의 자양을 받아 스스로 타오르는 사주로, 겉으로는 밝고 거침없어 보여도 안쪽에는 한번 정하면 좀처럼 꺾이지 않는 뚝심이 자리하고 있습니다. 월지 신금(申金)에서 편재가 투출한 구조라, 판을 넓히고 사람을 모아 실제 성과로 바꾸어내는 힘이 이 사주의 가장 큰 자산입니다.</p>
+                <p>2026년은 병오(丙午) 세운이 원국의 화 기운을 한 번 더 밝히는 해입니다. 존재감이 크게 드러나는 만큼 조급함은 경계해야 하며, 7~9월의 상승 흐름을 어떻게 준비하느냐에 따라 앞으로 5년의 궤적이 크게 달라집니다.</p>
+                <p>이 사주를 읽을 때 가장 먼저 기억하실 것은 <b>‘속도를 조절하는 판단’</b>입니다. 결심이 부족한 사주가 아니라, 결심이 너무 빨라 조건을 놓치는 사주입니다. 기회는 대부분 사람을 통해 들어오지만, 그 자리에서 바로 답을 주면 뒤에 번복이 따라옵니다. 판단은 빠르게 하되 결정은 한 박자 늦게 — 이 한 줄만 지켜도 앞으로 10년의 손실 대부분이 줄어듭니다.</p>
+                <p>반대로 이 사주가 가장 크게 힘을 내는 순간은 <b>맡은 자리에서 끝까지 남았을 때</b>입니다. 시작은 누구보다 잘하지만 마무리에서 공백이 생기기 쉬운 구조라, 벌인 일의 절반만 끝내도 주변의 평가가 완전히 달라집니다. 21인의 역술가가 공통으로 짚은 지점 역시 재능이나 운의 크기가 아니라, 그 재능을 끝까지 붙들고 있는 시간의 길이였습니다.</p>
+            </div>
+        </div>
+
+        <div class="sec reveal" id="sec-00">
+            <div class="sec_hd"><span class="sec_num">命</span><span class="sec_tit">사주 원국(四柱原局)</span></div>
+            <div class="cardbox">
+                <div class="pillars">
+                    <div class="pillar">
+                        <div class="p_name">시주(時柱)<span>말년운</span></div>
+                        <div class="p_god">+금편재</div>
+                        <div class="p_tile" style="background:#8b8b8b;">庚</div>
+                        <div class="p_tile" style="background:#a37c3c;">辰</div>
+                        <div class="p_god">+토식신</div>
+                        <div class="p_un">관대(冠帶)</div>
+                    </div>
+                    <div class="pillar me">
+                        <div class="p_name">일주(日柱)<span>나(본원)</span></div>
+                        <div class="p_god">-화일元</div>
+                        <div class="p_tile" style="background:#b8503c;">丙</div>
+                        <div class="p_tile" style="background:#4a7c59;">寅</div>
+                        <div class="p_god">+목편인</div>
+                        <div class="p_un">장생(長生)</div>
+                    </div>
+                    <div class="pillar">
+                        <div class="p_name">월주(月柱)<span>사회운</span></div>
+                        <div class="p_god">-수편관</div>
+                        <div class="p_tile" style="background:#3f4f7a;">壬</div>
+                        <div class="p_tile" style="background:#8b8b8b;">申</div>
+                        <div class="p_god">-금편재</div>
+                        <div class="p_un">병(病)</div>
+                    </div>
+                    <div class="pillar">
+                        <div class="p_name">년주(年柱)<span>선천운</span></div>
+                        <div class="p_god">+목편인</div>
+                        <div class="p_tile" style="background:#4a7c59;">甲</div>
+                        <div class="p_tile" style="background:#a37c3c;">戌</div>
+                        <div class="p_god">+토식신</div>
+                        <div class="p_un">묘(墓)</div>
+                    </div>
+                </div>
+                <p class="pillar_note">일간(日干)은 <b>병화(丙火)</b>. 한낮의 태양처럼 밝고 드러나는 기운을 타고났습니다.</p>
+            </div>
+            <div class="cardbox">
+                <div class="cardbox_tit">지장간(支藏干) · 원국 안에 숨은 기운</div>
+                <div class="jj">
+                    <div class="jc"><div class="jl">시주</div><div class="jv"><span>乙</span><span>癸</span><span>戊</span></div></div>
+                    <div class="jc"><div class="jl">일주</div><div class="jv"><span>戊</span><span>丙</span><span>甲</span></div></div>
+                    <div class="jc"><div class="jl">월주</div><div class="jv"><span>戊</span><span>壬</span><span>庚</span></div></div>
+                    <div class="jc"><div class="jl">년주</div><div class="jv"><span>辛</span><span>丁</span><span>戊</span></div></div>
+                </div>
+            </div>
+            <div class="two">
+                <div class="cardbox">
+                    <div class="cardbox_tit">오행(五行) 분포</div>
+                    <div class="donutRow" id="elementsDonut"></div>
+                </div>
+                <div class="cardbox">
+                    <div class="cardbox_tit">십성(十星) 분포</div>
+                    <div id="tenGodsBars"></div>
+                </div>
+            </div>
+            <div class="two" style="margin-top:0.35lh;">
+                <div class="cardbox">
+                    <div class="cardbox_tit">격국(格局) · 용신(用神)</div>
+                    <div class="stats" style="grid-template-columns:1fr;margin-top:0;">
+                        <div><div class="sl">격국</div><div class="sv">편재격(偏財格)</div></div>
+                        <div><div class="sl">용신 · 희신 · 기신</div><div class="sv">목(木) · 화(火) · 수(水)</div></div>
+                    </div>
+                </div>
+                <div class="cardbox">
+                    <div class="cardbox_tit">신살(神殺)</div>
+                    <div class="chips">
+                        <span title="결정적 순간 귀인의 도움을 받는 별">천을귀인</span>
+                        <span title="이동·변화가 잦고 활동 반경이 넓어지는 별">역마살</span>
+                        <span title="글과 배움으로 이름을 얻는 별">문창귀인</span>
+                        <span title="예술적 감성과 철학적 기운이 강한 별">화개살</span>
+                        <span title="子丑이 공망 — 급하게 서두르면 헛도는 시기">공망(空亡)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="sec reveal" id="sec-01">
+            <div class="sec_hd"><span class="sec_num">一</span><span class="sec_tit">01. 타고난 명(命)</span></div>
+            <p class="lead">
+                <span class="oracle">병화(丙火)가 인목(寅木)에 뿌리내려, 스스로 타오르며 주변을 밝히는 사주입니다.</span>
+                <span class="bridge"> 쉽게 말해 감추는 법을 모르는 사람이라는 뜻입니다. 솔직함이 사람을 끌어당기는 가장 큰 힘이고, 같은 이유로 가장 자주 손해를 보는 지점이기도 합니다.</span>
+                <span class="bridge"> 또한 식신이 재성으로 흘러가는 <b>식신생재(食神生財)</b>의 구조를 이루고 있어, 스스로 만들어낸 것을 실제 결실로 바꾸는 힘이 유독 강한 명(命)입니다. 아이디어에서 멈추지 않고 사람과 돈이 붙는 형태까지 밀고 가는 힘, 이것이 이 사주의 본질입니다.</span>
+            </p>
+            <div class="tbox">
+                <h4>생활 양식</h4>
+                <p>손이 비어 있는 시간을 오래 견디지 못합니다. 한가하게 흘러가는 생활보다, 해야 할 일을 정해두고 그 안에서 움직일 때 컨디션이 맞습니다. 다만 월주의 수(水) 기운이 제동을 걸어 무작정 달리지는 않으므로, 겉으로 보이는 바쁨에 비해 실제로는 계산이 서 있는 편입니다.</p>
+                <p>생활을 안정시키는 가장 확실한 방법은 <b>일정한 리듬</b>입니다. 잠자는 시간, 식사 시간, 일을 처리하는 순서를 고정해두면 산만함이 눈에 띄게 줄어듭니다. 반대로 리듬이 흐트러지면 능력과 무관하게 결과가 흔들립니다.</p>
+            </div>
+            <div class="tbox t2">
+                <h4>행동 성향</h4>
+                <p>생각보다 말이 먼저 나가는 편입니다. 다만 월주의 편관이 있어 한번 정한 기준은 쉽게 바뀌지 않습니다. 초반에 흔들려도 방향만 맞으면 뒤로 갈수록 속도가 붙습니다.</p>
+                <p>관계에서 문제가 되는 지점은 감정이 올라왔을 때의 즉답입니다. 옳은 말이라도 타이밍이 이르면 상대에게는 통보로 들립니다. <b>한 박자 늦게 말하는 습관</b> 하나만으로도 이 사주가 겪는 갈등의 상당 부분이 사라집니다.</p>
+            </div>
+            <div class="tbox t3">
+                <h4>장점과 단점</h4>
+                <p>장점은 결정의 속도와 사람을 모으는 힘입니다. 막힌 자리에서 대안을 먼저 꺼내는 재능이 있고, 그 덕분에 어느 조직에서도 초반에 빠르게 자리를 잡습니다.</p>
+                <p>약점은 관심이 빠르게 옮겨가 마무리에서 공백이 생긴다는 점입니다. 완벽한 확신이 설 때까지 망설이다 타이밍을 놓치는 일도 반복됩니다. <b>시작한 일 중 절반만 끝내도</b> 이 사주는 충분히 큰 성취를 이룹니다. 완벽한 확신보다 실행 기준을 먼저 세우는 쪽이 맞습니다.</p>
+            </div>
+        </div>
+
+        <div class="sec reveal" id="sec-02">
+            <div class="sec_hd"><span class="sec_num">二</span><span class="sec_tit">02. 지금, 나의 운</span></div>
+            <p class="lead">
+                <span class="oracle">지금은 관성(官星)이 들어오는 대운 한가운데, 책임과 자리가 함께 늘어나는 구간입니다.</span>
+                <span class="bridge"> 다시 말해 부담이 커지는 만큼 인정도 따라온다는 뜻입니다. 지금 맡은 자리에서 쌓은 신뢰가 다음 10년의 기반이 됩니다.</span>
+                <span class="bridge"> 여기에 2026년 병오 세운이 원국의 화 기운과 겹쳐, 대운의 큰 흐름 위에 올해만의 기회가 하나 더 얹힌 형태입니다.</span>
+            </p>
+            <div class="tbox">
+                <h4>이 구간을 어떻게 쓸 것인가</h4>
+                <p>임신(壬申) 대운은 편관과 편재가 함께 작동하는 구간입니다. 책임이 늘고 돈이 도는 자리가 동시에 열리기 때문에, 잘 쓰면 기반을 만드는 10년이 되고 잘못 쓰면 일만 많고 남는 것이 없는 10년이 됩니다. 두 결과를 가르는 것은 <b>기록</b>입니다. 맡은 일의 조건과 약속을 문장으로 남겨두십시오.</p>
+                <p>이 구간에 쌓은 신뢰는 다음 대운에서 그대로 자산이 됩니다. 반대로 지금 흐리게 넘긴 약속은 대운이 바뀔 무렵 한꺼번에 청구서로 돌아옵니다. 지금의 자리를 가볍게 여기지 않는 것이 이 10년의 전부입니다.</p>
+            </div>
+            <div class="cardbox">
+                <div class="prog_t1">현재 대운 · 임신(壬申) 대운</div>
+                <div class="prog_t2" id="daewoonSub">2024 – 2033 · 대운 진행률</div>
+                <div class="prog"><i id="daewoonBar" style="width:28%"></i></div>
+                <div class="stats">
+                    <div><div class="sl">2026년 세운(歲運)</div><div class="sv">병오(丙午)</div></div>
+                    <div><div class="sl">세운 십성</div><div class="sv">비견(比肩)</div></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="sec reveal" id="sec-03">
+            <div class="sec_hd"><span class="sec_num">三</span><span class="sec_tit">03. 2026년 운세</span></div>
+            <p class="lead">
+                <span class="oracle">2026년 하반기, 특히 7~9월에 운의 물살이 가장 세게 밀려옵니다.</span>
+                <span class="bridge"> 즉, 올해 후반의 결정이 내년의 방향을 크게 바꿔놓을 가능성이 큽니다.</span>
+                <span class="bridge"> 반면 1월과 4월은 기운이 잠시 가라앉는 시기이니, 새 일을 벌이기보다 준비하고 다지는 데 쓰는 편이 유리합니다.</span>
+            </p>
+            <div class="tbox t2">
+                <h4>2026년 전체 흐름</h4>
+                <p>병오(丙午)년은 일간과 같은 기운이 겹치는 해입니다. 자기 색이 강하게 드러나 좋게 쓰면 존재감이 되고, 잘못 쓰면 충돌이 됩니다. 크게 보면 1~4월은 정리, 5~8월은 확장, 9~12월은 결실의 세 구간으로 나뉩니다.</p>
+                <p>올해의 성패를 가르는 것은 7월의 제안입니다. 겉으로는 평범해 보이지만 조건을 따져보면 규모가 다릅니다. <b>이 달의 결정 하나가 2027년 전체의 방향을 정합니다.</b></p>
+            </div>
+            <div class="cardbox">
+                <div class="cardbox_tit">월별 운세 지수</div>
+                <div class="chart" id="monthlyChart"></div>
+                <div class="stats">
+                    <div><div class="sl">최고의 달</div><div class="sv" id="monthBest">—</div></div>
+                    <div class="warn"><div class="sl">주의할 달</div><div class="sv" id="monthWorst">—</div></div>
+                </div>
+                <div class="month">
+                        <div><b>1월</b><p>생활 리듬과 우선순위를 정리하는 달. 감정이 앞선 즉답을 피하십시오.</p></div>
+                        <div><b>2월</b><p>사람 사이의 말이 많아집니다. 짧고 분명하게 정리하는 편이 유리합니다.</p></div>
+                        <div><b>3월</b><p>몸과 일정이 함께 바빠집니다. 한꺼번에 많은 책임을 떠안지 마십시오.</p></div>
+                        <div><b>4월</b><p>관계에서 작은 균열이 드러납니다. 애매한 호의를 거두고 선을 정하십시오.</p></div>
+                        <div><b>5월</b><p>방향을 다시 잡기 좋은 달. 하나씩 시험하는 방식이 안전합니다.</p></div>
+                        <div><b>6월</b><p>체력과 집중력이 흔들립니다. 더 하기보다 덜어내는 편이 이익입니다.</p></div>
+                        <div><b>7월</b><p>올해 가장 중요한 제안이 옵니다. 조건을 반드시 문장으로 확인하십시오.</p></div>
+                        <div><b>8월</b><p>성과보다 기반을 다지는 달. 넓히는 때가 아니라 단단하게 만드는 때입니다.</p></div>
+                        <div><b>9월</b><p>사람을 통해 정보가 들어옵니다. 한 번 더 확인한 뒤 답하십시오.</p></div>
+                        <div><b>10월</b><p>재정 흐름을 다시 볼 때. 작은 새는 구멍을 먼저 막으십시오.</p></div>
+                        <div><b>11월</b><p>마무리의 질이 중요합니다. 끝을 흐리면 다음 해로 부담이 넘어갑니다.</p></div>
+                        <div><b>12월</b><p>한 해를 돌아보며 무엇을 이어갈지 고르는 데 힘을 쓰십시오.</p></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="sec reveal" id="sec-04">
+            <div class="sec_hd"><span class="sec_num">四</span><span class="sec_tit">04. 앞으로의 5년</span></div>
+            <p class="lead">
+                <span class="oracle">앞으로 5년, 오르내림 속에서도 결국 우상향하는 곡선을 그리게 됩니다.</span>
+                <span class="bridge"> 쉽게 말해 2028년의 정체기만 잘 넘기면 2030년에는 지금과 전혀 다른 위치에 서 있을 것입니다.</span>
+                <span class="bridge"> 2028년의 정체는 후퇴가 아니라 다음 도약을 위한 숨 고르기에 가깝습니다. 이 시기에 내실을 다지면 2029~2030년의 상승폭이 훨씬 커집니다.</span>
+            </p>
+            <div class="tbox t3">
+                <h4>5년을 관통하는 원칙</h4>
+                <p>이 5년은 ‘벌이는 해’와 ‘지키는 해’가 번갈아 옵니다. 2026·2029년은 새로 벌여도 좋은 해이고, 2027·2028년은 이미 벌인 것을 다듬어야 하는 해입니다. 이 리듬을 거스르면 같은 노력으로도 결과가 절반이 됩니다.</p>
+                <p>2030년에 도달하는 위치는 결국 <b>2028년을 어떻게 견뎠는가</b>로 결정됩니다. 성과가 보이지 않는 해일수록 기록과 관리에 힘을 쓰십시오. 이 해에 정리해둔 것이 다음 두 해의 속도를 만듭니다.</p>
+            </div>
+            <div class="cardbox">
+                <div class="cardbox_tit">5개년 운세 흐름</div>
+                <div class="chart" id="trendChart"></div>
+                <div class="chips" style="margin-top:0.55lh;">
+                    <span>2026 전환기</span><span>2027 상승기</span><span>2028 정체기</span><span>2029 도약기</span><span>2030 결실기</span>
+                </div>
+            </div>
+            <div class="cardbox">
+                    <div class="yr">
+                        <div class="yr_sc"><div class="y">2026</div><div class="n" style="color:#c0944d;">78</div><div class="t">전환</div></div>
+                        <div class="yr_tx"><h4>흐름을 다시 세우는 해</h4><p>묵혀두었던 일이 정리되며 자리가 바뀝니다. 크게 벌리기보다 남길 것과 버릴 것을 가르는 데 힘을 쓰십시오.</p></div>
+                    </div>
+                    <div class="yr">
+                        <div class="yr_sc"><div class="y">2027</div><div class="n" style="color:#7b5cc4;">82</div><div class="t">상승</div></div>
+                        <div class="yr_tx"><h4>움직인 만큼 답이 오는 해</h4><p>제안과 연결이 늘어납니다. 좋아 보이는 자리일수록 조건을 문장으로 확인하십시오.</p></div>
+                    </div>
+                    <div class="yr">
+                        <div class="yr_sc"><div class="y">2028</div><div class="n" style="color:#8b8b8b;">70</div><div class="t">정체</div></div>
+                        <div class="yr_tx"><h4>속도를 줄여 다지는 해</h4><p>밖으로 넓히기보다 안을 채워야 하는 해입니다. 이 해를 잘 넘기면 다음 2년이 가볍습니다.</p></div>
+                    </div>
+                    <div class="yr">
+                        <div class="yr_sc"><div class="y">2029</div><div class="n" style="color:#7b5cc4;">88</div><div class="t">도약</div></div>
+                        <div class="yr_tx"><h4>판이 커지는 해</h4><p>준비한 것이 형태를 갖춥니다. 사람을 늘리되 기준은 줄이지 마십시오.</p></div>
+                    </div>
+                    <div class="yr">
+                        <div class="yr_sc"><div class="y">2030</div><div class="n" style="color:#aa7529;">95</div><div class="t">결실</div></div>
+                        <div class="yr_tx"><h4>자리를 확정하는 해</h4><p>지난 4년의 선택이 한 방향으로 모입니다. 이 해의 위치가 이후 10년의 기준이 됩니다.</p></div>
+                    </div>
+            </div>
+        </div>
+
+        <div class="sec reveal" id="sec-05">
+            <div class="sec_hd"><span class="sec_num">五</span><span class="sec_tit">05. 돈이 들어오는 때</span></div>
+            <p class="lead">
+                <span class="oracle">재물의 문은 40대에 가장 크게 열립니다.</span>
+                <span class="bridge"> 즉, 지금의 절약보다 이 시기를 준비하는 투자와 공부가 더 큰 의미를 가진다는 뜻입니다.</span>
+                <span class="bridge"> 정재와 편재가 함께 자리해 꾸준한 수입과 기회성 수입을 모두 가질 수 있는 구조입니다. 다만 편재 특유의 씀씀이가 커지는 시기가 있어 지출 관리가 관건입니다.</span>
+            </p>
+            <div class="cardbox">
+                <div class="cardbox_tit">연령대별 재물운</div>
+                <div id="moneyChart"></div>
+                <div class="stats">
+                    <div><div class="sl">투자·확장 적기</div><div class="sv">40대 초반 ~ 중반</div></div>
+                    <div class="warn"><div class="sl">지출 주의 시기</div><div class="sv">35세, 47세 전후</div></div>
+                </div>
+            </div>
+            <div class="tbox t4">
+                <h4>손재를 경계할 때</h4>
+                <p>재성이 지지에 뿌리를 두고 있어 일한 만큼 돌아오는 구조입니다. 큰 한 번을 노리기보다 여러 갈래의 수입을 만드는 방식이 이 사주에 맞습니다. 한 곳에서 크게 벌겠다는 계획은 대체로 어긋나고, 작게 여러 번 도는 구조는 오래갑니다.</p>
+                <p>조심할 시기는 <b>2028년 봄과 가을</b>입니다. 이때는 보증·공동투자·지인 대여를 피하십시오. 이 사주에서 큰 손실은 한 번의 실패가 아니라 누적에서 나오며, 돈이 나가는 일은 거의 예외 없이 사람을 통해 옵니다.</p>
+                <p>반대로 돈이 붙는 방식은 분명합니다. 이미 신뢰가 쌓인 사람에게서 반복해서 들어오는 구조, 즉 <b>재구매와 소개</b>입니다. 새 고객을 늘리는 데 쓰는 힘의 절반만 기존 관계에 쓰면 수익의 안정도가 크게 달라집니다.</p>
+            </div>
+        </div>
+
+        <div class="sec reveal" id="sec-06">
+            <div class="sec_hd"><span class="sec_num">六</span><span class="sec_tit">06. 일과 성공의 운</span></div>
+            <p class="lead">
+                <span class="oracle">식신(食神)과 편관(偏官)이 고르게 자리해, 만드는 일과 관리하는 일 모두에 소질이 있습니다.</span>
+                <span class="bridge"> 다시 말해 혼자 만드는 힘과 조직을 이끄는 힘을 함께 가진 드문 사주입니다.</span>
+                <span class="bridge"> 다만 완전한 프리랜서보다는 작은 조직을 직접 꾸리거나 이끄는 자리에서 더 크게 성공합니다.</span>
+            </p>
+            <div class="cardbox">
+                <div class="cardbox_tit">직업 적성 지수</div>
+                <div id="aptitudeChart"></div>
+                <div class="chips" style="margin-top:0.4lh;">
+                    <span>브랜드 기획</span><span>영업·제휴</span><span>교육·강의</span><span>소규모 창업</span>
+                </div>
+            </div>
+            <div class="tbox">
+                <h4>나와 맞는 일</h4>
+                <p>사람을 모으고 방향을 제시하는 일이 맞습니다. 기획, 영업, 교육, 브랜딩처럼 말과 판단을 함께 쓰는 방식이 잘 맞습니다. 특히 결과가 눈에 보이고, 그 결과에 내 이름이 남는 구조에서 능력이 가장 크게 발휘됩니다.</p>
+            </div>
+            <div class="tbox t2">
+                <h4>나와 맞지 않는 일</h4>
+                <p>판단 여지가 없는 반복 업무, 권한은 없는데 책임만 무거운 자리는 소모가 큽니다. 숨 돌릴 틈이 없는 구조에서는 성과보다 피로가 먼저 쌓이고, 결국 실력과 무관하게 오래 버티지 못합니다.</p>
+            </div>
+            <div class="tbox t3">
+                <h4>사업을 한다면</h4>
+                <p>완전한 독립보다 <b>기반을 두고 뻗어나가는 방식</b>이 맞습니다. 단발성 판매보다 재방문과 소개가 이어지는 관계형 구조가 유리하며, 사람을 많이 모으는 장사보다 적은 수라도 깊게 붙드는 형태가 오래갑니다. 말로만 설득하는 사업은 피하십시오. 실제 만족도와 후기가 쌓이지 않으면 금세 흔들립니다.</p>
+            </div>
+        </div>
+
+        <div class="sec reveal" id="sec-07">
+            <div class="sec_hd"><span class="sec_num">七</span><span class="sec_tit">07. 인생이 바뀌는 때</span></div>
+            <p class="lead">
+                <span class="oracle">32세, 36세, 42세, 49세, 그리고 56세 — 이 다섯 번의 갈림길이 인생의 방향을 크게 틀어놓습니다.</span>
+                <span class="bridge"> 즉, 이 시기마다 내리는 선택을 특히 신중하게 대해야 한다는 뜻입니다.</span>
+                <span class="bridge"> 그중에서도 36세와 49세는 대운이 바뀌는 시점과 맞물려 있어 체감하는 변화의 폭이 가장 큽니다.</span>
+            </p>
+            <div class="cardbox">
+                <div class="cardbox_tit">인생 전환점</div>
+                <div class="chart" id="timelineChart"></div>
+            </div>
+            <div class="tbox t4">
+                <p>전환점은 늘 <b>예상하지 못한 제안</b>의 형태로 옵니다. 큰 결단의 순간처럼 극적으로 오지 않고, 대개는 평범한 자리에서 건네받는 한마디로 시작됩니다. 준비가 되어 있지 않으면 기회인지도 모르고 지나갑니다.</p>
+                <p>대비하는 방법은 단순합니다. 매년 겨울, 다음 해에 하고 싶은 일과 하지 않을 일을 문장으로 적어두십시오. 기준이 적혀 있으면 제안이 왔을 때 판단이 빨라지고, 기준이 없으면 좋아 보이는 것부터 잡게 됩니다. 36세와 49세는 대운이 바뀌는 시점과 겹쳐 변화의 폭이 가장 크니, 그 전 해 겨울에는 특히 시간을 들여 정리하시길 권합니다.</p>
+            </div>
+        </div>
+
+        <div class="sec reveal" id="sec-08">
+            <div class="sec_hd"><span class="sec_num">八</span><span class="sec_tit">08. 인연과 사람복</span></div>
+            <p class="lead">
+                <span class="oracle">사람으로 인해 울고 웃는 일이 유독 많은 사주지만, 결국 남는 인연이 큰 힘이 되어줍니다.</span>
+                <span class="bridge"> 쉽게 말해 관계를 넓히기보다 좁고 깊게 만드는 편이 더 유리하다는 뜻입니다.</span>
+                <span class="bridge"> 도화의 기운이 있어 사람이 자연스럽게 모이는 편이지만, 얕은 인연에 마음을 다 쓰지 않도록 거리를 조율하는 지혜가 필요합니다.</span>
+            </p>
+            <div class="cardbox">
+                <div class="gaugeRow">
+                    <div id="relationGauge"></div>
+                    <div class="gi">
+                        <div class="t1">인연운 지수</div>
+                        <div class="t2">깊고 오래가는 인연 중심의 흐름</div>
+                    </div>
+                </div>
+                <div class="chips_lb">잘 맞는 기운</div>
+                <div class="chips"><span>목(木) 기운의 상대</span><span>토(土) 기운의 상대</span><span>범띠</span><span>개띠</span></div>
+                <div class="chips_lb">한 박자 조심할 상대</div>
+                <div class="chips muted"><span>편재를 다투는 상대</span><span>원숭이띠</span></div>
+            </div>
+            <div class="tbox">
+                <p>인연은 일을 통해 옵니다. 소개나 우연보다 함께 무언가를 만드는 자리에서 깊은 관계가 시작됩니다. 짧은 만남에서 승부를 보려 하면 오래가지 않고, 시간을 두고 같은 일을 겪은 사람과의 관계가 결국 남습니다.</p>
+                <p>귀인은 나보다 조용하고 신중한 사람입니다. 말수가 적고 약속을 지키며, 감정을 몰아붙이지 않는 사람이 이 사주를 오래 지켜줍니다. 반대로 처음부터 크게 약속하고 빠르게 가까워지려는 사람은 멀리하십시오. 이 사주가 겪은 손해의 대부분은 그런 관계에서 나왔습니다.</p>
+                <p>배우자운은 <b>2027년과 2030년</b>에 두텁게 들어옵니다. 가족 관계에서는 애정이 없어서가 아니라 표현 방식이 달라 서운함이 쌓이기 쉬우니, 감정을 묵히지 말고 짧게라도 그때그때 풀어내는 편이 낫습니다.</p>
+            </div>
+        </div>
+
+        <div class="sec reveal" id="sec-09">
+            <div class="sec_hd"><span class="sec_num">九</span><span class="sec_tit">09. 몸과 마음의 흐름</span></div>
+            <p class="lead">
+                <span class="oracle">정신적인 힘은 강하지만 몸이 그 속도를 따라가지 못할 때가 많습니다.</span>
+                <span class="bridge"> 즉, 마음이 먼저 지치기 전에 몸을 먼저 쉬게 하는 습관이 필요하다는 뜻입니다.</span>
+                <span class="bridge"> 특히 수면의 질이 전체 컨디션을 좌우하는 열쇠이니, 잠자리에 드는 시간을 일정하게 지키는 것만으로도 체력과 스트레스 지수가 함께 개선됩니다.</span>
+            </p>
+            <div class="cardbox">
+                <div class="cardbox_tit">심신 밸런스</div>
+                <div class="chart" id="radarChart"></div>
+            </div>
+            <div class="tbox t2">
+                <p>화가 강하고 수가 약해 열이 위로 오르는 체질입니다. 수면 부족과 과로가 곧바로 몸에 나타나며, 피로가 쌓이면 판단보다 감정이 먼저 반응합니다. 심혈관과 눈, 그리고 위장을 특히 살피십시오.</p>
+                <p>이 사주에서 컨디션을 좌우하는 가장 큰 변수는 <b>수면의 질</b>입니다. 잠자리에 드는 시간을 일정하게 지키는 것만으로 체력과 스트레스 지수가 함께 올라갑니다. 반대로 밤 시간에 일을 몰아 처리하는 습관은 며칠 만에 전체 리듬을 무너뜨립니다.</p>
+                <p><b>40대 초반과 50대 중반</b>에 한 번씩 크게 쉬어가야 할 시기가 옵니다. 미리 쉬면 크게 앓지 않고, 버티면 반드시 한 번은 멈추게 됩니다. 이 사주에게 휴식은 게으름이 아니라 관리입니다.</p>
+            </div>
+        </div>
+
+        <div class="sec reveal" id="sec-10">
+            <div class="sec_hd"><span class="sec_num">十</span><span class="sec_tit">10. 명월재의 마지막 당부</span></div>
+            <p class="lead">
+                <span class="oracle">사주는 정해진 길이 아니라, 바람이 부는 방향입니다.</span>
+                <span class="bridge"> 그 방향을 알고 걷는 사람과 모르고 걷는 사람의 걸음은 다릅니다. 같은 바람 속에서도 어디로 가려는지 아는 사람은 돌아가지 않습니다.</span>
+            </p>
+            <div class="tbox t4">
+                <p>지금까지의 풀이를 한 문장으로 줄이면 이렇습니다. <b>사람은 열어두되, 결정은 늦게 하십시오.</b> 이 사주가 가진 재능과 운의 크기는 이미 충분합니다. 남은 것은 그 재능을 어디까지 붙들고 있느냐입니다.</p>
+                <p>전부 기억하지 않으셔도 좋습니다. 가장 마음에 남은 경고 하나와 실천 포인트 하나만 현실에 옮기셔도, 이 해설서는 충분히 값어치를 합니다.</p>
+            </div>
+            <div class="keeps">
+                <div class="hold">
+                    <h4>붙잡아야 할 세 가지</h4>
+                    <ol>
+                        <li>끝까지 남는 습관</li>
+                        <li>조용하고 신중한 귀인</li>
+                        <li>매년 겨울의 기록</li>
+                    </ol>
+                </div>
+                <div class="ward">
+                    <h4>경계해야 할 세 가지</h4>
+                    <ol>
+                        <li>급하게 정한 동업</li>
+                        <li>사람을 통해 나가는 돈</li>
+                        <li>쉬지 않는 자신</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="outro reveal">
+            <span class="spark">✦</span>
+            <p>명월재가 비춘 이 달빛이,<br>당신의 다음 걸음에 작은 등불이 되기를 바랍니다.</p>
+            <div class="sign">명 월 재</div>
+        </div>
+
+        <div class="acts">
+            <button type="button" class="btn_line" id="pdfBtn">PDF로 저장하기</button>
+            <button type="button" class="act_kakao" id="shareBtn">카카오톡 공유</button>
+        </div>
+
+        <div class="rev_wrap reveal">
+            <button type="button" class="btn_line rev_toggle" id="revToggle" aria-expanded="false" aria-controls="revForm">후기 남기기</button>
+            <form class="rev_form" id="revForm" hidden>
+                <h3>후기를 남겨주세요</h3>
+                <p>남겨주신 후기는 다른 분들의 선택에 큰 도움이 됩니다.</p>
+                <div class="stars" id="stars">
+                    <button type="button" data-v="1"><img src="./img/main/star1.webp" alt="1점"></button>
+                    <button type="button" data-v="2"><img src="./img/main/star1.webp" alt="2점"></button>
+                    <button type="button" data-v="3"><img src="./img/main/star1.webp" alt="3점"></button>
+                    <button type="button" data-v="4"><img src="./img/main/star1.webp" alt="4점"></button>
+                    <button type="button" data-v="5"><img src="./img/main/star1.webp" alt="5점"></button>
+                </div>
+                <textarea name="review" placeholder="해설서를 읽고 느낀 점을 자유롭게 남겨주세요." required></textarea>
+                <div class="rev_meta">
+                    <input type="text" name="nick" placeholder="표시될 이름 (예: 김0준)" required>
+                    <select name="age" required>
+                        <option value="">연령대 선택</option>
+                        <option>10대</option><option>20대</option><option>30대</option>
+                        <option>40대</option><option>50대</option><option>60대 이상</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn_navy">후기 등록하기</button>
+            </form>
+        </div>
+    </section>
+
+    <button type="button" class="tocFab" id="tocFab" aria-controls="tocSheet" aria-expanded="false">
+        <span class="ic"><i></i><i></i><i></i></span>
+        목차 <span class="now" id="tocNow">종합 총평</span>
+    </button>
+    <div class="tocDim" id="tocDim"></div>
+    <div class="tocSheet" id="tocSheet" role="dialog" aria-label="목차" aria-hidden="true">
+        <div class="grip"></div>
+        <h3>목차</h3>
+        <nav id="tocNav">
+            <a href="#sec-summary"><b>評</b> 종합 총평</a>
+            <a href="#sec-00"><b>命</b> 사주 원국</a>
+            <a href="#sec-01"><b>01</b> 타고난 명(命)</a>
+            <a href="#sec-02"><b>02</b> 지금, 나의 운</a>
+            <a href="#sec-03"><b>03</b> 2026년 운세</a>
+            <a href="#sec-04"><b>04</b> 앞으로의 5년</a>
+            <a href="#sec-05"><b>05</b> 돈이 들어오는 때</a>
+            <a href="#sec-06"><b>06</b> 일과 성공의 운</a>
+            <a href="#sec-07"><b>07</b> 인생이 바뀌는 때</a>
+            <a href="#sec-08"><b>08</b> 인연과 사람복</a>
+            <a href="#sec-09"><b>09</b> 몸과 마음의 흐름</a>
+            <a href="#sec-10"><b>10</b> 명월재의 마지막 당부</a>
+        </nav>
+    </div>
+
+    <footer>
+        <div class="footTxt">
+            <div class="footL">
+                <p>상호명</p><p>대표자</p><p>사업자등록번호</p><p>통신판매번호</p><p>주소</p><p>이메일</p><p>전화</p>
+            </div>
+            <div class="footR">
+                <p>(주)위드어스</p>
+                <p>이경식</p>
+                <p>332-88-03445</p>
+                <p>사업자등록번호 332-88-03445</p>
+                <p>경기도 부천시 원미구 소향로 37번길 31-7</p>
+                <p>withusmkt@daum.net</p>
+                <p>0507-1356-1719</p>
+            </div>
+        </div>
+        <!-- 팝업 링크 추가 위치 : href="" 안에 주소만 넣으면 바로 동작합니다 -->
+        <div class="foot_movPage">
+            <a href="" class="foot_link" data-popup="회사소개">회사소개</a> |
+            <a href="" class="foot_link" data-popup="이용약관">이용약관</a> |
+            <a href="" class="foot_link" data-popup="개인정보 처리방침">개인정보 처리방침</a> |
+            <a href="" class="foot_link" data-popup="환불정책">환불정책</a>
+        </div>
+    </footer>
+
+    <script>
+        /* ▼▼ 링크 설정 : 주소만 넣으면 바로 동작합니다 ▼▼ */
+        var KAKAO_CHANNEL_URL = ''; // 예) 'https://pf.kakao.com/_xxxxxx'
+        /* ▲▲ ----------------------------------------- ▲▲ */
+
+        (function(){
+            var hd = document.querySelector('header');
+            if(hd){ window.addEventListener('scroll', function(){ hd.classList.toggle('scroll', window.scrollY > 30); }); }
+
+            var btn = document.getElementById('menuBtn'),
+                dim = document.getElementById('menuDim'),
+                drawer = document.getElementById('menuDrawer'),
+                closeBtn = document.getElementById('menuClose');
+
+            function openMenu(){
+                drawer.classList.add('open'); dim.classList.add('open');
+                document.body.classList.add('menu_open');
+                btn.setAttribute('aria-expanded','true'); drawer.setAttribute('aria-hidden','false');
+            }
+            function closeMenu(){
+                drawer.classList.remove('open'); dim.classList.remove('open');
+                document.body.classList.remove('menu_open');
+                btn.setAttribute('aria-expanded','false'); drawer.setAttribute('aria-hidden','true');
+            }
+            if(btn && drawer){
+                btn.addEventListener('click', openMenu);
+                btn.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); openMenu(); } });
+                dim.addEventListener('click', closeMenu);
+                closeBtn.addEventListener('click', closeMenu);
+                document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeMenu(); });
+            }
+
+            document.querySelectorAll('.js-kakao').forEach(function(el){
+                el.addEventListener('click', function(){
+                    if(KAKAO_CHANNEL_URL){ window.open(KAKAO_CHANNEL_URL, '_blank'); }
+                    else { alert('카카오톡 채널 링크 준비 중입니다.'); }
+                });
+            });
+
+            document.querySelectorAll('.foot_link').forEach(function(el){
+                el.addEventListener('click', function(e){
+                    e.preventDefault();
+                    var url = el.getAttribute('href');
+                    if(!url){ alert(el.dataset.popup + ' 페이지 준비 중입니다.'); return; }
+                    window.open(url, el.dataset.popup, 'width=720,height=860,scrollbars=yes');
+                });
+            });
+
+            var rv = document.querySelectorAll('.reveal');
+            if(rv.length && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+                var ob = new IntersectionObserver(function(es,o){
+                    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('is-visible'); o.unobserve(e.target); } });
+                }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+                rv.forEach(function(el){ ob.observe(el); });
+            } else { rv.forEach(function(el){ el.classList.add('is-visible'); }); }
+        })();
+
+        
+        var SAJU = {
+            fiveElements: [
+                { label:'목(木)', value:25, color:'#4a7c59' },
+                { label:'화(火)', value:13, color:'#b8503c' },
+                { label:'토(土)', value:25, color:'#a37c3c' },
+                { label:'금(金)', value:25, color:'#8b8b8b' },
+                { label:'수(水)', value:12, color:'#3f4f7a' }
+            ],
+            tenGods: [
+                { label:'비견', value:6 }, { label:'겁재', value:4 },
+                { label:'식신', value:14 }, { label:'상관', value:8 },
+                { label:'편재', value:15 }, { label:'정재', value:9 },
+                { label:'편관', value:13 }, { label:'정관', value:7 },
+                { label:'편인', value:13 }, { label:'정인', value:6 }
+            ],
+            monthly: [62,68,74,71,78,85,90,88,80,76,83,92],
+            trend: [78,82,70,88,95],
+            trendYears: ['2026','2027','2028','2029','2030'],
+            money: [
+                { label:'20대', value:45 }, { label:'30대', value:68 },
+                { label:'40대', value:90 }, { label:'50대', value:82 }, { label:'60대+', value:70 }
+            ],
+            aptitude: [
+                { label:'실무·창작형 (식신)', value:78 },
+                { label:'관리·리더형 (편관)', value:71 }
+            ],
+            turning: [
+                { age:32, text:'첫 도약의 대운 진입' },
+                { age:36, text:'재물운 정점, 확장의 시기' },
+                { age:42, text:'관계의 전환, 새로운 인연' },
+                { age:49, text:'명예운 상승, 결실의 시기' },
+                { age:56, text:'제2의 인생, 방향 전환' }
+            ],
+            wellbeing: [
+                { axis:'체력', value:70 }, { axis:'정신력', value:85 }, { axis:'수면', value:60 },
+                { axis:'활력', value:78 }, { axis:'스트레스관리', value:55 }
+            ]
+        };
+
+        var GOLD = '#c0944d', GOLD_D = '#aa7529', GOLD_S = '#dec183', NAVY = '#0D253B', SOFT = '#8c8375', TRACK = '#efe6d5';
+        var gid = 0;
+
+        function donut(el, segs){
+            var size = 150, stroke = 17, r = (size-stroke)/2, c = size/2, C = 2*Math.PI*r;
+            var total = segs.reduce(function(s,d){ return s+d.value; },0) || 1, off = 0;
+            var arcs = segs.map(function(s){
+                var dash = (s.value/total)*C, rot = (off/total)*360 - 90; off += s.value;
+                return '<circle cx="'+c+'" cy="'+c+'" r="'+r+'" fill="none" stroke="'+s.color+'" stroke-width="'+stroke+'" stroke-dasharray="'+dash+' '+(C-dash)+'" transform="rotate('+rot+' '+c+' '+c+')"/>';
+            }).join('');
+            el.innerHTML =
+              '<svg viewBox="0 0 '+size+' '+size+'"><circle cx="'+c+'" cy="'+c+'" r="'+r+'" fill="none" stroke="'+TRACK+'" stroke-width="'+stroke+'"/>'+arcs+'</svg>' +
+              '<div class="legend">' + segs.map(function(s){
+                  return '<div class="it"><span class="dot" style="background:'+s.color+'"></span>'+s.label+' · '+s.value+'%</div>';
+              }).join('') + '</div>';
+        }
+
+        function gauge(el, value, size){
+            size = size || 128;
+            var stroke = size*0.1, r = (size-stroke)/2, c = size/2, C = 2*Math.PI*r;
+            var dash = (value/100)*C, id = 'gg'+(gid++);
+            el.innerHTML =
+              '<svg viewBox="0 0 '+size+' '+size+'">' +
+              '<defs><linearGradient id="'+id+'" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="'+GOLD_S+'"/><stop offset="100%" stop-color="'+GOLD_D+'"/></linearGradient></defs>' +
+              '<circle cx="'+c+'" cy="'+c+'" r="'+r+'" fill="none" stroke="'+TRACK+'" stroke-width="'+stroke+'"/>' +
+              '<circle cx="'+c+'" cy="'+c+'" r="'+r+'" fill="none" stroke="url(#'+id+')" stroke-width="'+stroke+'" stroke-linecap="round" stroke-dasharray="'+dash+' '+C+'" transform="rotate(-90 '+c+' '+c+')"/>' +
+              '<text x="'+c+'" y="'+(c-2)+'" text-anchor="middle" font-family="MaruBuri, serif" font-weight="700" font-size="'+(size*0.26)+'" fill="'+NAVY+'">'+value+'</text>' +
+              '<text x="'+c+'" y="'+(c+size*0.16)+'" text-anchor="middle" font-family="Pretendard Variable, sans-serif" font-size="'+(size*0.09)+'" fill="'+SOFT+'">/ 100</text>' +
+              '</svg>';
+        }
+
+        function hbars(el, data, max, stacked){
+            el.innerHTML = data.map(function(d){
+                var pct = Math.round((d.value/max)*100);
+                if(stacked){
+                    return '<div class="hbar stack"><span class="hl">'+d.label+'</span><span class="line">' +
+                           '<span class="ht"><span class="hf" style="width:'+pct+'%"></span></span><span class="hv">'+d.value+'</span></span></div>';
+                }
+                return '<div class="hbar"><span class="hl">'+d.label+'</span>' +
+                       '<span class="ht"><span class="hf" style="width:'+pct+'%"></span></span><span class="hv">'+d.value+'</span></div>';
+            }).join('');
+        }
+
+        function lineChart(el, values, labels){
+            var w = 640, h = 190, pad = 30;
+            var stepX = (w-pad*2)/(values.length-1);
+            var pts = values.map(function(v,i){
+                return [pad + i*stepX, h - pad - (v/100)*(h-pad*2)];
+            });
+            var path = pts.map(function(p,i){ return (i?'L':'M')+p[0].toFixed(1)+' '+p[1].toFixed(1); }).join(' ');
+            var area = path + ' L '+pts[pts.length-1][0].toFixed(1)+' '+(h-pad)+' L '+pts[0][0].toFixed(1)+' '+(h-pad)+' Z';
+            var id = 'lf'+(gid++);
+            el.innerHTML = '<svg viewBox="0 0 '+w+' '+h+'" preserveAspectRatio="xMidYMid meet">' +
+              '<defs><linearGradient id="'+id+'" x1="0" y1="0" x2="0" y2="1">' +
+              '<stop offset="0%" stop-color="'+GOLD+'" stop-opacity="0.28"/><stop offset="100%" stop-color="'+GOLD+'" stop-opacity="0"/></linearGradient></defs>' +
+              '<path d="'+area+'" fill="url(#'+id+')"/>' +
+              '<path d="'+path+'" fill="none" stroke="'+GOLD_D+'" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>' +
+              pts.map(function(p){ return '<circle cx="'+p[0].toFixed(1)+'" cy="'+p[1].toFixed(1)+'" r="3.6" fill="#fffdf8" stroke="'+GOLD_D+'" stroke-width="2"/>'; }).join('') +
+              labels.map(function(lb,i){ return '<text x="'+pts[i][0].toFixed(1)+'" y="'+(h-8)+'" text-anchor="middle" font-size="11" fill="'+SOFT+'" font-family="Pretendard Variable">'+lb+'</text>'; }).join('') +
+              '</svg>';
+        }
+
+        function timeline(el, items){
+            var w = 640, h = 150, pad = 46, mid = h/2 + 4;
+            var min = items[0].age - 4, max = items[items.length-1].age + 4;
+            var sx = function(a){ return pad + ((a-min)/(max-min))*(w-pad*2); };
+            var marks = items.map(function(d,i){
+                var x = sx(d.age), up = i % 2 === 0;
+                var y2 = up ? mid-12 : mid+12, ageY = up ? mid-20 : mid+30, txtY = up ? mid-40 : mid+50;
+                return '<line x1="'+x+'" y1="'+mid+'" x2="'+x+'" y2="'+y2+'" stroke="'+GOLD+'" stroke-width="1.5"/>' +
+                  '<circle cx="'+x+'" cy="'+mid+'" r="5" fill="'+GOLD_D+'"/>' +
+                  '<text x="'+x+'" y="'+ageY+'" text-anchor="middle" font-family="MaruBuri, serif" font-weight="700" font-size="13" fill="'+NAVY+'">'+d.age+'세</text>' +
+                  '<text x="'+x+'" y="'+txtY+'" text-anchor="middle" font-size="10.5" fill="'+SOFT+'" font-family="Pretendard Variable">'+d.text+'</text>';
+            }).join('');
+            el.innerHTML = '<svg viewBox="0 0 '+w+' '+h+'" preserveAspectRatio="xMidYMid meet">' +
+              '<line x1="'+pad+'" y1="'+mid+'" x2="'+(w-pad)+'" y2="'+mid+'" stroke="#e7ddc3" stroke-width="2"/>' + marks + '</svg>';
+        }
+
+        function radar(el, axes){
+            var size = 340, c = size/2, r = size/2 - 76, n = axes.length;
+            var ang = function(i){ return (Math.PI*2/n)*i - Math.PI/2; };
+            var pt = function(i,f){ return [(c+Math.cos(ang(i))*r*f).toFixed(1), (c+Math.sin(ang(i))*r*f).toFixed(1)]; };
+            var rings = [0.25,0.5,0.75,1].map(function(f){
+                return '<polygon points="'+axes.map(function(a,i){ return pt(i,f).join(','); }).join(' ')+'" fill="none" stroke="#e7ddc3"/>';
+            }).join('');
+            var spokes = axes.map(function(a,i){ var p = pt(i,1); return '<line x1="'+c+'" y1="'+c+'" x2="'+p[0]+'" y2="'+p[1]+'" stroke="#e7ddc3"/>'; }).join('');
+            var poly = axes.map(function(a,i){ return pt(i, a.value/100).join(','); }).join(' ');
+            var labels = axes.map(function(a,i){
+                var p = pt(i,1.2);
+                return '<text x="'+p[0]+'" y="'+p[1]+'" text-anchor="middle" font-size="12" fill="'+SOFT+'" font-family="Pretendard Variable">'+a.axis+'</text>';
+            }).join('');
+            el.innerHTML = '<svg viewBox="0 0 '+size+' '+size+'" preserveAspectRatio="xMidYMid meet">' + rings + spokes +
+              '<polygon points="'+poly+'" fill="'+GOLD+'" fill-opacity="0.28" stroke="'+GOLD_D+'" stroke-width="2"/>' + labels + '</svg>';
+        }
+
+        (function(){
+            gauge(document.getElementById('overallGauge'), 82, 128);
+            gauge(document.getElementById('relationGauge'), 74, 96);
+            donut(document.getElementById('elementsDonut'), SAJU.fiveElements);
+            hbars(document.getElementById('tenGodsBars'), SAJU.tenGods, 16, false);
+            hbars(document.getElementById('moneyChart'), SAJU.money, 100, false);
+            hbars(document.getElementById('aptitudeChart'), SAJU.aptitude, 100, true);
+            var ML = ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'];
+            lineChart(document.getElementById('monthlyChart'), SAJU.monthly, ML);
+            var bi = SAJU.monthly.indexOf(Math.max.apply(null, SAJU.monthly));
+            var wi = SAJU.monthly.indexOf(Math.min.apply(null, SAJU.monthly));
+            document.getElementById('monthBest').textContent = ML[bi] + ' · ' + SAJU.monthly[bi] + '점';
+            document.getElementById('monthWorst').textContent = ML[wi] + ' · ' + SAJU.monthly[wi] + '점';
+            lineChart(document.getElementById('trendChart'), SAJU.trend, SAJU.trendYears);
+            timeline(document.getElementById('timelineChart'), SAJU.turning);
+            radar(document.getElementById('radarChart'), SAJU.wellbeing);
+            document.getElementById('daewoonSub').textContent = '2024 – 2033 · 대운 진행률 28%';
+
+            var fab = document.getElementById('tocFab'), dim = document.getElementById('tocDim'),
+                sheet = document.getElementById('tocSheet'), now = document.getElementById('tocNow'),
+                links = Array.prototype.slice.call(document.querySelectorAll('#tocNav a'));
+            var sections = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+
+            function openToc(){ sheet.classList.add('open'); dim.classList.add('open'); document.body.classList.add('toc_open'); fab.setAttribute('aria-expanded','true'); sheet.setAttribute('aria-hidden','false'); }
+            function closeToc(){ sheet.classList.remove('open'); dim.classList.remove('open'); document.body.classList.remove('toc_open'); fab.setAttribute('aria-expanded','false'); sheet.setAttribute('aria-hidden','true'); }
+            fab.addEventListener('click', openToc);
+            dim.addEventListener('click', closeToc);
+            document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeToc(); });
+
+            links.forEach(function(a){
+                a.addEventListener('click', function(e){
+                    e.preventDefault(); closeToc();
+                    var t = document.querySelector(a.getAttribute('href'));
+                    var y = t.getBoundingClientRect().top + window.pageYOffset - 70;
+                    setTimeout(function(){ window.scrollTo({ top:y, behavior:'smooth' }); }, 180);
+                });
+            });
+
+            var ob = new IntersectionObserver(function(es){
+                es.forEach(function(e){
+                    if(!e.isIntersecting) return;
+                    var i = sections.indexOf(e.target);
+                    if(i < 0) return;
+                    links.forEach(function(l){ l.classList.remove('on'); });
+                    links[i].classList.add('on');
+                    now.textContent = links[i].textContent.trim().replace(/^(評|命|\d\d)\s*/, '');
+                });
+            }, { rootMargin:'-25% 0px -65% 0px' });
+            sections.forEach(function(s){ if(s) ob.observe(s); });
+
+            document.getElementById('pdfBtn').addEventListener('click', function(){ window.print(); });
+            document.getElementById('shareBtn').addEventListener('click', function(){
+                var url = location.href;
+                /* 카카오 JS SDK 연동 위치 : Kakao.Share.sendDefault(...) */
+                if(navigator.share){ navigator.share({ title:'명월재 심층사주 해설서', url:url }).catch(function(){}); }
+                else { navigator.clipboard.writeText(url); alert('공유 주소가 복사되었습니다.'); }
+            });
+
+            var revToggle = document.getElementById('revToggle'), revForm = document.getElementById('revForm');
+            revToggle.addEventListener('click', function(){
+                var open = revForm.hidden;
+                revForm.hidden = !open;
+                revToggle.textContent = open ? '후기 작성 닫기' : '후기 남기기';
+                revToggle.setAttribute('aria-expanded', String(open));
+            });
+
+            var score = 5, sbtns = Array.prototype.slice.call(document.querySelectorAll('#stars button'));
+            function paint(){ sbtns.forEach(function(b,i){ b.classList.toggle('on', i < score); }); }
+            sbtns.forEach(function(b){ b.addEventListener('click', function(){ score = +b.dataset.v; paint(); }); });
+            paint();
+
+            revForm.addEventListener('submit', function(e){
+                e.preventDefault();
+                alert(score + '점 후기가 등록되었습니다. 감사합니다.');
+                e.target.reset(); score = 5; paint();
+                revForm.hidden = true; revToggle.textContent = '후기 남기기'; revToggle.setAttribute('aria-expanded','false');
+            });
+        })();
+    </script>
+</body>
+</html>

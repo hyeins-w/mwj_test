@@ -36,8 +36,7 @@
     </style>
 
     <style>
-        a{text-decoration: none; color: inherit;}
-        a:hover{color: #aa7529;}
+        a{text-decoration: none;}
         *{margin: 0; padding: 0; box-sizing: border-box; }
         body{
             width: 100%; container-type: inline-size; background-color: #fcfbf9;
@@ -124,51 +123,14 @@
         .menu_btn>div{width: 100%; display: flex; justify-content: space-between; align-items: center; height: 0.2em; background-color: #0d253b; border-radius: 5em;}
 
         .menu_List{display: none;}
-        .menu_List a{color: #0D253B; opacity: 0.67; width: fit-content;}
-        .menu_List a:hover{opacity: 1; color: #0D253B;}
-
-        /* 모바일 메뉴 드로어 */
-        .menu_dim{position: fixed; inset: 0; background: #0d253b73; opacity: 0; visibility: hidden; transition: opacity .3s ease, visibility .3s ease; z-index: 1100;}
-        .menu_dim.open{opacity: 1; visibility: visible;}
-        .menu_drawer{
-            position: fixed; top: 0; right: 0; height: 100%; width: 80%; max-width: 330px; z-index: 1101;
-            background-color: #fcfbf9; background-image: url(./img/main/sec_bg.webp); background-size: cover; background-position: center;
-            box-shadow: -6px 0 24px #44362438; transform: translateX(100%); transition: transform .38s cubic-bezier(.16,.84,.44,1);
-            display: flex; flex-direction: column; padding: 22px 24px 28px;
-        }
-        .menu_drawer.open{transform: translateX(0);}
-        .menu_drawer_top{display: flex; justify-content: space-between; align-items: center; margin-bottom: 34px;}
-        .menu_drawer_top img{width: 120px; display: block;}
-        .menu_close{width: 26px; height: 26px; position: relative; cursor: pointer; flex-shrink: 0; background: none; border: none;}
-        .menu_close::before, .menu_close::after{content: ""; position: absolute; top: 50%; left: 50%; width: 100%; height: 2px; background: #0d253b; border-radius: 5em;}
-        .menu_close::before{transform: translate(-50%,-50%) rotate(45deg);}
-        .menu_close::after{transform: translate(-50%,-50%) rotate(-45deg);}
-        .menu_nav{display: flex; flex-direction: column; gap: 4px;}
-        .menu_nav a{
-            font-family: 'MaruBuri'; font-weight: 600; font-size: 20px; color: #0D253B; padding: 16px 4px;
-            border-bottom: 1px solid #c8aa6440; display: flex; justify-content: space-between; align-items: center;
-            opacity: 0; transform: translateX(18px); transition: opacity .4s ease, transform .4s cubic-bezier(.16,.84,.44,1), color .2s ease;
-        }
-        .menu_drawer.open .menu_nav a{opacity: 1; transform: translateX(0);}
-        .menu_drawer.open .menu_nav a:nth-child(1){transition-delay: .08s;}
-        .menu_drawer.open .menu_nav a:nth-child(2){transition-delay: .14s;}
-        .menu_drawer.open .menu_nav a:nth-child(3){transition-delay: .20s;}
-        .menu_nav a span{color: #c0944d; font-size: 15px; font-family: 'Pretendard Variable'; font-weight: 500;}
-        .menu_nav a.active{color: #aa7529;}
-        .menu_drawer_bot{margin-top: auto;}
-        .menu_drawer_bot p{font-size: 13px; color: #796f58; line-height: 1.6; margin-bottom: 12px; font-weight: 500;}
-        .menu_kakao{display: block; width: 100%; text-align: center; background-color: #ffec02; color: #442f0a; font-weight: 700; font-size: 16px; padding: 14px 0; border-radius: 8px; border: none; cursor: pointer; font-family: 'Pretendard Variable';}
-        .menu_kakao:hover{color: #442f0a;}
-        @media (min-width: 801px){.menu_dim, .menu_drawer{display: none;}}
-        body.menu_open{overflow: hidden;}
 
         @media (min-width: 801px) {
             .menu_btn{display: none;}
             .menu_List{
                 display: flex; justify-content: right; align-items: center; gap: 2cqw; font-size: 0.7em;
             }
-            .menu_List a{color: #0D253B; opacity: 0.67; width: fit-content;}
-            .menu_List a.active{opacity: 1; padding-left: 0.2lh; border-left: 0.2em solid #0D253B;}
+            .menu_List p{color: #0D253B; opacity: 0.67; width: fit-content;}
+            .menu_List p.active{opacity: 1; padding-left: 0.2lh; border-left: 0.2em solid #0D253B;}
         }
 
         /* sec1 */
@@ -499,7 +461,6 @@
         }
         .footL{opacity: 0.7;}
         .foot_movPage{color: white; font-size: 3cqw;}
-        .foot_movPage a:hover{color: #fff; text-decoration: underline;}
 
         @media (min-width: 801px) {
             .footTxt {
@@ -575,38 +536,21 @@
 <body>
     <header>
         <div>
-            <a href="index.html" class="logo">
-                <img src="./img/main/logo.webp" alt="명월재">
-            </a>
-            <div class="menu_btn" id="menuBtn" role="button" tabindex="0" aria-label="메뉴 열기" aria-controls="menuDrawer" aria-expanded="false">
+            <div class="logo">
+                <img src="./img/main/logo.webp" alt="">
+            </div>
+            <div class="menu_btn">
                 <div><div></div><div></div></div>
                 <div><div></div><div></div></div>
                 <div><div></div><div></div></div>
             </div>
-            <nav class="menu_List">
-                <a href="support.html">고객센터</a>
-                <a href="result_lookup.html">내 사주 결과 다시보기</a>
-                <a href="index.html" class="active">사주보기</a>
-            </nav>
+            <div class="menu_List">
+                <p>고객센터</p>
+                <p>내 사주 결과 다시보기</p>
+                <p class="active">사주보기</p>
+            </div>
         </div>
     </header>
-
-    <div class="menu_dim" id="menuDim"></div>
-    <aside class="menu_drawer" id="menuDrawer" aria-hidden="true">
-        <div class="menu_drawer_top">
-            <img src="./img/main/logo.webp" alt="명월재">
-            <button type="button" class="menu_close" id="menuClose" aria-label="메뉴 닫기"></button>
-        </div>
-        <nav class="menu_nav">
-            <a href="index.html" class="active">사주보기<span>신청하기</span></a>
-            <a href="result_lookup.html">내 사주 결과 다시보기<span>다시보기</span></a>
-            <a href="support.html">고객센터<span>문의</span></a>
-        </nav>
-        <div class="menu_drawer_bot">
-            <p>신청·입금 확인 등 궁금한 점은<br>카카오톡 채널로 문의해주세요.</p>
-            <button type="button" class="menu_kakao js-kakao">카카오톡 채널 문의하기</button>
-        </div>
-    </aside>
     
     <section class="mov_secBox">
     </section>
@@ -1209,7 +1153,7 @@
                 편하게 문의주세요. 입금 후 채널로 메시지를 남겨주시면<br>
                 더 빠르게 처리해드립니다
             </p>
-            <div class="main_sec5_kakao js-kakao">카카오톡 채널 문의하기</div>
+            <div class="main_sec5_kakao">카카오톡 채널 문의하기</div>
         </div>
     </section>
 
@@ -1234,12 +1178,11 @@
                 <p>0507-1356-1719</p>
             </div>
         </div>
-        <!-- 팝업 링크 추가 위치 : href="" 안에 주소만 넣으면 바로 동작합니다 -->
         <div class="foot_movPage">
-            <a href="" class="foot_link" data-popup="회사소개">회사소개</a> |
-            <a href="" class="foot_link" data-popup="이용약관">이용약관</a> |
-            <a href="" class="foot_link" data-popup="개인정보 처리방침">개인정보 처리방침</a> |
-            <a href="" class="foot_link" data-popup="환불정책">환불정책</a>
+            <span>회사소개</span> |
+            <span>이용약관</span> |
+            <span>개인정보 처리방침</span> |
+            <span>환불정책</span>
         </div>
     </footer>
 
@@ -1251,57 +1194,6 @@
 <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-auto-scroll@0.5.3/dist/js/splide-extension-auto-scroll.min.js"></script>
 
     <script>
-
-        /* ▼▼ 링크 설정 : 주소만 넣으면 바로 동작합니다 ▼▼ */
-        var KAKAO_CHANNEL_URL = ''; // 예) 'https://pf.kakao.com/_xxxxxx'
-        /* ▲▲ ----------------------------------------- ▲▲ */
-
-        // 모바일 햄버거 메뉴
-        (function(){
-            var btn = document.getElementById('menuBtn'),
-                dim = document.getElementById('menuDim'),
-                drawer = document.getElementById('menuDrawer'),
-                closeBtn = document.getElementById('menuClose');
-            function openMenu(){
-                drawer.classList.add('open'); dim.classList.add('open');
-                document.body.classList.add('menu_open');
-                btn.setAttribute('aria-expanded','true'); drawer.setAttribute('aria-hidden','false');
-            }
-            function closeMenu(){
-                drawer.classList.remove('open'); dim.classList.remove('open');
-                document.body.classList.remove('menu_open');
-                btn.setAttribute('aria-expanded','false'); drawer.setAttribute('aria-hidden','true');
-            }
-            btn.addEventListener('click', openMenu);
-            btn.addEventListener('keydown', function(e){ if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); openMenu(); } });
-            dim.addEventListener('click', closeMenu);
-            closeBtn.addEventListener('click', closeMenu);
-            document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeMenu(); });
-        })();
-
-        // 카카오톡 채널 버튼
-        document.querySelectorAll('.js-kakao').forEach(function(el){
-            el.addEventListener('click', function(){
-                if(KAKAO_CHANNEL_URL){ window.open(KAKAO_CHANNEL_URL, '_blank'); }
-                else { alert('카카오톡 채널 링크 준비 중입니다.'); }
-            });
-        });
-
-        // 푸터 팝업 링크
-        document.querySelectorAll('.foot_link').forEach(function(el){
-            el.addEventListener('click', function(e){
-                e.preventDefault();
-                var url = el.getAttribute('href');
-                if(!url){ alert(el.dataset.popup + ' 페이지 준비 중입니다.'); return; }
-                window.open(url, el.dataset.popup, 'width=720,height=860,scrollbars=yes');
-            });
-        });
-
-        // 신청서 제출 → 로딩 → 무료 결과
-        document.querySelector('.main_sec2 form').addEventListener('submit', function(e){
-            e.preventDefault();
-            location.href = 'loading.html?next=result_free.html';
-        });
 
         // 리뷰작성 버튼(1차_조건 없음/비 구입시 뜨는거)
         document.querySelector('.main_review_writingBtn').addEventListener("click",()=>{
