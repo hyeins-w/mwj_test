@@ -13,17 +13,18 @@
 
         /* 마루부리 */
         @font-face {
-            font-family: 'MaruBuri';
-            src: url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.woff2);
-            font-weight: 600;
-            font-display: swap;
-        }
-        @font-face {
-            font-family: 'MaruBuri';
-            src: url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-Bold.woff2);
-            font-weight: 900;
-            font-display: swap;
-        }
+    font-family: 'MaruBuri';
+    src: url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.woff2);
+    font-weight: 600;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'MaruBuri';
+    src: url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-Bold.woff2);
+    font-weight: 700;
+    font-display: swap;
+}
 
         /* 조선 궁서 */
         @font-face {
@@ -106,7 +107,7 @@
             width: 100%; position: fixed; top: 0; left: 50%; transform: translateX(-50%); z-index: 1000; border-bottom: 1px solid #0d253b00; transition: 0.3s; padding: 1lh 0;
         }
         header.scroll{
-            border-bottom: 1px solid #0d253ba6; background-color: rgba(255, 255, 255, 0.699); backdrop-filter: blur(2.5px); -webkit-backdrop-filter: blur(22px); padding: 0.5lh 0;
+            border-bottom: 1px solid #0d253b4b; background-color: rgba(255, 255, 255, 0.699); backdrop-filter: blur(2.5px); -webkit-backdrop-filter: blur(22px); padding: 0.5lh 0;
         }
         header>div{
             width: 95%; max-width: 1200px; margin: auto;
@@ -124,7 +125,7 @@
 
         /* sec1 */
         .main_sec1{padding-top: 5.5lh;}
-        .main_sec1_top{font-family: 'MaruBuri'; text-align: center; margin-bottom: 8%;}
+        .main_sec1_top{font-family: 'MaruBuri'; text-align: center; margin-bottom: 8%; font-weight: 600;}
         .main_sec1_top>div{
             display: flex; flex-direction: column; justify-content: center; align-items: center;
         }
@@ -138,13 +139,13 @@
         .main_sec1_top>p{font-size: 4.3cqw;}
 
         .main_sec1_mid{
-            width: 90%; margin: auto;font-family: 'MaruBuri'; text-align: center;
+            width: 90%; margin: auto;font-family: 'MaruBuri'; text-align: center; font-weight: 600;
             background-color: #fffdf8; border: 1px solid #c8aa64; border-radius: 1lh; padding: 0.5lh; padding-bottom: 2lh;
             box-shadow: 0 0 5px #4436243a; margin-bottom: 5%;
         }
         .main_decoStr{width: 95%; margin: auto;}
-        .main_sec1_mid p{margin-top: 1.5lh; font-size: 3.5cqw;}
-        .main_sec1_mid p b{font-weight: 900; display: inline-block; position: relative; width: fit-content; margin: auto; z-index: 1;}
+        .main_sec1_mid p{margin-top: 1.5lh; font-size: 3.8cqw; font-weight: 600;}
+        .main_sec1_mid p b{font-weight: 700; display: inline-block; position: relative; width: fit-content; margin: auto; z-index: 1;}
         .main_sec1_mid p span{
             width: 100%; display: block; position: absolute; height: 0.6lh; background-color: #c8aa642f; left: 0; bottom: 0; z-index: -1;
         }
@@ -216,7 +217,7 @@
             display: block;
             width: 49%; background-color: #fffdf8;
             line-height: 100%; padding: 0.4em 0.2em; font-family: 'Wanted Sans';
-            font-size: 4.5cqw; border-radius: 0.3em; border: 1px solid #afa090;
+            font-size: 5cqw; border-radius: 0.3em; border: 1px solid #afa090;
             cursor: pointer; text-align: center; color: #442f0a;
             transition: all 0.2s ease;
         }
@@ -279,12 +280,12 @@
             font-size: 8cqw; font-family: 'MaruBuri'; margin-bottom: 5%;
         }
         .main_sec3_top h2 b{font-size: 9cqw;}
-        .main_sec3_top p{ font-size: 3.6cqw; font-weight: 700; line-height: 1.7;}
+        .main_sec3_top p{ font-size: 3.6cqw; font-weight: 600; line-height: 1.7;}
         .main_sec3_Card{
             width: 90%; margin: auto ; margin-bottom: 3%; background-color: white; box-shadow: 0 0 5px #4436243a; border-radius: 0.3em;
             display: flex; gap: 0.5lh; padding: 0.5lh;
         }
-        .main_sec3_Card h3{font-family: 'MaruBuri'; font-weight: 900; font-size: 5.5cqw;}
+        .main_sec3_Card h3{font-family: 'MaruBuri'; font-weight: 700; font-size: 5.5cqw;}
         .main_sec3_Card p{font-weight: 600; font-size: 4cqw; margin-top: 2%; line-height: 1.5;}
         .main_sec3_Card>div:nth-child(1){
             width: 0.3lh; height: 3lh; border-radius: 5em;
@@ -292,17 +293,125 @@
 
         /* sec4 */
 
+        .main_sec4{padding-bottom: 5%;}
+
         .main_sec4_str{
             margin: 7% auto; width: 1px; height: 4.5lh; margin-top: 0;
             background-color: #c0944d;
         }
-        .main_sec4_top h2{font-size: 9cqw; font-family: 'MaruBuri'; text-align: center;}
+        .main_sec4_top{margin-bottom: 10%;}
+        .main_sec4_top h2{font-size: 9cqw; font-family: 'MaruBuri'; text-align: center; font-weight: 700;}
         .main_review_writingBtn{
             margin: 4% auto; width: fit-content; background-color: #f7f1e4; border: 1px solid #dec183; color: #786d56; font-weight: 500; font-size: 5cqw; padding: 0.2lh 1lh; border-radius: 5em;
         }
 
-        .loopslide3{width: 100%; position: relative;}
-.splide__slide img{width: 100%; object-fit: contain;}
+        .main_sec4_loopslide{width: 100%; position: relative; pointer-events: none;}
+        .main_sec4_loopslide li{
+            width: 100%; aspect-ratio: 1/0.7; padding-bottom: 0.5lh;  background-color: #ffffff; border: 1px solid #f2f0ec; border-radius: 0.5em;
+            background: linear-gradient(-25deg, rgba(229, 221, 194, 1) 0%, rgba(255, 255, 255, 1) 42%, rgba(255, 255, 255, 1) 100%);
+        }
+        .rev_star{width: 95%; height: 20%; margin: auto; display: flex; border-bottom: 1px solid #c8aa64; padding-top: 5%; align-items: center; justify-content: left; gap: 1.5cqw; padding-bottom: 1%;}
+        .rev_star img{display: block; width: 8%;}
+        .rev_txt{ width: 100%; height: 60%; padding: 2.5%; font-size: 4cqw; word-break: keep-all;}
+        .rev_user{ width: 95%; height: 20%; display: flex; align-items: center; margin: auto;}
+        .rev_user>div{width: 2.3lh; margin-right: 3cqw;}
+        .splide1{margin-bottom: 3%;}
+
+        .main_sec4_bot{text-align: center;}
+        .main_sec4_starTxt{
+            margin: 8% auto;
+        }
+        .main_sec4_starTxt img{display: block; width: 1.5lh; margin: auto; margin-bottom: 3%;}
+        .main_sec4_starTxt p{font-size: 4cqw; font-weight: 500;}
+
+        .main_sec4_bList{
+            width: 95%; margin: auto; display: flex; justify-content: space-between; align-items: center; margin-bottom: 8%;
+        }
+        .main_sec4_bList>div{
+            width: 49%; background-color: white; container-type: inline-size; 
+            aspect-ratio: 1/0.6; border: 1px solid #c8aa64; box-shadow: 0 0 5px #442f0a2c; border-radius: 0.5em;
+            display: flex; flex-direction: column; justify-content: start; align-items: center; padding-top: 4%;
+        }
+        .main_sec4_bList h2{
+            font-size: 18cqw; font-weight: 900;
+            background: linear-gradient(-30deg, rgba(13, 37, 59, 1) 0%, rgba(0, 48, 145, 1) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent; margin-bottom: 5%;
+        }
+        .main_sec4_bList p{font-size: 7.5cqw;font-weight: 600; line-height: 1.3;}
+
+        .main_sec4_btn{
+            text-align: center; width: 78%; margin: auto; color: white; font-size: 5.5cqw; font-weight: 600; padding: 0.5lh 0;
+            background: #0D253B; background: linear-gradient(-30deg, rgba(13, 37, 59, 1) 0%, rgba(0, 48, 145, 1) 100%); border-radius: 0.5em;
+        }
+
+
+
+        /* main_sec5 */
+        .main_sec5{margin-top: 8%; padding-bottom: 15%;}
+        .main_sec5_str{width: 95%; margin: auto;}
+        .main_sec5_tit{text-align: center; font-family: 'MaruBuri'; font-weight: 700; font-size: 6cqw; margin-top: 1lh; margin-bottom: 5%;}
+
+        /* FAQ 아코디언 */
+        .main_sec5_list{
+            width: 90%; margin: auto; display: flex; flex-direction: column; gap: 0.5lh; margin-bottom: 15%;
+        }
+
+        .faq_item{
+            background: #fff; border: 1px solid #c8aa6481; border-radius: 0.5em;
+            overflow: hidden; transition: border-color 0.25s ease;  box-shadow: 0 0 5px #44362415;
+            background: linear-gradient(-30deg, #fbf8f2 0%, #fff 50%); border-radius: 0.5em;
+        }
+        .faq_item.active{ border-color: #c0944d; box-shadow: 0 0 5px #4436243a; background: linear-gradient(-30deg, #fbf8f281 0%, #ffffff81 50%);}
+
+        .faq_q{
+            all: unset; display: flex; align-items: center; justify-content: space-between;
+            width: 100%; cursor: pointer; gap: 1em; padding: 0.6lh 5cqw; position: relative;
+        }
+        .faq_q:focus-visible{ outline: 0.12em solid #c0944d; outline-offset: -0.12em; }
+
+        .faq_tit{
+            font-size: 4.2cqw; font-weight: 700; line-height: 1.5; color: #333244;
+        }
+
+        /* + / − 아이콘: 1lh = 텍스트 한 줄 높이 기준 정사각형 */
+        .faq_ic{ position: absolute; right: 9%; transform: translateX(-50%); flex-shrink: 0; width: 1lh; height: 1lh; }
+        .faq_ic::before, .faq_ic::after{
+            content: ""; position: absolute; top: 50%; left: 50%; width: 65%; height: 0.15em;
+            background: #c0944d; border-radius: 999px; transform: translate(-50%, -50%);
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        .faq_ic::after{ transform: translate(-50%, -50%) rotate(90deg); }
+        .faq_item.active .faq_ic::after{ transform: translate(-50%, -50%) rotate(0deg); opacity: 0; }
+
+        /* 패널: grid 0fr→1fr 트릭, JS 높이계산 없이 자연스럽게 펼침 */
+        .faq_panel{ display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s ease; }
+        .faq_item.active .faq_panel{ grid-template-rows: 1fr; }
+        .faq_panel_inner{ overflow: hidden; }
+
+        .faq_txt{
+            margin: 0; padding: 0 5cqw 0.6lh; font-size: 3.5cqw; line-height: 1.6;
+            font-weight: 500; color: #6f6555; word-break: keep-all;
+        }
+        .main_sec5_box{
+            width: 90%; background-color: white; padding: 5%; box-shadow: 0 0 5px #4436243a;
+            margin: auto; border-radius: 0.5em; z-index: 1; position: relative; padding-top: 6%; overflow: hidden;
+        }
+
+        .main_sec5_box p{font-size: 3.5cqw; text-align: center; font-weight: 600; color: #796f58; line-height: 1.7; margin-bottom: 5%;}
+        
+        .main_sec5_kakao{
+            width: 80%; margin: auto; background-color: #ffec02; text-align: center; font-size: 5cqw; font-weight: 600; color: #442f0a; padding: 2.5% 0; border-radius: 0.5em;
+        }
+        .main_sec5_box_deco{
+            position: absolute; width: 100%; bottom: 0; left: 50%; transform: translateX(-50%) scale(1.2); z-index: -1; 
+        }
+
+        footer{
+            width: 100%; background-color: #818181; height: 3lh;
+        }
 
     </style>
 
@@ -596,22 +705,334 @@
             </h2>
             <div class="main_review_writingBtn">리뷰쓰기</div>
         </div>
-
         
-<div class="loopslide3">
-  <div class="splide splide1" aria-label="Splide AutoScroll Example">
-      <div class="splide__track">
-        <ul class="splide__list">
-          <li class="splide__slide"> <img src="./img/slide1.webp" alt=""> </li>
-          <li class="splide__slide"> <img src="./img/slide2.webp" alt=""> </li>
-          <li class="splide__slide"> <img src="./img/slide3.webp" alt=""> </li>
-          <li class="splide__slide"> <img src="./img/slide4.webp" alt=""> </li>
-        </ul>
-      </div>
-  </div>
-</div>
+        <div class="main_sec4_loopslide">
+            <div class="splide splide1" aria-label="Splide AutoScroll Example">
+                <div class="splide__track">
+                    <ul class="splide__list">
+                        
+                        <li class="splide__slide">
+    <div class="rev_star">
+        <img src="./img/main/star1.webp" alt="">
+        <img src="./img/main/star1.webp" alt="">
+        <img src="./img/main/star1.webp" alt="">
+        <img src="./img/main/star1.webp" alt="">
+        <img src="./img/main/star1.webp" alt="">
+    </div>
+    <div class="rev_txt">
+        <p>
+            덕분에 저에 대해 더 잘 알게 됐어요. PDF로
+            받아서 가끔 다시 읽는데 그때마다 위로받습니다.
+        </p>
+    </div>
+    <div class="rev_user">
+        <div><img src="./img/main/rev_user.webp" alt=""></div>
+        <b>박0서</b><span> · 20대</span>
+    </div>
+</li>
+
+<li class="splide__slide">
+    <div class="rev_star">
+        <img src="./img/main/star1.webp" alt="">
+        <img src="./img/main/star1.webp" alt="">
+        <img src="./img/main/star1.webp" alt="">
+        <img src="./img/main/star1.webp" alt="">
+        <img src="./img/main/star1.webp" alt="">
+    </div>
+    <div class="rev_txt">
+        <p>
+            요즘 진로 때문에 고민이 많았는데, 제가 어떤 환경에서
+            강점을 발휘하는지 알게 되어 방향을 잡는 데 도움이 됐어요.
+        </p>
+    </div>
+    <div class="rev_user">
+        <div><img src="./img/main/rev_user.webp" alt=""></div>
+        <b>김0윤</b><span> · 20대</span>
+    </div>
+</li>
+
+<li class="splide__slide">
+    <div class="rev_star">
+        <img src="./img/main/star1.webp" alt="">
+        <img src="./img/main/star1.webp" alt="">
+        <img src="./img/main/star1.webp" alt="">
+        <img src="./img/main/star1.webp" alt="">
+        <img src="./img/main/star1.webp" alt="">
+    </div>
+    <div class="rev_txt">
+        <p>
+            단순히 좋은 말만 해주는 게 아니라 조심해야 할 부분까지
+            구체적으로 알려줘서 더 믿음이 갔습니다.
+        </p>
+    </div>
+    <div class="rev_user">
+        <div><img src="./img/main/rev_user.webp" alt=""></div>
+        <b>이0진</b><span> · 30대</span>
+    </div>
+</li>
+
+<li class="splide__slide">
+    <div class="rev_star">
+        <img src="./img/main/star1.webp" alt="">
+        <img src="./img/main/star1.webp" alt="">
+        <img src="./img/main/star1.webp" alt="">
+        <img src="./img/main/star1.webp" alt="">
+        <img src="./img/main/star1.webp" alt="">
+    </div>
+    <div class="rev_txt">
+        <p>
+            제 성격이나 인간관계에서 반복되는 고민을 정확하게 짚어서
+            놀랐어요. 왜 그랬는지 조금은 이해하게 됐습니다.
+        </p>
+    </div>
+    <div class="rev_user">
+        <div><img src="./img/main/rev_user.webp" alt=""></div>
+        <b>최0아</b><span> · 30대</span>
+    </div>
+</li>
+
+                    </ul>
+                </div>
+            </div>
+            <div class="splide splide2" aria-label="Splide AutoScroll Example">
+                <div class="splide__track">
+                    <ul class="splide__list">
+                        
+                        
+<li class="splide__slide">
+    <div class="rev_star">
+        <img src="./img/main/star1.webp" alt="">
+        <img src="./img/main/star1.webp" alt="">
+        <img src="./img/main/star1.webp" alt="">
+        <img src="./img/main/star1.webp" alt="">
+        <img src="./img/main/star1.webp" alt="">
+    </div>
+    <div class="rev_txt">
+        <p>
+            연애할 때마다 비슷한 문제로 힘들었는데 결과를 읽고 나니
+            제가 어떤 관계를 원하는지 확실히 알 것 같아요.
+        </p>
+    </div>
+    <div class="rev_user">
+        <div><img src="./img/main/rev_user.webp" alt=""></div>
+        <b>정0원</b><span> · 20대</span>
+    </div>
+</li>
+
+<li class="splide__slide">
+    <div class="rev_star">
+        <img src="./img/main/star1.webp" alt="">
+        <img src="./img/main/star1.webp" alt="">
+        <img src="./img/main/star1.webp" alt="">
+        <img src="./img/main/star1.webp" alt="">
+        <img src="./img/main/star1.webp" alt="">
+    </div>
+    <div class="rev_txt">
+        <p>
+            내용이 생각보다 자세하고 읽기 쉽게 정리되어 있었어요.
+            특히 올해의 흐름과 시기별 조언이 가장 유용했습니다.
+        </p>
+    </div>
+    <div class="rev_user">
+        <div><img src="./img/main/rev_user.webp" alt=""></div>
+        <b>한0민</b><span> · 40대</span>
+    </div>
+</li>
+
+<li class="splide__slide">
+    <div class="rev_star">
+        <img src="./img/main/star1.webp" alt="">
+        <img src="./img/main/star1.webp" alt="">
+        <img src="./img/main/star1.webp" alt="">
+        <img src="./img/main/star1.webp" alt="">
+        <img src="./img/main/star1.webp" alt="">
+    </div>
+    <div class="rev_txt">
+        <p>
+            중요한 결정을 앞두고 마음이 복잡했는데 결과를 읽으면서
+            생각을 차분하게 정리할 수 있었습니다.
+        </p>
+    </div>
+    <div class="rev_user">
+        <div><img src="./img/main/rev_user.webp" alt=""></div>
+        <b>윤0희</b><span> · 40대</span>
+    </div>
+</li>
+
+<li class="splide__slide">
+    <div class="rev_star">
+        <img src="./img/main/star1.webp" alt="">
+        <img src="./img/main/star1.webp" alt="">
+        <img src="./img/main/star1.webp" alt="">
+        <img src="./img/main/star1.webp" alt="">
+        <img src="./img/main/star1.webp" alt="">
+    </div>
+    <div class="rev_txt">
+        <p>
+            친구 추천으로 가볍게 시작했는데 예상보다 잘 맞아서
+            몇 번이나 다시 읽었어요. 가족에게도 추천해 줬습니다.
+        </p>
+    </div>
+    <div class="rev_user">
+        <div><img src="./img/main/rev_user.webp" alt=""></div>
+        <b>조0현</b><span> · 30대</span>
+    </div>
+</li>
+
+<li class="splide__slide">
+    <div class="rev_star">
+        <img src="./img/main/star1.webp" alt="">
+        <img src="./img/main/star1.webp" alt="">
+        <img src="./img/main/star1.webp" alt="">
+        <img src="./img/main/star1.webp" alt="">
+        <img src="./img/main/star1.webp" alt="">
+    </div>
+    <div class="rev_txt">
+        <p>
+            막연하게 불안했던 부분을 현실적인 조언으로 풀어줘서
+            좋았어요. 앞으로 무엇을 준비해야 할지 감이 잡혔습니다.
+        </p>
+    </div>
+    <div class="rev_user">
+        <div><img src="./img/main/rev_user.webp" alt=""></div>
+        <b>오0빈</b><span> · 20대</span>
+    </div>
+</li>
+
+<li class="splide__slide">
+    <div class="rev_star">
+        <img src="./img/main/star1.webp" alt="">
+        <img src="./img/main/star1.webp" alt="">
+        <img src="./img/main/star1.webp" alt="">
+        <img src="./img/main/star1.webp" alt="">
+        <img src="./img/main/star1.webp" alt="">
+    </div>
+    <div class="rev_txt">
+        <p>
+            배우자와 함께 궁합을 봤는데 서로 다르게 생각했던 이유가
+            이해됐어요. 관계를 돌아보는 좋은 계기가 됐습니다.
+        </p>
+    </div>
+    <div class="rev_user">
+        <div><img src="./img/main/rev_user.webp" alt=""></div>
+        <b>신0영</b><span> · 30대</span>
+    </div>
+</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="main_sec4_bot">
+            <div class="main_sec4_starTxt">
+                <img src="./img/main/star2.webp" alt="">
+                <p>
+                    꽃 피는 시기가 <b>모두 같을 수는 없습니다.</b><br>
+                    당신의 운에도 <b>가장 찬란하게 피어나는 때</b>가 있습니다.
+                </p>
+            </div>
+            <div class="main_sec4_bList">
+                <div>
+                    <h2>10개</h2>
+                    <p>
+                        명월재 심층사주 파트<br>
+                        타고난 명부터 마지막 당부까지
+                    </p>
+                </div>
+                <div>
+                    <h2>29,000원</h2>
+                    <p>추가금액 없음</p>
+                </div>
+            </div>
+            <div class="main_sec4_btn">나의 운명해설서 펼쳐보기 ></div>
+        </div>
                 
     </section>
+
+    <section class="main_sec5">
+        <div class="main_sec5_str"><img src="./img/main/deco_str.webp" alt=""></div>
+        <div class="main_sec5_tit"><h2>자주 묻는 질문</h2></div>
+        <div class="main_sec5_list">
+
+    <div class="faq_item active">
+        <button class="faq_q" aria-expanded="true">
+            <span class="faq_tit">태어난 시간을 정확히 몰라요</span>
+            <span class="faq_ic"></span>
+        </button>
+        <div class="faq_panel">
+            <div class="faq_panel_inner">
+                <p class="faq_txt">
+                    시간 없이 년/월/일 기둥 기반으로 분석은 가능합니다.<br>
+                    다만 시주와 일부 해석의 정밀도가 낮아지니, 가능하면 신청서에 출생시각을 함께 알려주세요.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="faq_item">
+        <button class="faq_q" aria-expanded="false">
+            <span class="faq_tit">음력 생일이어도 되나요?</span>
+            <span class="faq_ic"></span>
+        </button>
+        <div class="faq_panel">
+            <div class="faq_panel_inner">
+                <p class="faq_txt">네, 양력·음력(윤달 포함) 모두 신청 시 구분만 알려주시면 자동으로 변환해 정확히 계산합니다.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="faq_item">
+        <button class="faq_q" aria-expanded="false">
+            <span class="faq_tit">리포트는 어떻게 받나요?</span>
+            <span class="faq_ic"></span>
+        </button>
+        <div class="faq_panel">
+            <div class="faq_panel_inner">
+                <p class="faq_txt">완성된 분석을 PDF로 정리해 이메리 또는 카카오톡으로 보내드립니다.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="faq_item">
+        <button class="faq_q" aria-expanded="false">
+            <span class="faq_tit">얼마나 걸리나요?</span>
+            <span class="faq_ic"></span>
+        </button>
+        <div class="faq_panel">
+            <div class="faq_panel_inner">
+                <p class="faq_txt">결제가 확인되면 24시간 이내에 보내드립니다. 정확한 안내는 신청 후 연락 채널에서 다시 드립니다.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="faq_item">
+        <button class="faq_q" aria-expanded="false">
+            <span class="faq_tit">결과를 꼭 믿어야 하나요?</span>
+            <span class="faq_ic"></span>
+        </button>
+        <div class="faq_panel">
+            <div class="faq_panel_inner">
+                <p class="faq_txt">본 서비스는 명리학 이론에 기반한 참고용 엔터테인먼트 콘텐츠입니다. 결과는 확정된 미래가 아니라 삶의 참고 자료 이며, 의료·법률·투자·결혼 등 중요한 결정의 근거로 삼지 마세요. 운명은 정해진 것이 아니라 노력으로 만들어 갑니다.</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+        <div class="main_sec5_tit"><h2>담당자 문의하기</h2></div>
+        <div class="main_sec5_box">
+            <div class="main_sec5_box_deco"><img src="./img/main/deco_obj1.webp" alt=""></div>
+            <p>
+                궁금한 점이나 신청·입금 확인은 카카오톡 채널로<br>
+                편하게 문의주세요. 입금 후 채널로 메시지를 남겨주시면<br>
+                더 빠르게 처리해드립니다
+            </p>
+            <div class="main_sec5_kakao">카카오톡 채널 문의하기</div>
+        </div>
+    </section>
+
+    <footer></footer>
 
 
     
@@ -623,40 +1044,81 @@
     <script>
 
 
-new Splide('.splide1', {
-    type   : 'loop',
-    drag   : 'none',
-    focus  : 'center',
-    perPage: 3,
-    autoHeight: true,
-    autoScroll: { speed: 0.5 },
-    arrows: false,       // ⬅➡ 버튼 
-    pagination: false,   //점 네비
-    gap: '0.5em',
-}).mount( window.splide.Extensions );
+        // 리뷰슬라이드
 
+        new Splide('.splide1', {
+            type   : 'loop',
+            drag   : 'none',
+            focus  : 'center',
+            perPage: 1.5,
+            autoHeight: true,
+            autoScroll: { speed: 0.5 },
+            arrows: false,       // ⬅➡ 버튼 
+            pagination: false,   //점 네비
+            gap: '0.5em',
+        }).mount( window.splide.Extensions );
+
+        new Splide('.splide2', {
+            type   : 'loop',
+            drag   : 'none',
+            focus  : 'center',
+            perPage: 1.5,
+            autoHeight: true,
+            autoScroll: { speed: -0.5 },
+            arrows: false,       // ⬅➡ 버튼 
+            pagination: false,   //점 네비
+            gap: '0.5em',
+        }).mount( window.splide.Extensions );
+
+
+        // 헤더 스크롤 감지
         const header = document.querySelector('header');
 
         window.addEventListener('scroll', () => {
           header.classList.toggle('scroll', window.scrollY > 30);
         });
 
+
+        // 태어난 시각
         const birthTime = document.querySelector('#birthTime');
-const birthTimeUnknown = document.querySelector('#birthTimeUnknown');
+        const birthTimeUnknown = document.querySelector('#birthTimeUnknown');
 
-function updateBirthTime() {
-    const isUnknown = birthTimeUnknown.checked;
+        function updateBirthTime() {
+            const isUnknown = birthTimeUnknown.checked;
+        
+            birthTime.disabled = isUnknown;
+            birthTime.required = !isUnknown;
+        
+            if (isUnknown) {
+                birthTime.value = '';
+            }
+        }
 
-    birthTime.disabled = isUnknown;
-    birthTime.required = !isUnknown;
+        birthTimeUnknown.addEventListener('change', updateBirthTime);
+        updateBirthTime();
 
-    if (isUnknown) {
-        birthTime.value = '';
-    }
-}
 
-birthTimeUnknown.addEventListener('change', updateBirthTime);
-updateBirthTime();
+        // 아코디언
+        // FAQ 아코디언 토글
+document.querySelectorAll('.main_sec5_list').forEach((list) => {
+    list.addEventListener('click', (e) => {
+        const q = e.target.closest('.faq_q');
+        if (!q) return;
+
+        const item = q.closest('.faq_item');
+        const isActive = item.classList.contains('active');
+
+        list.querySelectorAll('.faq_item.active').forEach((openItem) => {
+            if (openItem !== item) {
+                openItem.classList.remove('active');
+                openItem.querySelector('.faq_q').setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        item.classList.toggle('active', !isActive);
+        q.setAttribute('aria-expanded', String(!isActive));
+    });
+});
     </script>
 
 </body>
