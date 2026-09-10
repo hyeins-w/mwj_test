@@ -122,6 +122,16 @@
         }
         .menu_btn>div{width: 100%; display: flex; justify-content: space-between; align-items: center; height: 0.2em; background-color: #0d253b; border-radius: 5em;}
 
+        .menu_List{display: none;}
+
+        @media (min-width: 801px) {
+            .menu_btn{display: none;}
+            .menu_List{
+                display: flex; justify-content: right; align-items: center; gap: 2cqw; font-size: 0.7em;
+            }
+            .menu_List p{color: #0D253B; opacity: 0.67; width: fit-content;}
+            .menu_List p.active{opacity: 1; padding-left: 0.2lh; border-left: 0.2em solid #0D253B;}
+        }
 
         /* sec1 */
         .main_sec1{padding-top: 5.5lh;}
@@ -534,8 +544,16 @@
                 <div><div></div><div></div></div>
                 <div><div></div><div></div></div>
             </div>
+            <div class="menu_List">
+                <p>고객센터</p>
+                <p>내 사주 결과 다시보기</p>
+                <p class="active">사주보기</p>
+            </div>
         </div>
     </header>
+    
+    <section class="mov_secBox">
+    </section>
 
     <section class="main_sec1">
         <div class="main_sec1_top reveal-group">
@@ -1259,25 +1277,25 @@
 
         // 아코디언
         // FAQ 아코디언 토글
-document.querySelectorAll('.main_sec5_list').forEach((list) => {
-    list.addEventListener('click', (e) => {
-        const q = e.target.closest('.faq_q');
-        if (!q) return;
-
-        const item = q.closest('.faq_item');
-        const isActive = item.classList.contains('active');
-
-        list.querySelectorAll('.faq_item.active').forEach((openItem) => {
-            if (openItem !== item) {
-                openItem.classList.remove('active');
-                openItem.querySelector('.faq_q').setAttribute('aria-expanded', 'false');
-            }
+        document.querySelectorAll('.main_sec5_list').forEach((list) => {
+            list.addEventListener('click', (e) => {
+                const q = e.target.closest('.faq_q');
+                if (!q) return;
+            
+                const item = q.closest('.faq_item');
+                const isActive = item.classList.contains('active');
+            
+                list.querySelectorAll('.faq_item.active').forEach((openItem) => {
+                    if (openItem !== item) {
+                        openItem.classList.remove('active');
+                        openItem.querySelector('.faq_q').setAttribute('aria-expanded', 'false');
+                    }
+                });
+            
+                item.classList.toggle('active', !isActive);
+                q.setAttribute('aria-expanded', String(!isActive));
+            });
         });
-
-        item.classList.toggle('active', !isActive);
-        q.setAttribute('aria-expanded', String(!isActive));
-    });
-});
 
 
         // ===================================================

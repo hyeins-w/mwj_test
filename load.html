@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>명월재(命月齋) - 심층사주 풀이 중</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-hanji: #f7f5f0;
+      --bg-card: #fdfbf7;
+      --ink-black: #1f1e1d;
+      --ink-gray: #6e6a64;
+      --ink-light: #9e9a93;
+      --gold-deep: #b2884b;
+      --gold-accent: #cfa86e;
+      --border-line: #e3ded6;
+      --card-border: #dcd4c7;
+      
+      /* 오행 고유색 (명월재 한지 톤에 맞춘 은은한 한국 전통 오방간색) */
+      --wood: #407357;
+      --fire: #b84337;
+      --earth: #ba8339;
+      --metal: #7a8288;
+      --water: #375375;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+    }
+
+    body {
+      background-color: var(--bg-hanji);
+      color: var(--ink-black);
+      font-family: 'Noto Serif KR', 'Pretendard', serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* 한지 텍스처 느낌의 미세 노이즈 */
+    .hanji-overlay {
+      position: fixed;
+      inset: 0;
+      opacity: 0.035;
+      background-image: radial-gradient(var(--ink-black) 1px, transparent 1px);
+      background-size: 6px 6px;
+      pointer-events: none;
+    }
+
+    .loader-card {
+      width: calc(100% - 40px);
+      max-width: 420px;
+      background: var(--bg-card);
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      padding: 44px 28px 36px;
+      box-shadow: 0 10px 30px rgba(74, 63, 50, 0.05);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    /* 상단 장식 매듭 선 */
+    .knot-deco {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      width: 100%;
+      margin-bottom: 24px;
+    }
+
+    .knot-deco .line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold-accent), transparent);
+    }
+
+    .knot-deco .diamond {
+      width: 7px;
+      height: 7px;
+      background-color: var(--gold-deep);
+      transform: rotate(45deg);
+    }
+
+    /* 브랜드 서브 타이틀 */
+    .brand-sub {
+      font-size: 13px;
+      color: var(--gold-deep);
+      letter-spacing: 0.12em;
+      margin-bottom: 30px;
+      font-weight: 600;
+    }
+
+    /* 나침반 및 달(月) 애니메이션 컨테이너 */
+    .compass-area {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 34px;
+    }
+
+    /* 외곽 지지 회전 링 */
+    .ganji-ring {
+      position: absolute;
+      inset: 0;
+      border: 1px dashed rgba(178, 136, 75, 0.4);
+      border-radius: 50%;
+      animation: spinClockwise 32s linear infinite;
+    }
+
+    .ganji-char {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      font-size: 11px;
+      color: var(--gold-deep);
+      opacity: 0.8;
+      font-weight: 600;
+      transform-origin: center center;
+    }
+
+    /* 오행 궤도 */
+    .elements-ring {
+      position: absolute;
+      width: 136px;
+      height: 136px;
+      border: 1px solid rgba(178, 136, 75, 0.15);
+      border-radius: 50%;
+      animation: spinCounter 16s linear infinite;
+    }
+
+    .elem-node {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+    }
+
+    .node-wood  { top: -3px; left: calc(50% - 3px); background: var(--wood); }
+    .node-fire  { top: 38%; right: -3px; background: var(--fire); }
+    .node-earth { bottom: 8%; right: 18%; background: var(--earth); }
+    .node-metal { bottom: 8%; left: 18%; background: var(--metal); }
+    .node-water { top: 38%; left: -3px; background: var(--water); }
+
+    /* 중앙 명월(明月) 코어 */
+    .moon-core {
+      position: relative;
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #fffdfa 0%, #eae3d3 100%);
+      border: 1px solid var(--gold-accent);
+      box-shadow: 0 4px 18px rgba(178, 136, 75, 0.18);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: moonBreathing 2.6s ease-in-out infinite alternate;
+    }
+
+    .moon-core span {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--ink-black);
+      letter-spacing: -0.05em;
+    }
+
+    /* 메인 타이틀 */
+    .main-title {
+      font-size: 21px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--ink-black);
+      margin-bottom: 10px;
+    }
+
+    .sub-quote {
+      font-size: 13px;
+      color: var(--ink-gray);
+      margin-bottom: 22px;
+      letter-spacing: -0.01em;
+      min-height: 20px;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    /* 명월재 단계 표시 태그 (원국 · 오행 · 십성 · 대운 · 세운) */
+    .flow-steps {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding-top: 18px;
+      border-top: 1px solid var(--border-line);
+      width: 100%;
+    }
+
+    .flow-item {
+      font-size: 11px;
+      color: var(--ink-light);
+      padding: 4px 6px;
+      border-radius: 4px;
+      transition: all 0.4s ease;
+      font-weight: 400;
+    }
+
+    .flow-item.active {
+      color: var(--ink-black);
+      font-weight: 700;
+      background-color: rgba(178, 136, 75, 0.12);
+    }
+
+    .flow-dot {
+      font-size: 9px;
+      color: var(--card-border);
+    }
+
+    @keyframes spinClockwise {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes spinCounter {
+      from { transform: rotate(360deg); }
+      to { transform: rotate(-360deg); }
+    }
+
+    @keyframes moonBreathing {
+      0% { transform: scale(0.96); box-shadow: 0 4px 12px rgba(178, 136, 75, 0.12); }
+      100% { transform: scale(1.03); box-shadow: 0 6px 22px rgba(178, 136, 75, 0.28); }
+    }
+  </style>
+</head>
+<body>
+  <div class="hanji-overlay"></div>
+
+  <div class="loader-card">
+    <div class="knot-deco">
+      <span class="line"></span>
+      <span class="diamond"></span>
+      <span class="line"></span>
+    </div>
+
+    <div class="brand-sub">상위 1% 정통 역술 체계</div>
+
+    <!-- 나침반 & 달 심볼 -->
+    <div class="compass-area">
+      <div class="ganji-ring" id="ganjiRing"></div>
+      
+      <div class="elements-ring">
+        <span class="elem-node node-wood"></span>
+        <span class="elem-node node-fire"></span>
+        <span class="elem-node node-earth"></span>
+        <span class="elem-node node-metal"></span>
+        <span class="elem-node node-water"></span>
+      </div>
+
+      <div class="moon-core">
+        <span>月</span>
+      </div>
+    </div>
+
+    <!-- 텍스트 영역 -->
+    <h2 class="main-title">명월재 심층사주 해석 중</h2>
+    <div class="sub-quote" id="quoteText">사주 원국의 여덟 글자를 정밀 정렬합니다...</div>
+
+    <!-- 스크린샷 본문 반영: 사주 원국 · 오행 · 십성 · 대운 · 세운 -->
+    <div class="flow-steps">
+      <span class="flow-item active" id="f-wonguk">원국</span>
+      <span class="flow-dot">•</span>
+      <span class="flow-item" id="f-oheng">오행</span>
+      <span class="flow-dot">•</span>
+      <span class="flow-item" id="f-sipseong">십성</span>
+      <span class="flow-dot">•</span>
+      <span class="flow-item" id="f-daeun">대운</span>
+      <span class="flow-dot">•</span>
+      <span class="flow-item" id="f-seun">세운</span>
+    </div>
+  </div>
+
+  <script>
+    // 12지지 원형 배치
+    const characters = ['子', '丑', '寅', '卯', '辰', '巳', '午', '未', '申', '酉', '戌', '亥'];
+    const ring = document.getElementById('ganjiRing');
+    const radius = 86;
+
+    characters.forEach((char, i) => {
+      const angle = (i * (360 / characters.length)) * (Math.PI / 180);
+      const span = document.createElement('span');
+      span.className = 'ganji-char';
+      span.innerText = char;
+
+      const x = Math.cos(angle) * radius;
+      const y = Math.sin(angle) * radius;
+
+      span.style.transform = `translate(-50%, -50%) translate(${x}px, ${y}px)`;
+      ring.appendChild(span);
+    });
+
+    // 명월재 소개 문구 기반 단계별 롤링
+    const analysisSteps = [
+      { text: "사주 원국의 여덟 글자를 정밀 정렬합니다...", stepId: "f-wonguk" },
+      { text: "상생과 상극을 이루는 음양오행의 분포를 살핍니다...", stepId: "f-oheng" },
+      { text: "본원과 관계 맺는 십성(十星)의 구조를 해석합니다...", stepId: "f-sipseong" },
+      { text: "10년 주기로 맞이하는 대운(大運)의 흐름을 읽어냅니다...", stepId: "f-daeun" },
+      { text: "당해 세운(歲運)을 종합하여 당신만의 운명을 도출합니다...", stepId: "f-seun" }
+    ];
+
+    let currentIndex = 0;
+    const quoteText = document.getElementById('quoteText');
+    const allStepItems = document.querySelectorAll('.flow-item');
+
+    setInterval(() => {
+      currentIndex = (currentIndex + 1) % analysisSteps.length;
+
+      quoteText.style.opacity = '0';
+      quoteText.style.transform = 'translateY(4px)';
+
+      setTimeout(() => {
+        quoteText.innerText = analysisSteps[currentIndex].text;
+        quoteText.style.opacity = '1';
+        quoteText.style.transform = 'translateY(0)';
+
+        allStepItems.forEach(item => item.classList.remove('active'));
+        for (let i = 0; i <= currentIndex; i++) {
+          const target = document.getElementById(analysisSteps[i].stepId);
+          if (target) target.classList.add('active');
+        }
+      }, 300);
+    }, 2400);
+  </script>
+</body>
+</html>
