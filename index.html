@@ -37,13 +37,13 @@
 
     <style>
         a{text-decoration: none;}
-        *{margin: 0; padding: 0; box-sizing: border-box; } 
+        *{margin: 0; padding: 0; box-sizing: border-box; }
         body{
             width: 100%; container-type: inline-size; background-color: #fcfbf9;
             position: relative; overflow-x: hidden; font-size: 30px; font-family: 'Pretendard Variable';
-            background-image: url(./img/main/sec_bg.webp); background-position: center; background-repeat: repeat; background-size: cover; 
+            background-image: url(./img/main/sec_bg.webp); background-position: center; background-repeat: repeat; background-size: cover;
         }
-        
+
         select {
             -webkit-appearance: none;
             -moz-appearance: none;
@@ -57,8 +57,8 @@
             margin: 0;
             background-color: #fff;
         }
-        
-        
+
+
         input:-webkit-autofill {
             -webkit-box-shadow: 0 0 0px 1000px white inset;
             box-shadow: 0 0 0px 1000px white inset;
@@ -85,12 +85,12 @@
         }
         @media (min-width: 536px) and (max-width: 590px) {
             body { width: 100%; font-size: 21px;}
-            
+
         }
         @media (min-width: 466px) and (max-width: 535px) {
             body { width: 100%; font-size: 20px;}
         }
-        
+
         @media (min-width: 405px) and (max-width: 465px) {
             body { width: 100%; font-size: 18px;}
         }
@@ -148,7 +148,9 @@
         .main_sec1_mid p b{font-weight: 700; display: inline-block; position: relative; width: fit-content; margin: auto; z-index: 1;}
         .main_sec1_mid p span{
             width: 100%; display: block; position: absolute; height: 0.6lh; background-color: #c8aa642f; left: 0; bottom: 0; z-index: -1;
+            transform: scaleX(0); transform-origin: left center; transition: transform 0.7s cubic-bezier(.16,.84,.44,1) 0.35s;
         }
+        .main_sec1_mid.is-visible p span{ transform: scaleX(1); }
         .main_sec1_bot{
             width: 90%; margin: auto; display: flex; justify-content: space-between; align-items: center;
         }
@@ -188,18 +190,19 @@
         .main_formInputBox input,select,textarea{
             width: 100%; line-height: 100%; padding: 0.4em 0.2em; background-color: #fffdf8; font-family: 'Pretendard Variable';
             font-size: 5cqw; border-radius: 0.3em; border: 1px solid #afa090; color: #442f0a; font-weight: 500;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
         }
-        .main_formInputBox input:focus{border: 1px solid #333; outline: none;}
+        .main_formInputBox input:focus{border: 1px solid #333; outline: none; box-shadow: 0 0 0 3px #c8aa6433;}
         .main_formInputBox input::placeholder{color: #442f0abb;}
-        .main_formInputBox select:focus{border: 1px solid #333; outline: none;}
+        .main_formInputBox select:focus{border: 1px solid #333; outline: none; box-shadow: 0 0 0 3px #c8aa6433;}
 
         .main_formInputBox textarea{font-size: 4.5cqw; max-width: 100%; min-width: 100%; height: 6lh; max-height: 6lh; min-height: 6lh;}
-        .main_formInputBox textarea:focus{border: 1px solid #333; outline: none; }
+        .main_formInputBox textarea:focus{border: 1px solid #333; outline: none; box-shadow: 0 0 0 3px #c8aa6433;}
         .main_formInputBox textarea::placeholder{color: #442f0abb;}
 
         .radioInput{
             display: flex; justify-content: space-between; align-items: center; position: relative;
-        } 
+        }
 
         .radioInput input[type="radio"] {
             position: absolute;
@@ -222,10 +225,13 @@
             transition: all 0.2s ease;
         }
 
+        .radioInput label:active{ transform: scale(0.96); }
+
         .radioInput input[type="radio"]:checked + label {
             background-color: #aa7529;
             color: #fffdf8;
             border-color: #aa7529;
+            transform: scale(1.02);
         }
         .check_input{display: flex; justify-content: right; align-items: center; font-size: 4.5cqw; font-weight: 600; margin-top: 1%;}
         .check_input input{width: 1lh;}
@@ -256,7 +262,11 @@
         .submit_button{
             display: block; margin: auto; width: 100%; margin-top: 3%; font-size: 5cqw; font-weight: 600; color: white; padding: 0.7lh 0; border-radius: 0.5lh; border: none;
             background: #0D253B; background: linear-gradient(-30deg, rgba(13, 37, 59, 1) 0%, rgba(0, 48, 145, 1) 100%);
+            cursor: pointer; transition: transform 0.25s ease, box-shadow 0.25s ease;
+            animation: ctaPulse 2.6s ease-in-out infinite;
         }
+        .submit_button:hover{ transform: translateY(-2px); box-shadow: 0 8px 20px #00309166; animation-play-state: paused; }
+        .submit_button:active{ transform: scale(0.97); }
 
         .form_deco{
             position: absolute; bottom: 0; left: 0; z-index: -1; transform: translateY(10%);
@@ -284,7 +294,9 @@
         .main_sec3_Card{
             width: 90%; margin: auto ; margin-bottom: 3%; background-color: white; box-shadow: 0 0 5px #4436243a; border-radius: 0.3em;
             display: flex; gap: 0.5lh; padding: 0.5lh;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
         }
+        .main_sec3_Card:hover{ transform: translateY(-3px); box-shadow: 0 8px 16px #4436243a; }
         .main_sec3_Card h3{font-family: 'MaruBuri'; font-weight: 700; font-size: 5.5cqw;}
         .main_sec3_Card p{font-weight: 600; font-size: 4cqw; margin-top: 2%; line-height: 1.5;}
         .main_sec3_Card>div:nth-child(1){
@@ -303,7 +315,10 @@
         .main_sec4_top h2{font-size: 9cqw; font-family: 'MaruBuri'; text-align: center; font-weight: 700;}
         .main_review_writingBtn{
             margin: 4% auto; width: fit-content; background-color: #f7f1e4; border: 1px solid #dec183; color: #786d56; font-weight: 500; font-size: 5cqw; padding: 0.2lh 1lh; border-radius: 5em;
+            transition: transform 0.2s ease, background-color 0.2s ease; cursor: pointer;
         }
+        .main_review_writingBtn:hover{ background-color: #f2e6cc; }
+        .main_review_writingBtn:active{ transform: scale(0.95); }
 
         .main_sec4_loopslide{width: 100%; position: relative; pointer-events: none;}
         .main_sec4_loopslide li{
@@ -328,10 +343,12 @@
             width: 95%; margin: auto; display: flex; justify-content: space-between; align-items: center; margin-bottom: 8%;
         }
         .main_sec4_bList>div{
-            width: 49%; background-color: white; container-type: inline-size; 
+            width: 49%; background-color: white; container-type: inline-size;
             aspect-ratio: 1/0.6; border: 1px solid #c8aa64; box-shadow: 0 0 5px #442f0a2c; border-radius: 0.5em;
             display: flex; flex-direction: column; justify-content: start; align-items: center; padding-top: 4%;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
         }
+        .main_sec4_bList>div:hover{ transform: translateY(-4px); box-shadow: 0 10px 18px #442f0a33; }
         .main_sec4_bList h2{
             font-size: 18cqw; font-weight: 900;
             background: linear-gradient(-30deg, rgba(13, 37, 59, 1) 0%, rgba(0, 48, 145, 1) 100%);
@@ -345,6 +362,15 @@
         .main_sec4_btn{
             text-align: center; width: 78%; margin: auto; color: white; font-size: 5.5cqw; font-weight: 600; padding: 0.5lh 0;
             background: #0D253B; background: linear-gradient(-30deg, rgba(13, 37, 59, 1) 0%, rgba(0, 48, 145, 1) 100%); border-radius: 0.5em;
+            cursor: pointer; transition: transform 0.25s ease, box-shadow 0.25s ease;
+            animation: ctaPulse 2.6s ease-in-out infinite;
+        }
+        .main_sec4_btn:hover{ transform: translateY(-2px); box-shadow: 0 8px 20px #00309166; animation-play-state: paused; }
+        .main_sec4_btn:active{ transform: scale(0.97); }
+
+        @keyframes ctaPulse{
+            0%, 100% { box-shadow: 0 4px 12px #00309140; }
+            50% { box-shadow: 0 4px 20px #00309173; }
         }
 
 
@@ -361,7 +387,7 @@
 
         .faq_item{
             background: #fff; border: 1px solid #c8aa6481; border-radius: 0.5em;
-            overflow: hidden; transition: border-color 0.25s ease;  box-shadow: 0 0 5px #44362415;
+            overflow: hidden; transition: border-color 0.25s ease, box-shadow 0.25s ease;  box-shadow: 0 0 5px #44362415;
             background: linear-gradient(-30deg, #fbf8f2 0%, #fff 50%); border-radius: 0.5em;
         }
         .faq_item.active{ border-color: #c0944d; box-shadow: 0 0 5px #4436243a; background: linear-gradient(-30deg, #fbf8f281 0%, #ffffff81 50%);}
@@ -374,7 +400,9 @@
 
         .faq_tit{
             font-size: 4.2cqw; font-weight: 700; line-height: 1.5; color: #333244;
+            transition: color 0.2s ease;
         }
+        .faq_q:hover .faq_tit{ color: #aa7529; }
 
         /* + / − 아이콘: 1lh = 텍스트 한 줄 높이 기준 정사각형 */
         .faq_ic{ position: absolute; right: 9%; transform: translateX(-50%); flex-shrink: 0; width: 1lh; height: 1lh; }
@@ -401,16 +429,81 @@
         }
 
         .main_sec5_box p{font-size: 3.5cqw; text-align: center; font-weight: 600; color: #796f58; line-height: 1.7; margin-bottom: 5%;}
-        
+
         .main_sec5_kakao{
             width: 80%; margin: auto; background-color: #ffec02; text-align: center; font-size: 5cqw; font-weight: 600; color: #442f0a; padding: 2.5% 0; border-radius: 0.5em;
+            cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
+        .main_sec5_kakao:hover{ transform: translateY(-2px); box-shadow: 0 6px 14px #00000026; }
+        .main_sec5_kakao:active{ transform: scale(0.97); }
         .main_sec5_box_deco{
-            position: absolute; width: 100%; bottom: 0; left: 50%; transform: translateX(-50%) scale(1.2); z-index: -1; 
+            position: absolute; width: 100%; bottom: 0; left: 50%; transform: translateX(-50%) scale(1.2); z-index: -1;
         }
 
         footer{
             width: 100%; background-color: #818181; height: 3lh;
+        }
+
+
+        /* ===================================================
+           스크롤 리빌 / 인터랙션 애니메이션
+           =================================================== */
+
+        /* 반짝이는 별 아이콘 */
+        .main_sec1_top>div img,
+        .main_sec4_starTxt img{
+            animation: twinkle 2.6s ease-in-out infinite;
+        }
+        @keyframes twinkle{
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.18); opacity: 0.75; }
+        }
+
+        /* 기본 reveal: 위로 살짝 슬라이드 + 페이드 */
+        .reveal{
+            opacity: 0; transform: translateY(28px);
+            transition: opacity 0.7s ease, transform 0.7s cubic-bezier(.16,.84,.44,1);
+        }
+        .reveal.is-visible{ opacity: 1; transform: translateY(0); }
+
+        /* 스케일형 reveal (카드/박스류) */
+        .reveal-scale{
+            opacity: 0; transform: translateY(20px) scale(0.96);
+            transition: opacity 0.7s ease, transform 0.7s cubic-bezier(.16,.84,.44,1);
+        }
+        .reveal-scale.is-visible{ opacity: 1; transform: translateY(0) scale(1); }
+
+        /* 그룹 stagger: 자식 요소들이 순서대로 나타남 */
+        .reveal-item{
+            opacity: 0; transform: translateY(24px);
+            transition: opacity 0.6s ease, transform 0.6s cubic-bezier(.16,.84,.44,1);
+        }
+        .reveal-group.is-visible .reveal-item{ opacity: 1; transform: translateY(0); }
+        .reveal-group.is-visible .reveal-item:nth-child(1){ transition-delay: .02s; }
+        .reveal-group.is-visible .reveal-item:nth-child(2){ transition-delay: .09s; }
+        .reveal-group.is-visible .reveal-item:nth-child(3){ transition-delay: .16s; }
+        .reveal-group.is-visible .reveal-item:nth-child(4){ transition-delay: .23s; }
+        .reveal-group.is-visible .reveal-item:nth-child(5){ transition-delay: .30s; }
+        .reveal-group.is-visible .reveal-item:nth-child(6){ transition-delay: .37s; }
+        .reveal-group.is-visible .reveal-item:nth-child(7){ transition-delay: .44s; }
+        .reveal-group.is-visible .reveal-item:nth-child(8){ transition-delay: .51s; }
+        .reveal-group.is-visible .reveal-item:nth-child(9){ transition-delay: .58s; }
+        .reveal-group.is-visible .reveal-item:nth-child(10){ transition-delay: .65s; }
+
+        /* 리뷰 슬라이더 영역 페이드 인 */
+        .main_sec4_loopslide{ opacity: 0; transition: opacity 1s ease; }
+        .main_sec4_loopslide.is-visible{ opacity: 1; }
+
+        @media (prefers-reduced-motion: reduce){
+            .reveal, .reveal-scale, .reveal-item,
+            .main_sec4_loopslide{
+                transition: none !important; opacity: 1 !important; transform: none !important;
+            }
+            .submit_button, .main_sec4_btn,
+            .main_sec1_top>div img, .main_sec4_starTxt img{
+                animation: none !important;
+            }
+            .main_sec1_mid p span{ transition: none !important; transform: scaleX(1) !important; }
         }
 
     </style>
@@ -431,15 +524,15 @@
     </header>
 
     <section class="main_sec1">
-        <div class="main_sec1_top">
-            <div>
+        <div class="main_sec1_top reveal-group">
+            <div class="reveal-item">
                 <img src="./img/main/star2.webp" alt="">
                 <p>상위 1% 정통 역술가 21인이 함께한</p>
             </div>
-            <h2>명월재(命月齋) 심층사주</h2>
-            <p>“당신의 운명을 미리 알고 설계하세요”</p>
+            <h2 class="reveal-item">명월재(命月齋) 심층사주</h2>
+            <p class="reveal-item">“당신의 운명을 미리 알고 설계하세요”</p>
         </div>
-        <div class="main_sec1_mid">
+        <div class="main_sec1_mid reveal">
             <div class="main_decoStr"><img src="./img/main/deco_str.webp" alt=""></div>
             <p>
                 <b>단순 운세와는 다릅니다.</b><br>
@@ -458,36 +551,36 @@
             </p>
         </div>
         <div class="main_sec1_bot">
-            <div class="main_sec1_bL">
-                <div class="main_sec1_bCard">
+            <div class="main_sec1_bL reveal-group">
+                <div class="main_sec1_bCard reveal-item">
                     <div style="background-color: white; border: 1px solid #c0944d;"></div>
                     <div>
-                        <h3>21<span>人</span></h3>
+                        <h3><span class="count-num" data-target="21">21</span><span>人</span></h3>
                         <p>역술가 참여</p>
                     </div>
                 </div>
-                <div class="main_sec1_bCard">
+                <div class="main_sec1_bCard reveal-item">
                     <div style="background-color: #f2d4a7; border: 1px solid #f2d4a7;"></div>
                     <div>
-                        <h3>10<span>大</span></h3>
+                        <h3><span class="count-num" data-target="10">10</span><span>大</span></h3>
                         <p>운명 영역 분석</p>
                     </div>
                 </div>
-                <div class="main_sec1_bCard">
+                <div class="main_sec1_bCard reveal-item">
                     <div style="background-color: #c0944d; border: 1px solid #c0944d;"></div>
                     <div>
-                        <h3>50+</h3>
+                        <h3><span class="count-num" data-target="50">50</span>+</h3>
                         <p>세부 항목 해설</p>
                     </div>
                 </div>
             </div>
-            <div class="main_sec1_bR">
+            <div class="main_sec1_bR reveal-scale">
                 <div class="main_sec1_bR_str">
                     <div></div>
                     <div></div>
                 </div>
                 <p>심층 풀이 건</p>
-                <h3>14,399<span>+</span></h3>
+                <h3><span class="count-num" data-target="14399" data-comma="true">14,399</span><span>+</span></h3>
             </div>
         </div>
     </section>
@@ -566,7 +659,7 @@
 
                     <input type="radio" name="bir1" id="op2_2" value="음력" required>
                     <label for="op2_2">음력</label>
-                    
+
                     <input type="radio" name="bir1" id="op2_2" value="음력" required>
                     <label for="op2_2">음력</label>
                 </div>
@@ -607,7 +700,7 @@
 
     <section class="main_sec3">
         <div class="main_sec3_deco"><img src="./img/main/deco_obj2.webp" alt=""></div>
-        <div class="main_sec3_top">
+        <div class="main_sec3_top reveal">
             <h2>
                 명월재가 풀어낸<br><b>10가지 운명 해설</b>
             </h2>
@@ -616,43 +709,43 @@
                 타고난 명(命)부터 앞으로의 운(運)까지 깊이 살펴드립니다.
             </p>
         </div>
-        <div class="main_sec3_bot">
-            <div class="main_sec3_Card">
+        <div class="main_sec3_bot reveal-group">
+            <div class="main_sec3_Card reveal-item">
                 <div style="background-color: #e5caa3;"></div>
                 <div>
                     <h3>01. 타고난 명(命)</h3>
                     <p>나의 본질과 기질, 강점과 약점</p>
                 </div>
             </div>
-            <div class="main_sec3_Card">
+            <div class="main_sec3_Card reveal-item">
                 <div style="background-color: #debf92;"></div>
                 <div>
                     <h3>02. 지금, 나의 운</h3>
                     <p>현재 내가 지나고 있는 운의 위치와 흐름</p>
                 </div>
             </div>
-            <div class="main_sec3_Card">
+            <div class="main_sec3_Card reveal-item">
                 <div style="background-color: #d6b481;"></div>
                 <div>
                     <h3>03. 2026년 운세</h3>
                     <p>올해의 전체 흐름과 월별 길흉</p>
                 </div>
             </div>
-            <div class="main_sec3_Card">
+            <div class="main_sec3_Card reveal-item">
                 <div style="background-color: #cfaa6f;"></div>
                 <div>
                     <h3>04. 앞으로의 5년</h3>
                     <p>해마다 달라지는 운의 흐름과 중요한 시기</p>
                 </div>
             </div>
-            <div class="main_sec3_Card">
+            <div class="main_sec3_Card reveal-item">
                 <div style="background-color: #cea666;"></div>
                 <div>
                     <h3>05. 돈이 들어오는 때</h3>
                     <p>재물운과 돈이 모이는 시기, 손재를 경계할 때</p>
                 </div>
             </div>
-            <div class="main_sec3_Card">
+            <div class="main_sec3_Card reveal-item">
                 <div style="background-color: #cca058; height: 4lh;"></div>
                 <div>
                     <h3>06. 일과 성공의 운</h3>
@@ -662,28 +755,28 @@
                     </p>
                 </div>
             </div>
-            <div class="main_sec3_Card">
+            <div class="main_sec3_Card reveal-item">
                 <div style="background-color: #c5984f;"></div>
                 <div>
                     <h3>07. 인생이 바뀌는 때</h3>
                     <p>대운과 세운으로 살펴보는 인생의 주요 전환점</p>
                 </div>
             </div>
-            <div class="main_sec3_Card">
+            <div class="main_sec3_Card reveal-item">
                 <div style="background-color: #bd8a3f;"></div>
                 <div>
                     <h3>08. 인연과 사람복</h3>
                     <p>연애·배우자·가족·귀인 그리고 멀리해야 할 인연</p>
                 </div>
             </div>
-            <div class="main_sec3_Card">
+            <div class="main_sec3_Card reveal-item">
                 <div style="background-color: #ae7b30;"></div>
                 <div>
                     <h3>09. 몸과 마음의 흐름</h3>
                     <p>평생 건강운과 특히 조심해야 할 시기</p>
                 </div>
             </div>
-            <div class="main_sec3_Card">
+            <div class="main_sec3_Card reveal-item">
                 <div style="background-color: #96631c; height: 4lh;"></div>
                 <div>
                     <h3>10. 명월재의 마지막 당부</h3>
@@ -698,19 +791,19 @@
 
     <section class="main_sec4">
         <div class="main_sec4_str"></div>
-        <div class="main_sec4_top">
+        <div class="main_sec4_top reveal">
             <h2>
                 명월재<br>
-                심층사주 실제후기 
+                심층사주 실제후기
             </h2>
             <div class="main_review_writingBtn">리뷰쓰기</div>
         </div>
-        
+
         <div class="main_sec4_loopslide">
             <div class="splide splide1" aria-label="Splide AutoScroll Example">
                 <div class="splide__track">
                     <ul class="splide__list">
-                        
+
                         <li class="splide__slide">
     <div class="rev_star">
         <img src="./img/main/star1.webp" alt="">
@@ -797,8 +890,8 @@
             <div class="splide splide2" aria-label="Splide AutoScroll Example">
                 <div class="splide__track">
                     <ul class="splide__list">
-                        
-                        
+
+
 <li class="splide__slide">
     <div class="rev_star">
         <img src="./img/main/star1.webp" alt="">
@@ -918,44 +1011,44 @@
         <b>신0영</b><span> · 30대</span>
     </div>
 </li>
-                        
+
                     </ul>
                 </div>
             </div>
         </div>
 
         <div class="main_sec4_bot">
-            <div class="main_sec4_starTxt">
+            <div class="main_sec4_starTxt reveal-scale">
                 <img src="./img/main/star2.webp" alt="">
                 <p>
                     꽃 피는 시기가 <b>모두 같을 수는 없습니다.</b><br>
                     당신의 운에도 <b>가장 찬란하게 피어나는 때</b>가 있습니다.
                 </p>
             </div>
-            <div class="main_sec4_bList">
-                <div>
+            <div class="main_sec4_bList reveal-group">
+                <div class="reveal-item">
                     <h2>10개</h2>
                     <p>
                         명월재 심층사주 파트<br>
                         타고난 명부터 마지막 당부까지
                     </p>
                 </div>
-                <div>
+                <div class="reveal-item">
                     <h2>29,000원</h2>
                     <p>추가금액 없음</p>
                 </div>
             </div>
-            <div class="main_sec4_btn">나의 운명해설서 펼쳐보기 ></div>
+            <div class="main_sec4_btn reveal-scale">나의 운명해설서 펼쳐보기 ></div>
         </div>
-                
+
     </section>
 
     <section class="main_sec5">
         <div class="main_sec5_str"><img src="./img/main/deco_str.webp" alt=""></div>
         <div class="main_sec5_tit"><h2>자주 묻는 질문</h2></div>
-        <div class="main_sec5_list">
+        <div class="main_sec5_list reveal-group">
 
-    <div class="faq_item active">
+    <div class="faq_item active reveal-item">
         <button class="faq_q" aria-expanded="true">
             <span class="faq_tit">태어난 시간을 정확히 몰라요</span>
             <span class="faq_ic"></span>
@@ -970,7 +1063,7 @@
         </div>
     </div>
 
-    <div class="faq_item">
+    <div class="faq_item reveal-item">
         <button class="faq_q" aria-expanded="false">
             <span class="faq_tit">음력 생일이어도 되나요?</span>
             <span class="faq_ic"></span>
@@ -982,7 +1075,7 @@
         </div>
     </div>
 
-    <div class="faq_item">
+    <div class="faq_item reveal-item">
         <button class="faq_q" aria-expanded="false">
             <span class="faq_tit">리포트는 어떻게 받나요?</span>
             <span class="faq_ic"></span>
@@ -994,7 +1087,7 @@
         </div>
     </div>
 
-    <div class="faq_item">
+    <div class="faq_item reveal-item">
         <button class="faq_q" aria-expanded="false">
             <span class="faq_tit">얼마나 걸리나요?</span>
             <span class="faq_ic"></span>
@@ -1006,7 +1099,7 @@
         </div>
     </div>
 
-    <div class="faq_item">
+    <div class="faq_item reveal-item">
         <button class="faq_q" aria-expanded="false">
             <span class="faq_tit">결과를 꼭 믿어야 하나요?</span>
             <span class="faq_ic"></span>
@@ -1021,7 +1114,7 @@
 </div>
 
         <div class="main_sec5_tit"><h2>담당자 문의하기</h2></div>
-        <div class="main_sec5_box">
+        <div class="main_sec5_box reveal-scale">
             <div class="main_sec5_box_deco"><img src="./img/main/deco_obj1.webp" alt=""></div>
             <p>
                 궁금한 점이나 신청·입금 확인은 카카오톡 채널로<br>
@@ -1035,7 +1128,7 @@
     <footer></footer>
 
 
-    
+
 
 <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
 
@@ -1053,7 +1146,7 @@
             perPage: 1.5,
             autoHeight: true,
             autoScroll: { speed: 0.5 },
-            arrows: false,       // ⬅➡ 버튼 
+            arrows: false,       // ⬅➡ 버튼
             pagination: false,   //점 네비
             gap: '0.5em',
         }).mount( window.splide.Extensions );
@@ -1065,7 +1158,7 @@
             perPage: 1.5,
             autoHeight: true,
             autoScroll: { speed: -0.5 },
-            arrows: false,       // ⬅➡ 버튼 
+            arrows: false,       // ⬅➡ 버튼
             pagination: false,   //점 네비
             gap: '0.5em',
         }).mount( window.splide.Extensions );
@@ -1085,10 +1178,10 @@
 
         function updateBirthTime() {
             const isUnknown = birthTimeUnknown.checked;
-        
+
             birthTime.disabled = isUnknown;
             birthTime.required = !isUnknown;
-        
+
             if (isUnknown) {
                 birthTime.value = '';
             }
@@ -1119,6 +1212,84 @@ document.querySelectorAll('.main_sec5_list').forEach((list) => {
         q.setAttribute('aria-expanded', String(!isActive));
     });
 });
+
+
+        // ===================================================
+        // 스크롤 리빌 + 숫자 카운트업 (IntersectionObserver)
+        // ===================================================
+        (function () {
+            const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            // reduce-motion이면 애니메이션 없이 바로 최종 상태로 둔다 (초기 마크업이 이미 최종값)
+            if (prefersReduced) return;
+
+            // 1) 스크롤 리빌 (.reveal / .reveal-scale / .reveal-group)
+            const revealTargets = document.querySelectorAll('.reveal, .reveal-scale, .reveal-group');
+            const revealObserver = new IntersectionObserver((entries, obs) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        obs.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+
+            revealTargets.forEach((el) => revealObserver.observe(el));
+
+            // 2) 리뷰 슬라이더 페이드 인
+            const slideWrap = document.querySelector('.main_sec4_loopslide');
+            if (slideWrap) {
+                const slideObserver = new IntersectionObserver((entries, obs) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+                            obs.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1 });
+                slideObserver.observe(slideWrap);
+            }
+
+            // 3) 숫자 카운트업
+            const countEls = document.querySelectorAll('.count-num');
+
+            // 관찰 시작 전, 화면에 아직 없는 숫자는 0부터 시작하도록 초기화
+            countEls.forEach((el) => {
+                el.dataset.final = el.textContent.trim();
+                el.textContent = '0';
+            });
+
+            function animateCount(el) {
+                const target = parseFloat(el.dataset.target.replace(/,/g, ''));
+                const useComma = el.dataset.comma === 'true';
+                const duration = 1300;
+                const startTime = performance.now();
+
+                function step(now) {
+                    const p = Math.min((now - startTime) / duration, 1);
+                    const eased = 1 - Math.pow(1 - p, 3); // easeOutCubic
+                    const val = Math.floor(eased * target);
+                    el.textContent = useComma ? val.toLocaleString('ko-KR') : String(val);
+                    if (p < 1) {
+                        requestAnimationFrame(step);
+                    } else {
+                        el.textContent = el.dataset.final;
+                    }
+                }
+                requestAnimationFrame(step);
+            }
+
+            const countObserver = new IntersectionObserver((entries, obs) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        animateCount(entry.target);
+                        obs.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.4 });
+
+            countEls.forEach((el) => countObserver.observe(el));
+        })();
     </script>
 
 </body>
