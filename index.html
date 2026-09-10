@@ -185,7 +185,7 @@
             background-color: white; border-radius: 0.5lh; border: 1px solid #c8aa64; padding: 1lh 3%; font-size: 5cqw; z-index: 1;
         }
 
-        .main_formInputBox{margin-bottom: 5%; margin-top: 1%;}
+        .main_formInputBox{margin-bottom: 8%; margin-top: 1%;}
         .main_formInputBox p{font-weight: 700; margin-bottom: 0.3lh;}
         .main_formInputBox input,select,textarea{
             width: 100%; line-height: 100%; padding: 0.9lh 0.7lh; background-color: #fffdf8; font-family: 'Pretendard Variable';
@@ -243,7 +243,7 @@
         }
 
         .main_form_str b{
-            display: block ; margin-top: 5%; font-size: 4.5cqw; opacity: 0.8; font-weight: 600;
+            display: block ; margin-top: 5%; margin-bottom: 0.4lh; font-size: 4.5cqw; opacity: 0.8; font-weight: 600;
         }
 
         .main_form_str .radioInput_3 label{width: 32%;}
@@ -295,7 +295,7 @@
         .main_sec3_top p{ font-size: 3.6cqw; font-weight: 600; line-height: 1.7;}
         .main_sec3_Card{
             width: 90%; margin: auto ; margin-bottom: 3%; background-color: white; box-shadow: 0 0 5px #4436243a; border-radius: 0.3em;
-            display: flex; gap: 0.5lh; padding: 0.5lh;
+            display: flex; gap: 0.5lh; padding: 0.8lh 0.5lh;
             transition: transform 0.25s ease, box-shadow 0.25s ease;
         }
         .main_sec3_Card:hover{ transform: translateY(-3px); box-shadow: 0 8px 16px #4436243a; }
@@ -443,9 +443,21 @@
         }
 
         footer{
-            width: 100%; background-color: #818181; height: 3lh;
+            width: 100%; background-color: #818181; padding: 1lh 2.5%;
         }
+        .footTxt{
+            display: flex; justify-content: left; gap: 0.7lh; 
+            margin-bottom: 5%; color: white; font-size: 3cqw; font-weight: 300;
+        }
+        .footL{opacity: 0.7;}
+        .foot_movPage{color: white; font-size: 3cqw;}
 
+        @media (min-width: 801px) {
+            .footTxt {
+                font-size: 0.8em;
+            }
+            .foot_movPage{color: white; font-size: 1em;}
+        }
 
         /* ===================================================
            스크롤 리빌 / 인터랙션 애니메이션
@@ -1127,7 +1139,34 @@
         </div>
     </section>
 
-    <footer></footer>
+    <footer>
+        <div class="footTxt">
+            <div class="footL">
+                <p>상호명</p>
+                <p>대표자</p>
+                <p>사업자등록번호</p>
+                <p>통신판매번호</p>
+                <p>주소</p>
+                <p>이메일</p>
+                <p>전화</p>
+            </div>
+            <div class="footR">
+                <p>(주)위드어스</p>
+                <p>이경식</p>
+                <p>332-88-03445</p>
+                <p>사업자등록번호 332-88-03445</p>
+                <p>경기도 부천시 원미구 소향로 37번길 31-7</p>
+                <p>withusmkt@daum.net</p>
+                <p>0507-1356-1719</p>
+            </div>
+        </div>
+        <div class="foot_movPage">
+            <span>회사소개</span> |
+            <span>이용약관</span> |
+            <span>개인정보 처리방침</span> |
+            <span>환불정책</span>
+        </div>
+    </footer>
 
 
 
