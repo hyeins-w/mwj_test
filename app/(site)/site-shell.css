@@ -1,0 +1,362 @@
+/* (site) 라우트 그룹 전용 셸 스타일.
+   기존 6개 페이지에서 byte-identical 로 확인된 공통 블록을 그대로 옮긴 것.
+   모든 선택자는 `.site_root` 하위로 스코프되어 (popup) 그룹을 침범하지 않는다. */
+
+body:has(> .site_root) {
+  width: 100%;
+  container-type: inline-size;
+  background-color: #fcfbf9;
+  position: relative;
+  overflow-x: hidden;
+  font-size: 30px;
+  font-family: 'Pretendard Variable';
+  color: #333244;
+  background-image: url(/img/main/sec_bg.webp);
+  background-position: center;
+  background-repeat: repeat;
+  background-size: cover;
+}
+
+@media (max-width: 800px) { body:has(> .site_root) { font-size: 30px; } }
+@media (min-width: 661px) and (max-width: 730px) { body:has(> .site_root) { font-size: 28px; } }
+@media (min-width: 591px) and (max-width: 660px) { body:has(> .site_root) { font-size: 24px; } }
+@media (min-width: 536px) and (max-width: 590px) { body:has(> .site_root) { font-size: 21px; } }
+@media (min-width: 466px) and (max-width: 535px) { body:has(> .site_root) { font-size: 20px; } }
+@media (min-width: 405px) and (max-width: 465px) { body:has(> .site_root) { font-size: 18px; } }
+@media (min-width: 350px) and (max-width: 404px) { body:has(> .site_root) { font-size: 16px; } }
+@media (max-width: 349px) { body:has(> .site_root) { font-size: 13px; } }
+
+.site_root {
+  --ink: #333244;
+  --ink-soft: #6f6555;
+  --ink-hint: #796f58;
+  --ink-faint: #9a917f;
+  --paper: #fcfbf9;
+  --card: #fffdf8;
+  --gold-deeper: #96631c;
+  --gold-light: #dec183;
+  --gold-border: #c8aa64;
+  --kakao: #ffec02;
+}
+
+.site_root section {
+  width: 100%;
+  max-width: 800px;
+  margin: auto;
+  position: relative;
+  z-index: 1;
+  container-type: inline-size;
+}
+/* 기존 `header img` / `section img` 의 기본값.
+   :where() 로 감싸 원본과 동일한 명시도(0,0,2)를 유지해야
+   페이지별 이미지 크기 규칙(.main_sec4_starTxt img 등)이 정상적으로 덮어쓴다. */
+:where(.site_root) header img,
+:where(.site_root) section img { width: 100%; height: auto; object-fit: contain; }
+
+/* ── 헤더 / 데스크탑 내비 ─────────────────────────────── */
+.site_root header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  border-bottom: 1px solid #0d253b00;
+  transition: 0.3s;
+  padding: 1lh 0;
+}
+.site_root header.scroll {
+  border-bottom: 1px solid #0d253b4b;
+  background-color: rgba(255, 255, 255, 0.699);
+  backdrop-filter: blur(2.5px);
+  -webkit-backdrop-filter: blur(22px);
+  padding: 0.5lh 0;
+}
+.site_root header > div {
+  width: 95%;
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.site_root .logo { width: 30%; max-width: 200px; display: block; }
+.site_root .menu_btn {
+  width: 1.3lh;
+  height: 1lh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  transform: scale(0.8);
+  cursor: pointer;
+}
+.site_root .menu_btn > div { width: 100%; height: 0.2em; background-color: #0d253b; border-radius: 5em; }
+.site_root .menu_List { display: none; }
+@media (min-width: 801px) {
+  .site_root .menu_btn { display: none; }
+  .site_root .menu_List { display: flex; justify-content: right; align-items: center; gap: 2cqw; font-size: 0.7em; }
+  .site_root .menu_List a { color: #0d253b; opacity: 0.67; width: fit-content; }
+  .site_root .menu_List a:hover { opacity: 1; color: #0d253b; }
+  .site_root .menu_List a.active { opacity: 1; padding-left: 0.2lh; border-left: 0.2em solid #0d253b; }
+}
+
+/* ── 모바일 메뉴 드로어 ───────────────────────────────── */
+.site_root .menu_dim {
+  position: fixed;
+  inset: 0;
+  background: #0d253b73;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .3s ease, visibility .3s ease;
+  z-index: 1100;
+}
+.site_root .menu_dim.open { opacity: 1; visibility: visible; }
+.site_root .menu_drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 80%;
+  max-width: 330px;
+  z-index: 1101;
+  background-color: #fcfbf9;
+  background-image: url(/img/main/sec_bg.webp);
+  background-size: cover;
+  background-position: center;
+  box-shadow: -6px 0 24px #44362438;
+  transform: translateX(100%);
+  transition: transform .38s cubic-bezier(.16, .84, .44, 1);
+  display: flex;
+  flex-direction: column;
+  padding: 22px 24px 28px;
+}
+.site_root .menu_drawer.open { transform: translateX(0); }
+.site_root .menu_drawer_top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 34px; }
+.site_root .menu_drawer_top img { width: 120px; height: auto; display: block; }
+.site_root .menu_close {
+  width: 26px;
+  height: 26px;
+  position: relative;
+  cursor: pointer;
+  flex-shrink: 0;
+  background: none;
+  border: none;
+}
+.site_root .menu_close::before,
+.site_root .menu_close::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 2px;
+  background: #0d253b;
+  border-radius: 5em;
+}
+.site_root .menu_close::before { transform: translate(-50%, -50%) rotate(45deg); }
+.site_root .menu_close::after { transform: translate(-50%, -50%) rotate(-45deg); }
+.site_root .menu_nav { display: flex; flex-direction: column; gap: 4px; }
+.site_root .menu_nav a {
+  font-family: 'MaruBuri';
+  font-weight: 600;
+  font-size: 20px;
+  color: #0d253b;
+  padding: 16px 4px;
+  border-bottom: 1px solid #c8aa6440;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  opacity: 0;
+  transform: translateX(18px);
+  transition: opacity .4s ease, transform .4s cubic-bezier(.16, .84, .44, 1), color .2s ease;
+}
+.site_root .menu_drawer.open .menu_nav a { opacity: 1; transform: translateX(0); }
+.site_root .menu_drawer.open .menu_nav a:nth-child(1) { transition-delay: .08s; }
+.site_root .menu_drawer.open .menu_nav a:nth-child(2) { transition-delay: .14s; }
+.site_root .menu_drawer.open .menu_nav a:nth-child(3) { transition-delay: .20s; }
+.site_root .menu_nav a span { color: #c0944d; font-size: 15px; font-family: 'Pretendard Variable'; font-weight: 500; }
+.site_root .menu_nav a.active { color: #aa7529; }
+.site_root .menu_drawer_bot { margin-top: auto; }
+.site_root .menu_drawer_bot p { font-size: 13px; color: #796f58; line-height: 1.6; margin-bottom: 12px; font-weight: 500; }
+.site_root .menu_kakao {
+  display: block;
+  width: 100%;
+  text-align: center;
+  background-color: #ffec02;
+  color: #442f0a;
+  font-weight: 700;
+  font-size: 16px;
+  padding: 14px 0;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-family: 'Pretendard Variable';
+}
+.site_root .menu_kakao:hover { color: #442f0a; }
+@media (min-width: 801px) {
+  .site_root .menu_dim,
+  .site_root .menu_drawer { display: none; }
+}
+body:has(> .site_root).menu_open { overflow: hidden; }
+
+/* ── 푸터 ─────────────────────────────────────────────── */
+.site_root footer { width: 100%; background-color: #818181; padding: 1lh 2.5%; position: relative; z-index: 2; }
+.site_root .footTxt {
+  display: flex;
+  justify-content: left;
+  gap: 0.7lh;
+  margin-bottom: 5%;
+  color: white;
+  font-size: 3cqw;
+  font-weight: 300;
+}
+.site_root .footL { opacity: 0.7; }
+.site_root .foot_movPage { color: white; font-size: 3cqw; }
+.site_root .foot_movPage a:hover { color: #fff; text-decoration: underline; }
+@media (min-width: 801px) {
+  .site_root .footTxt { font-size: 0.8em; }
+  .site_root .foot_movPage { font-size: 1em; }
+}
+
+/* ── 서브페이지 공통 헤드 / 카드 / 버튼 ───────────────── */
+.site_root .page_head { padding-top: 5.5lh; text-align: center; margin-bottom: 6%; padding-left: 5%; padding-right: 5%; }
+.site_root .page_head .deco { width: 5cqw; margin: auto; display: block; animation: twinkle 2.6s ease-in-out infinite; }
+.site_root .page_head .eyebrow {
+  font-weight: 800;
+  color: #aa7529;
+  font-size: 3.4cqw;
+  margin: 3% auto 4%;
+  font-family: 'MaruBuri';
+}
+.site_root .page_head h1 {
+  font-family: 'MaruBuri';
+  font-weight: 700;
+  font-size: 7.5cqw;
+  margin-bottom: 0.25lh;
+  word-break: keep-all;
+}
+.site_root .page_head .sub { font-size: 3.6cqw; font-weight: 500; color: #6f6555; line-height: 1.7; word-break: keep-all; }
+@keyframes twinkle {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.18); opacity: .75; }
+}
+
+.site_root .card {
+  width: 90%;
+  margin: 0 auto 4%;
+  background: #fffdf8;
+  border: 1px solid #c8aa64;
+  border-radius: 0.5lh;
+  box-shadow: 0 0 5px #4436243a;
+  padding: 1lh 5%;
+}
+.site_root .card_tit {
+  font-family: 'MaruBuri';
+  font-weight: 700;
+  font-size: 5cqw;
+  margin-bottom: 0.7lh;
+  display: flex;
+  align-items: center;
+  gap: 0.4lh;
+}
+.site_root .card_tit::before {
+  content: "";
+  width: 0.25lh;
+  height: 1.1lh;
+  background: #c0944d;
+  border-radius: 5em;
+  flex-shrink: 0;
+}
+.site_root .btn_navy {
+  display: block;
+  width: 100%;
+  text-align: center;
+  color: white;
+  font-size: 5cqw;
+  font-weight: 600;
+  padding: 0.7lh 0;
+  border-radius: 0.5lh;
+  border: none;
+  font-family: 'Pretendard Variable';
+  cursor: pointer;
+  background: linear-gradient(-30deg, rgba(13, 37, 59, 1) 0%, rgba(0, 48, 145, 1) 100%);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.site_root .btn_navy:hover { transform: translateY(-2px); box-shadow: 0 8px 20px #00309166; color: #fff; }
+.site_root .btn_navy:active { transform: scale(0.97); }
+.site_root .btn_line {
+  display: block;
+  width: 100%;
+  text-align: center;
+  color: #786d56;
+  font-size: 4.3cqw;
+  font-weight: 600;
+  padding: 0.55lh 0;
+  border-radius: 0.5lh;
+  background: #f7f1e4;
+  border: 1px solid #dec183;
+  cursor: pointer;
+  font-family: 'Pretendard Variable';
+  transition: background-color .2s ease, transform .2s ease;
+}
+.site_root .btn_line:hover { background: #f2e6cc; color: #786d56; }
+.site_root .btn_line:active { transform: scale(0.97); }
+
+/* ── 스크롤 리빌 ──────────────────────────────────────── */
+.site_root .reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .7s ease, transform .7s cubic-bezier(.16, .84, .44, 1);
+}
+.site_root .reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+/* 스케일형 (카드/박스류) */
+.site_root .reveal-scale {
+  opacity: 0;
+  transform: translateY(20px) scale(0.96);
+  transition: opacity .7s ease, transform .7s cubic-bezier(.16, .84, .44, 1);
+}
+.site_root .reveal-scale.is-visible { opacity: 1; transform: translateY(0) scale(1); }
+
+/* 그룹 stagger: 자식 .reveal-item 이 순서대로 나타남 */
+.site_root .reveal-item {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .6s ease, transform .6s cubic-bezier(.16, .84, .44, 1);
+}
+.site_root .reveal-group.is-visible .reveal-item { opacity: 1; transform: translateY(0); }
+.site_root .reveal-group.is-visible .reveal-item:nth-child(1) { transition-delay: .02s; }
+.site_root .reveal-group.is-visible .reveal-item:nth-child(2) { transition-delay: .09s; }
+.site_root .reveal-group.is-visible .reveal-item:nth-child(3) { transition-delay: .16s; }
+.site_root .reveal-group.is-visible .reveal-item:nth-child(4) { transition-delay: .23s; }
+.site_root .reveal-group.is-visible .reveal-item:nth-child(5) { transition-delay: .30s; }
+.site_root .reveal-group.is-visible .reveal-item:nth-child(6) { transition-delay: .37s; }
+.site_root .reveal-group.is-visible .reveal-item:nth-child(7) { transition-delay: .44s; }
+.site_root .reveal-group.is-visible .reveal-item:nth-child(8) { transition-delay: .51s; }
+.site_root .reveal-group.is-visible .reveal-item:nth-child(9) { transition-delay: .58s; }
+.site_root .reveal-group.is-visible .reveal-item:nth-child(10) { transition-delay: .65s; }
+
+/* 해설서(result/paid) 인쇄 시에는 사이트 크롬을 숨긴다.
+   .print_report 가 있는 페이지에서만 적용되도록 스코프를 건다. */
+@media print {
+  body:has(.print_report) header,
+  body:has(.print_report) .menu_dim,
+  body:has(.print_report) .menu_drawer,
+  body:has(.print_report) footer { display: none !important; }
+  body:has(.print_report) { background: #fff; }
+  body:has(.print_report) .reveal,
+  body:has(.print_report) .reveal-scale,
+  body:has(.print_report) .reveal-item { opacity: 1 !important; transform: none !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site_root .reveal,
+  .site_root .reveal-scale,
+  .site_root .reveal-item {
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .site_root .page_head .deco { animation: none !important; }
+}

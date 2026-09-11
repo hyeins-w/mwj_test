@@ -1,0 +1,161 @@
+/* 분석 진행 화면 (기존 loading.html). 헤더/푸터 없이 독립적으로 동작하는 전체 화면 레이아웃. */
+
+.load {
+  --navy: #0d253b;
+  --gold: #c0944d;
+  --gold-deep: #96631c;
+  --paper: #fcfbf9;
+  --ink: #333244;
+  --ink-soft: #79768a;
+
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin: auto;
+  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
+  container-type: size;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: opacity .5s ease;
+  font-family: 'Pretendard Variable', sans-serif;
+  color: var(--ink);
+}
+.load.done { opacity: 0; }
+
+.load_logo {
+  width: 22cqmin;
+  max-width: 170px;
+  height: auto;
+  display: block;
+  margin-bottom: 7%;
+  opacity: 0;
+  animation: fadeIn .9s ease forwards .1s;
+}
+
+.ring {
+  position: relative;
+  width: 22cqmin;
+  height: 22cqmin;
+  margin-bottom: 8%;
+  opacity: 0;
+  animation: fadeIn .9s ease forwards .3s;
+}
+.ring_line {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid #c0944d4d;
+  animation: spin 40s linear infinite;
+}
+.ring_line span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1.8em;
+  margin-left: -0.9em;
+  text-align: center;
+  font-family: 'JoseonPalace';
+  font-size: 1.7cqmin;
+  color: var(--gold-deep);
+  opacity: .8;
+  transform: translate(-50%, -50%) rotate(calc(30deg * var(--i))) translateY(-10.6cqmin)
+    rotate(calc(-30deg * var(--i)));
+}
+.ring_core {
+  position: absolute;
+  inset: 28%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 34% 28%, #fffdf8 0%, #f3e4c6 55%, #ddc18b 100%);
+  border: 1px solid #c0944d;
+  box-shadow: 0 0 3cqmin #c0944d40;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: breathe 2.8s ease-in-out infinite;
+}
+.ring_core::after { content: "命"; font-family: 'JoseonPalace'; font-size: 6cqmin; color: var(--gold-deep); }
+
+.load_tit {
+  font-family: 'MaruBuri';
+  font-weight: 700;
+  font-size: 4.4cqmin;
+  color: var(--navy);
+  text-align: center;
+  line-height: 1.45;
+  margin-bottom: 2.5%;
+  opacity: 0;
+  animation: fadeUp .8s ease forwards .45s;
+}
+
+.load_step { height: 2.6em; position: relative; width: 86%; opacity: 0; animation: fadeIn .8s ease forwards .6s; }
+.load_step p {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5cqmin;
+  font-weight: 500;
+  color: var(--ink-soft);
+  text-align: center;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity .4s ease, transform .4s ease;
+}
+.load_step p.on { opacity: 1; transform: translateY(0); }
+
+.bar {
+  width: 70%;
+  max-width: 340px;
+  display: flex;
+  align-items: center;
+  gap: 3%;
+  opacity: 0;
+  animation: fadeIn .8s ease forwards .7s;
+}
+.bar_track {
+  flex: 1;
+  height: 0.24em;
+  font-size: 2.4cqmin;
+  background: #c0944d26;
+  border-radius: 5em;
+  overflow: hidden;
+}
+.bar_fill {
+  height: 100%;
+  width: 0%;
+  border-radius: 5em;
+  background: linear-gradient(90deg, var(--navy) 0%, var(--gold) 100%);
+  transition: width .35s ease;
+}
+.bar_pct {
+  font-size: 2.3cqmin;
+  font-weight: 700;
+  color: var(--navy);
+  width: 3em;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.load_note { margin-top: 6%; font-size: 1.9cqmin; color: #a09a8d; font-weight: 500; opacity: 0; animation: fadeIn .8s ease forwards .85s; }
+
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes breathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+@keyframes fadeIn { to { opacity: 1; } }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .ring_line, .ring_core { animation: none !important; }
+}
+@media (max-height: 460px) {
+  .load_logo { margin-bottom: 3%; }
+  .ring { width: 15cqmin; height: 15cqmin; margin-bottom: 4%; }
+  .ring_line span {
+    transform: translate(-50%, -50%) rotate(calc(30deg * var(--i))) translateY(-7.2cqmin)
+      rotate(calc(-30deg * var(--i)));
+  }
+  .load_note { margin-top: 3%; }
+}

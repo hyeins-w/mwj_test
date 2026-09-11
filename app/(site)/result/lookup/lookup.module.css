@@ -1,0 +1,98 @@
+/* result/lookup 페이지 전용 스타일 (기존 result_lookup.html 의 3번째 <style> 블록). */
+
+.lookup {
+  width: 90%;
+  max-width: 700px;
+  margin: 0 auto 16%;
+  background: #fffdf8;
+  border: 1px solid #c8aa64;
+  border-radius: 0.6lh;
+  box-shadow: 8px 6px 5px #4436243f;
+  padding: 1.3lh 7% 1.4lh;
+  position: relative;
+  overflow: hidden;
+}
+.lookup_deco {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 0;
+  transform: translateY(14%);
+  opacity: .85;
+}
+.lookup > * { position: relative; z-index: 1; }
+
+.fld { margin-bottom: 0.9lh; }
+.fld_top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.3lh; }
+.fld_top p { font-weight: 700; font-size: 3.9cqw; }
+.fld_top button {
+  background: none;
+  border: none;
+  font-family: 'Pretendard Variable';
+  font-size: 3.1cqw;
+  font-weight: 600;
+  color: #aa7529;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0;
+}
+.fld input {
+  width: 100%;
+  line-height: 100%;
+  padding: 0.85lh 0.7lh;
+  background: #fff;
+  font-family: 'Pretendard Variable';
+  font-size: 4.2cqw;
+  border-radius: 0.3em;
+  border: 1px solid #afa090;
+  color: #442f0a;
+  font-weight: 500;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+.fld input:focus { border-color: #333; outline: none; box-shadow: 0 0 0 3px #c8aa6433; }
+.fld input::placeholder { color: #442f0a99; }
+.fld .hint { font-size: 3cqw; color: #9a917f; font-weight: 500; margin-top: 0.25lh; line-height: 1.6; }
+.fld .err { font-size: 3cqw; color: #b8503c; font-weight: 600; margin-top: 0.25lh; display: none; }
+.fld.invalid input { border-color: #b8503c; }
+.fld.invalid .err { display: block; }
+
+.lookup .submit { margin-top: 1.1lh; }
+.lookup_hr { border-top: 1px solid #c8aa6455; margin: 1.1lh 0 0.9lh; }
+.lookup_help { text-align: center; }
+.lookup_help p { font-size: 3.2cqw; font-weight: 500; color: #796f58; margin-bottom: 0.4lh; }
+.lookup_help .find {
+  display: inline-block;
+  background: #f7f1e4;
+  border: 1px solid #dec183;
+  color: #786d56;
+  font-size: 3.4cqw;
+  font-weight: 700;
+  padding: 0.35lh 1lh;
+  border-radius: 5em;
+  cursor: pointer;
+  font-family: 'Pretendard Variable';
+  transition: background-color .2s ease, transform .2s ease;
+}
+.lookup_help .find:hover { background: #f2e6cc; color: #786d56; }
+.lookup_help .find:active { transform: scale(0.96); }
+.lookup_help .ask {
+  display: block;
+  margin-top: 0.9lh;
+  font-size: 3.2cqw;
+  font-weight: 600;
+  color: #6f6555;
+  text-decoration: underline;
+}
+
+.modeNote {
+  background: #f7f1e4;
+  border: 1px solid #dec183;
+  border-radius: 0.35em;
+  padding: 0.45lh 0.7lh;
+  font-size: 3.1cqw;
+  font-weight: 600;
+  color: #7a6a45;
+  margin-bottom: 0.9lh;
+  line-height: 1.6;
+}

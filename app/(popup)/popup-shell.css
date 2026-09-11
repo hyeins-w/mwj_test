@@ -1,0 +1,170 @@
+/* (popup) 라우트 그룹 전용 셸 스타일.
+   about/terms/privacy/refund 4개 파일에 byte-identical 로 중복돼 있던 블록.
+   (site) 와 달리 container-query(cqw)/lh 유동 시스템을 쓰지 않는 고정 px 문서형 레이아웃이다.
+   모든 선택자는 `.popup_root` 하위로 스코프되어 (site) 그룹을 침범하지 않는다. */
+
+body:has(> .popup_root) {
+  background: #efe8d8;
+}
+
+.popup_root {
+  --pop-ink: #333244;
+  --pop-ink-body: #514f5e;
+  --pop-ink-soft: #79768a;
+  --pop-paper: #fcfbf9;
+  --pop-box: #faf6ea;
+  --pop-box-border: #ecdfc0;
+
+  max-width: 720px;
+  min-width: 300px;
+  margin: 0 auto;
+  position: relative;
+  font-family: 'Pretendard Variable', 'Pretendard', -apple-system, sans-serif;
+  color: #333244;
+  background: #fcfbf9;
+  background-image: radial-gradient(circle at 8% -10%, rgba(192, 148, 74, .10) 0%, rgba(252, 251, 249, 0) 42%);
+  min-height: 100dvh;
+}
+
+.popup_root * { vertical-align: top; }
+.popup_root p,
+.popup_root li { word-break: keep-all; letter-spacing: -.2px; }
+
+/* ── 헤더 ─────────────────────────────────────────────── */
+.popup_root .pop_head { padding: 30px 26px 22px; border-bottom: 1px solid #e9dfc4; position: relative; }
+.popup_root .pop_head .logo { height: 22px; width: auto; display: block; margin-bottom: 16px; opacity: .92; }
+.popup_root .pop_head .eyebrow {
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  color: #aa7529;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+.popup_root .pop_head h1 {
+  font-family: 'MaruBuri';
+  font-weight: 700;
+  font-size: 22px;
+  color: #0d253b;
+  letter-spacing: -.5px;
+  word-break: keep-all;
+}
+.popup_root .pop_head .desc { margin-top: 10px; font-size: 12.5px; line-height: 1.7; color: #79768a; font-weight: 500; }
+.popup_root .pop_head .deco { position: absolute; right: 26px; top: 30px; width: 26px; opacity: .85; }
+
+/* ── 본문 ─────────────────────────────────────────────── */
+.popup_root .con_wrap { padding: 26px 26px 6px; }
+.popup_root .con_box { margin-bottom: 24px; }
+.popup_root .con_box:last-child { margin-bottom: 4px; }
+.popup_root .con_tit {
+  font-family: 'MaruBuri';
+  font-weight: 700;
+  font-size: 15.5px;
+  color: #0d253b;
+  margin-bottom: 11px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  letter-spacing: -.2px;
+}
+.popup_root .con_tit::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #c0944d;
+  flex-shrink: 0;
+}
+.popup_root .con_box_inner {
+  background: #faf6ea;
+  border: 1px solid #ecdfc0;
+  border-radius: 12px;
+  padding: 16px 17px;
+}
+.popup_root .con_box_inner p { font-size: 13px; line-height: 1.85; color: #514f5e; }
+.popup_root .con_box_inner p + p { margin-top: 10px; }
+.popup_root .con_box_inner b { color: #0d253b; font-weight: 700; }
+.popup_root .con_box_inner .gold { color: #96631c; font-weight: 600; }
+.popup_root .con_box_inner ul { padding-left: 2px; list-style: none; }
+.popup_root .con_box_inner ul li {
+  font-size: 13px;
+  line-height: 1.85;
+  color: #514f5e;
+  position: relative;
+  padding-left: 13px;
+}
+.popup_root .con_box_inner ul li::before { content: '·'; position: absolute; left: 0; color: #c0944d; font-weight: 700; }
+.popup_root .con_box_inner .num_list { counter-reset: n; }
+.popup_root .con_box_inner .num_list li { counter-increment: n; padding-left: 19px; }
+.popup_root .con_box_inner .num_list li::before { content: counter(n) ") "; color: #96631c; font-weight: 600; }
+.popup_root .con_box_inner table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+.popup_root .con_box_inner table th,
+.popup_root .con_box_inner table td {
+  text-align: left;
+  padding: 8px 4px;
+  border-bottom: 1px dashed #e2d3ac;
+  color: #514f5e;
+}
+.popup_root .con_box_inner table th { color: #0d253b; font-weight: 700; width: 34%; }
+.popup_root .con_box_inner table tr:last-child th,
+.popup_root .con_box_inner table tr:last-child td { border-bottom: none; }
+
+.popup_root .info_card { background: #0d253b; border-radius: 14px; padding: 22px 20px; color: #fff; }
+.popup_root .info_card table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+.popup_root .info_card table th,
+.popup_root .info_card table td {
+  text-align: left;
+  padding: 7px 4px;
+  border-bottom: 1px solid rgba(255, 255, 255, .12);
+}
+.popup_root .info_card table th { color: #d7bd85; font-weight: 600; width: 32%; white-space: nowrap; }
+.popup_root .info_card table td { color: #f2eee2; }
+.popup_root .info_card table tr:last-child th,
+.popup_root .info_card table tr:last-child td { border-bottom: none; }
+
+.popup_root .note_bar {
+  margin-top: 16px;
+  background: #f7f1e4;
+  border: 1px solid #e6d19f;
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-size: 12px;
+  line-height: 1.7;
+  color: #8a6421;
+}
+.popup_root .note_bar b { font-weight: 700; }
+.popup_root .effective { margin: 6px 0 22px; text-align: right; font-size: 11.5px; color: #a29d8d; }
+
+/* ── 하단 닫기 버튼 ───────────────────────────────────── */
+.popup_root .btm_wrap { padding: 20px 26px 30px; }
+.popup_root .closeBtn {
+  display: block;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  font-weight: 700;
+  font-size: 14.5px;
+  padding: 13px 0;
+  border-radius: 9px;
+  border: none;
+  cursor: pointer;
+  font-family: 'Pretendard Variable';
+  background: linear-gradient(-30deg, rgba(13, 37, 59, 1) 0%, rgba(0, 48, 145, 1) 100%);
+  box-shadow: 0 8px 18px rgba(13, 37, 59, .28);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.popup_root .closeBtn:hover { transform: translateY(-1px); box-shadow: 0 10px 22px rgba(13, 37, 59, .32); }
+.popup_root .pop_foot {
+  padding: 0 26px 24px;
+  font-size: 10.5px;
+  color: #b4ad98;
+  text-align: center;
+  letter-spacing: .02em;
+}
+
+@media (max-width: 360px) {
+  .popup_root .pop_head { padding: 24px 18px 18px; }
+  .popup_root .con_wrap { padding: 20px 18px 4px; }
+  .popup_root .btm_wrap { padding: 16px 18px 24px; }
+  .popup_root .pop_head h1 { font-size: 19px; }
+}

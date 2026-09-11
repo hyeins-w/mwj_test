@@ -1,0 +1,12 @@
+/* 분석 화면은 전체 화면을 차지하고 스크롤이 없다.
+   (site)/(popup) 어느 그룹에도 속하지 않으므로 body 스타일을 여기서만 지정한다. */
+body:has(> .analyzing_root) {
+  height: 100%;
+  overscroll-behavior: none;
+  overflow: hidden;
+  background: #fcfbf9;
+  background-image: url(/img/main/sec_bg.webp);
+  background-size: cover;
+  background-position: center;
+}
+html:has(body > .analyzing_root) { height: 100%; }

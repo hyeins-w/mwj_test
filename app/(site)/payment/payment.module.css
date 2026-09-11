@@ -1,0 +1,156 @@
+/* payment 페이지 전용 스타일 (기존 payment.html 의 3번째 <style> 블록). */
+
+.order {
+  width: 90%;
+  margin: 0 auto 4%;
+  background: #fffdf8;
+  border: 1px solid #c8aa64;
+  border-radius: 0.5lh;
+  box-shadow: 8px 6px 5px #4436243f;
+  overflow: hidden;
+}
+.order_top {
+  background: linear-gradient(-30deg, #f7f0e4 0%, #fff 100%);
+  padding: 0.9lh 5%;
+  border-bottom: 1px solid #c8aa6481;
+}
+.order_top h2 { font-family: 'MaruBuri'; font-weight: 700; font-size: 5.2cqw; margin-bottom: 0.2lh; }
+.order_top p { font-size: 3.3cqw; font-weight: 500; color: #6f6555; line-height: 1.6; }
+.order_body { padding: 0.9lh 5%; }
+
+.pay_row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 3.7cqw;
+  font-weight: 600;
+  padding: 0.35lh 0;
+  color: #4a4436;
+}
+.pay_row span:last-child { font-weight: 700; }
+.pay_row.disc span:last-child { color: #aa7529; }
+.pay_total {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-top: 1px solid #aa7529;
+  margin-top: 0.5lh;
+  padding-top: 0.6lh;
+}
+.pay_total span { font-family: 'MaruBuri'; font-weight: 700; font-size: 4.6cqw; }
+.pay_total b {
+  font-size: 8cqw;
+  font-weight: 900;
+  background: linear-gradient(-30deg, rgba(13, 37, 59, 1) 0%, rgba(0, 48, 145, 1) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.fld { margin-bottom: 0.8lh; }
+.fld p { font-weight: 700; font-size: 3.9cqw; margin-bottom: 0.3lh; }
+.fld input {
+  width: 100%;
+  line-height: 100%;
+  padding: 0.9lh 0.7lh;
+  background: #fffdf8;
+  font-family: 'Pretendard Variable';
+  font-size: 4.2cqw;
+  border-radius: 0.3em;
+  border: 1px solid #afa090;
+  color: #442f0a;
+  font-weight: 500;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+.fld input:focus { border-color: #333; outline: none; box-shadow: 0 0 0 3px #c8aa6433; }
+.fld input::placeholder { color: #442f0abb; }
+.fld .hint { font-size: 3cqw; color: #796f58; font-weight: 500; margin-top: 0.25lh; }
+
+.paylist { display: flex; flex-direction: column; gap: 0.35lh; }
+.paylist label {
+  display: flex;
+  align-items: center;
+  gap: 0.5lh;
+  border: 1px solid #afa090;
+  border-radius: 0.35em;
+  padding: 0.75lh 4%;
+  cursor: pointer;
+  background: #fffdf8;
+  transition: all .2s ease;
+}
+.paylist input { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); }
+.paylist .pm_mark {
+  width: 1.5lh;
+  height: 1.5lh;
+  border-radius: 0.3em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3.2cqw;
+  font-weight: 900;
+  flex-shrink: 0;
+}
+.paylist .pm_name { font-size: 4.2cqw; font-weight: 700; }
+.paylist .pm_sub { font-size: 3cqw; color: #796f58; font-weight: 500; margin-top: 0.1lh; }
+.paylist .pm_check {
+  margin-left: auto;
+  width: 1.1lh;
+  height: 1.1lh;
+  border-radius: 50%;
+  border: 1px solid #afa090;
+  flex-shrink: 0;
+  position: relative;
+}
+.paylist label:has(input:checked) {
+  border-color: #aa7529;
+  box-shadow: 0 0 0 2px #c8aa6433;
+  background: #fffaf0;
+}
+.paylist label:has(input:checked) .pm_check { border-color: #aa7529; background: #aa7529; }
+.paylist label:has(input:checked) .pm_check::after {
+  content: "";
+  position: absolute;
+  top: 47%;
+  left: 50%;
+  width: 0.4lh;
+  height: 0.22lh;
+  border-left: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  transform: translate(-50%, -60%) rotate(-45deg);
+}
+
+.agree_all {
+  display: flex;
+  align-items: center;
+  gap: 0.4lh;
+  font-size: 4cqw;
+  font-weight: 700;
+  padding-bottom: 0.55lh;
+  border-bottom: 1px solid #c8aa6481;
+  margin-bottom: 0.55lh;
+  cursor: pointer;
+}
+.agree_item {
+  display: flex;
+  align-items: center;
+  gap: 0.4lh;
+  font-size: 3.4cqw;
+  font-weight: 500;
+  color: #6f6555;
+  padding: 0.2lh 0;
+  cursor: pointer;
+}
+.agree_item .req { color: #aa7529; font-weight: 700; }
+.agree_item .view { margin-left: auto; font-size: 3cqw; text-decoration: underline; color: #9a917f; }
+.checkbox { width: 1lh; height: 1lh; accent-color: #aa7529; flex-shrink: 0; }
+
+.pay_submit { width: 90%; margin: 6% auto 4%; }
+.pay_note {
+  width: 90%;
+  margin: 0 auto 12%;
+  font-size: 3cqw;
+  color: #796f58;
+  font-weight: 500;
+  line-height: 1.7;
+  word-break: keep-all;
+}

@@ -1,0 +1,142 @@
+/* result/free 페이지 전용 스타일 (기존 result_free.html 의 3번째 <style> 블록). */
+
+.chipRow { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.25lh; margin-top: 4%; }
+.chip {
+  font-size: 3.2cqw;
+  font-weight: 600;
+  color: #786d56;
+  background: #f7f1e4;
+  border: 1px solid #dec183;
+  border-radius: 5em;
+  padding: 0.2lh 0.7lh;
+}
+
+.pillars { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.25lh; }
+.pillar { background: #fff; border: 1px solid #c8aa6455; border-radius: 0.45em; padding: 0.5lh 2% 0.55lh; text-align: center; }
+.pillar.me { border-color: #c0944d; box-shadow: 0 0 0 2px #c8aa6433; background: #fffdf6; }
+.p_name { font-family: 'MaruBuri'; font-weight: 700; font-size: 3.1cqw; line-height: 1.3; }
+.p_name span { display: block; font-family: 'Pretendard Variable'; font-size: 2.5cqw; color: #9a917f; font-weight: 500; }
+.p_god { font-size: 2.7cqw; font-weight: 700; color: #786d56; margin: 0.3lh 0 0.25lh; }
+.p_tile {
+  width: 2.1lh;
+  height: 2.1lh;
+  margin: 0 auto;
+  border-radius: 0.3em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'JoseonPalace';
+  font-size: 6cqw;
+  color: #fff;
+  line-height: 1;
+}
+.p_tile + .p_tile { margin-top: 0.2lh; }
+.wg_note { font-size: 3cqw; color: #796f58; font-weight: 500; margin-top: 0.6lh; line-height: 1.6; word-break: keep-all; }
+.wg_note b { color: #aa7529; font-weight: 700; }
+
+.ohaeng { display: flex; flex-direction: column; gap: 0.35lh; }
+.oh_row { display: flex; align-items: center; gap: 0.4lh; }
+.oh_name { width: 3.6lh; flex-shrink: 0; font-family: 'MaruBuri'; font-weight: 700; font-size: 3.6cqw; }
+.oh_track { flex: 1; height: 0.62lh; background: #f1ece1; border-radius: 5em; overflow: hidden; }
+.oh_bar { height: 100%; width: 0; border-radius: 5em; transition: width 1.1s cubic-bezier(.16, .84, .44, 1); }
+.oh_val { width: 2.2lh; text-align: right; font-size: 3.2cqw; font-weight: 700; color: #6f6555; flex-shrink: 0; }
+
+.body_txt { font-size: 3.6cqw; font-weight: 500; line-height: 1.85; color: #4a4436; word-break: keep-all; }
+.body_txt + .body_txt { margin-top: 0.5lh; }
+.body_txt b { color: #aa7529; font-weight: 700; }
+
+.year_line {
+  background: linear-gradient(-30deg, #f7f0e4 0%, #fff 100%);
+  border: 1px solid #c0944d;
+  border-radius: 0.4em;
+  padding: 0.8lh 5%;
+  text-align: center;
+}
+.year_line .yl_kw { font-family: 'MaruBuri'; font-weight: 700; font-size: 6.5cqw; color: #c0944d; margin-bottom: 0.3lh; }
+.year_line p { font-size: 3.6cqw; font-weight: 600; line-height: 1.7; word-break: keep-all; }
+
+.lock_wrap { width: 90%; margin: 8% auto 0; position: relative; }
+.lock_head { text-align: center; margin-bottom: 4%; }
+.lock_head h2 { font-family: 'MaruBuri'; font-weight: 700; font-size: 6cqw; margin-bottom: 0.25lh; }
+.lock_head p { font-size: 3.4cqw; font-weight: 500; color: #6f6555; line-height: 1.6; word-break: keep-all; }
+.lock_list { display: flex; flex-direction: column; gap: 0.3lh; position: relative; }
+.lock_item {
+  background: #fff;
+  border: 1px solid #c8aa6481;
+  border-radius: 0.4em;
+  padding: 0.7lh 4%;
+  box-shadow: 0 0 5px #44362415;
+  display: flex;
+  gap: 0.5lh;
+  align-items: flex-start;
+}
+.lock_item > div:first-child {
+  width: 0.25lh;
+  min-height: 2.4lh;
+  background: #c0944d;
+  border-radius: 5em;
+  flex-shrink: 0;
+  opacity: .55;
+}
+.lock_item h3 { font-family: 'MaruBuri'; font-weight: 700; font-size: 4.4cqw; margin-bottom: 0.2lh; }
+.lock_item p { font-size: 3.4cqw; font-weight: 500; color: #6f6555; line-height: 1.6; }
+.lock_item.blur { filter: blur(4.5px); opacity: .7; user-select: none; pointer-events: none; }
+.lock_veil {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 78%;
+  background: linear-gradient(180deg, rgba(252, 251, 249, 0) 0%, rgba(252, 251, 249, .88) 45%, #fcfbf9 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  padding-bottom: 1lh;
+}
+.lock_badge {
+  background: #0d253b;
+  color: #fff;
+  font-size: 3.2cqw;
+  font-weight: 700;
+  padding: 0.25lh 0.9lh;
+  border-radius: 5em;
+  margin-bottom: 0.5lh;
+}
+.lock_veil p { font-size: 3.8cqw; font-weight: 700; text-align: center; line-height: 1.6; word-break: keep-all; }
+
+.cta {
+  width: 90%;
+  margin: 8% auto 12%;
+  background: #fffdf8;
+  border: 1px solid #c8aa64;
+  border-radius: 0.5lh;
+  box-shadow: 8px 6px 5px #4436243f;
+  padding: 1lh 6% 1.2lh;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.cta_deco { position: absolute; bottom: 0; left: 0; width: 100%; z-index: 0; transform: translateY(12%); opacity: .9; }
+.cta > * { position: relative; z-index: 1; }
+.cta_kw { font-family: 'MaruBuri'; font-weight: 700; font-size: 5.4cqw; margin-bottom: 0.4lh; word-break: keep-all; }
+.cta_sub { font-size: 3.4cqw; font-weight: 500; color: #6f6555; line-height: 1.7; margin-bottom: 0.8lh; word-break: keep-all; }
+.price { display: flex; justify-content: center; align-items: baseline; gap: 0.35lh; margin-bottom: 0.7lh; }
+.price .off {
+  background: #aa7529;
+  color: #fff;
+  font-size: 3.4cqw;
+  font-weight: 800;
+  padding: 0.1lh 0.4lh;
+  border-radius: 0.25em;
+  align-self: center;
+}
+.price .was { font-size: 3.6cqw; color: #9a917f; text-decoration: line-through; font-weight: 500; }
+.price .now {
+  font-size: 7.5cqw;
+  font-weight: 900;
+  background: linear-gradient(-30deg, rgba(13, 37, 59, 1) 0%, rgba(0, 48, 145, 1) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

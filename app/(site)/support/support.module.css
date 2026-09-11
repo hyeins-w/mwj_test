@@ -1,0 +1,130 @@
+/* support 페이지 전용 스타일 (기존 support.html 의 3번째 <style> 블록).
+   공유 클래스(.card / .btn_navy / .reveal 등)는 여기서 재선언하지 않는다. */
+
+.help_row {
+  width: 90%;
+  margin: 0 auto 5%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.35lh;
+}
+@media (max-width: 520px) {
+  .help_row { grid-template-columns: 1fr; }
+}
+.help_card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5lh;
+  background: #fffdf8;
+  border: 1px solid #c8aa6470;
+  border-radius: 0.5lh;
+  box-shadow: 0 0 5px #44362422;
+  padding: 0.75lh 5%;
+  transition: transform .2s ease, box-shadow .2s ease;
+  color: inherit;
+}
+.help_card:hover { transform: translateY(-2px); box-shadow: 0 8px 16px #4436242e; color: inherit; }
+.help_ic {
+  width: 1.9lh;
+  height: 1.9lh;
+  flex-shrink: 0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'MaruBuri';
+  font-weight: 700;
+  font-size: 3.6cqw;
+}
+.help_card b { display: block; font-family: 'MaruBuri'; font-weight: 700; font-size: 4cqw; margin-bottom: 0.1lh; }
+.help_card span {
+  display: block;
+  font-size: 3.1cqw;
+  color: #796f58;
+  font-weight: 500;
+  line-height: 1.5;
+  word-break: keep-all;
+}
+.help_hit { position: absolute; inset: 0; background: none; border: none; cursor: pointer; }
+
+.check_row { text-align: center; margin-bottom: 6%; }
+.check_btn {
+  display: inline-block;
+  background: #0d253b;
+  color: #fff;
+  font-family: 'Pretendard Variable';
+  font-weight: 700;
+  font-size: 3.8cqw;
+  padding: 0.5lh 1.4lh;
+  border-radius: 5em;
+  box-shadow: 0 6px 16px #0d253b45;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.check_btn:hover { transform: translateY(-2px); box-shadow: 0 10px 20px #0d253b55; color: #fff; }
+.check_btn:active { transform: scale(0.97); }
+
+.faq_list { width: 90%; margin: 0 auto 16%; display: flex; flex-direction: column; gap: 0.35lh; }
+.faq_item {
+  background: #fffdf8;
+  border: 1px solid #c8aa6481;
+  border-radius: 0.5em;
+  overflow: hidden;
+  box-shadow: 0 0 5px #44362415;
+  transition: border-color .25s ease, box-shadow .25s ease;
+}
+.faq_item.active { border-color: #c0944d; box-shadow: 0 0 5px #4436243a; }
+.faq_q {
+  all: unset;
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  box-sizing: border-box;
+  cursor: pointer;
+  gap: 0.4lh;
+  padding: 0.65lh 5cqw;
+  position: relative;
+}
+.faq_q:focus-visible { outline: 0.12em solid #c0944d; outline-offset: -0.12em; }
+.faq_q_mark {
+  font-family: 'MaruBuri';
+  font-weight: 700;
+  font-size: 4.2cqw;
+  color: #c0944d;
+  flex-shrink: 0;
+  line-height: 1.5;
+}
+.faq_tit {
+  flex: 1;
+  font-size: 4.1cqw;
+  font-weight: 700;
+  line-height: 1.55;
+  color: #333244;
+  transition: color .2s ease;
+  word-break: keep-all;
+}
+.faq_q:hover .faq_tit { color: #aa7529; }
+.faq_ic { flex-shrink: 0; width: 1lh; height: 1lh; position: relative; }
+.faq_ic::before,
+.faq_ic::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 60%;
+  height: 0.14em;
+  background: #c0944d;
+  border-radius: 999px;
+  transform: translate(-50%, -50%);
+  transition: transform .3s ease, opacity .3s ease;
+}
+.faq_ic::after { transform: translate(-50%, -50%) rotate(90deg); }
+.faq_item.active .faq_ic::after { transform: translate(-50%, -50%) rotate(0deg); opacity: 0; }
+.faq_panel { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .35s ease; }
+.faq_item.active .faq_panel { grid-template-rows: 1fr; }
+.faq_panel_inner { overflow: hidden; }
+.faq_txt { padding: 0 5cqw 0.75lh; padding-left: calc(5cqw + 1.1lh); }
+.faq_txt p { font-size: 3.4cqw; line-height: 1.85; font-weight: 500; color: #5f5748; word-break: keep-all; }
+.faq_txt p + p { margin-top: 0.5lh; }
+.faq_txt b { color: #4a4436; font-weight: 700; }
+.faq_txt a { color: #aa7529; font-weight: 700; text-decoration: underline; }

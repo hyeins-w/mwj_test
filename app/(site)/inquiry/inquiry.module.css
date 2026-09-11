@@ -1,0 +1,123 @@
+/* inquiry 페이지 전용 스타일 (기존 inquiry.html 의 3번째 <style> 블록). */
+
+.form_wrap {
+  width: 90%;
+  margin: 0 auto 16%;
+  background: #fffdf8;
+  border: 1px solid #c8aa64;
+  border-radius: 0.6lh;
+  box-shadow: 8px 6px 5px #4436243f;
+  padding: 1.2lh 6% 1.3lh;
+}
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.3lh 0.5lh; }
+@media (max-width: 560px) {
+  .grid2 { grid-template-columns: 1fr; }
+}
+.fld { margin-bottom: 0.75lh; }
+.fld p { font-weight: 700; font-size: 3.7cqw; margin-bottom: 0.28lh; }
+.fld p em { font-style: normal; color: #b8503c; font-weight: 700; }
+.fld input,
+.fld textarea,
+.fld select {
+  width: 100%;
+  padding: 0.8lh 0.7lh;
+  background: #fff;
+  font-family: 'Pretendard Variable';
+  font-size: 4cqw;
+  border-radius: 0.3em;
+  border: 1px solid #afa090;
+  color: #442f0a;
+  font-weight: 500;
+  line-height: 1.4;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+.fld textarea { min-height: 7lh; resize: vertical; line-height: 1.7; font-size: 3.7cqw; }
+.fld input:focus,
+.fld textarea:focus { border-color: #333; outline: none; box-shadow: 0 0 0 3px #c8aa6433; }
+.fld input::placeholder,
+.fld textarea::placeholder { color: #442f0a88; }
+.fld .hint { font-size: 2.9cqw; color: #9a917f; font-weight: 500; margin-top: 0.22lh; line-height: 1.6; }
+.fld .err { font-size: 2.9cqw; color: #b8503c; font-weight: 600; margin-top: 0.22lh; display: none; }
+.fld.invalid input,
+.fld.invalid textarea { border-color: #b8503c; }
+.fld.invalid .err { display: block; }
+
+.filerow { display: flex; align-items: center; gap: 0.4lh; }
+.filerow label {
+  background: #f2ece0;
+  border: 1px solid #dcd2bd;
+  border-radius: 0.3em;
+  padding: 0.4lh 0.8lh;
+  font-size: 3.3cqw;
+  font-weight: 700;
+  color: #6f6555;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.filerow label:hover { background: #eae2d0; }
+.filerow input { display: none; }
+.filerow span { font-size: 3.1cqw; color: #9a917f; font-weight: 500; }
+
+.form_foot {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.4lh;
+  margin-top: 1lh;
+  padding-top: 0.9lh;
+  border-top: 1px solid #c8aa6455;
+}
+.form_foot a,
+.form_foot button {
+  flex: 1;
+  text-align: center;
+  border-radius: 0.45lh;
+  font-family: 'Pretendard Variable';
+  font-weight: 700;
+  font-size: 4cqw;
+  padding: 0.6lh 0;
+  cursor: pointer;
+}
+.btn_cancel { background: #fff; border: 1px solid #c8aa6480; color: #786d56; }
+.btn_cancel:hover { background: #f7f1e4; color: #786d56; }
+.btn_submit {
+  background: linear-gradient(-30deg, rgba(13, 37, 59, 1) 0%, rgba(0, 48, 145, 1) 100%);
+  border: none;
+  color: #fff;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.btn_submit:hover { transform: translateY(-2px); box-shadow: 0 8px 20px #00309166; color: #fff; }
+
+.modeTab {
+  width: 90%;
+  margin: 0 auto 4%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.25lh;
+  background: #f2ece0;
+  border: 1px solid #dcd2bd;
+  border-radius: 5em;
+  padding: 0.15lh;
+}
+.modeTab button {
+  background: none;
+  border: none;
+  font-family: 'Pretendard Variable';
+  font-weight: 700;
+  font-size: 3.6cqw;
+  color: #8a8072;
+  padding: 0.45lh 0;
+  border-radius: 5em;
+  cursor: pointer;
+  transition: all .2s ease;
+}
+.modeTab button.on { background: #0d253b; color: #fff; }
+
+.ansList { width: 90%; margin: 0 auto 16%; }
+.ansEmpty {
+  background: #fffdf8;
+  border: 1px dashed #c0944d;
+  border-radius: 0.5lh;
+  padding: 1.3lh 6%;
+  text-align: center;
+}
+.ansEmpty p { font-size: 3.4cqw; color: #796f58; font-weight: 500; line-height: 1.8; word-break: keep-all; }
